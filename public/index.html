@@ -135,12 +135,12 @@
             const statusElement = document.getElementById('status');
             const testApiButton = document.getElementById('testApi');
             const apiResult = document.getElementById('apiResult');
-            
+
             // 生成唯一ID
             function generateId() {
                 return Date.now().toString(36) + Math.random().toString(36).substr(2);
             }
-            
+
             // 添加消息到聊天区域
             function addMessage(text, sender) {
                 const messageId = generateId();
@@ -152,7 +152,7 @@
                 chatArea.scrollTop = chatArea.scrollHeight;
                 return messageId;
             }
-            
+
             // 获取模型信息
             fetch('/api/models')
                 .then(response => response.json())
@@ -163,16 +163,16 @@
                     console.error('获取模型信息失败:', error);
                     statusElement.textContent = '模型: 连接失败';
                 });
-            
+
             // 发送消息
             function sendMessage() {
                 const message = userInput.value.trim();
                 if (!message) return;
-                
+
                 // 添加用户消息到聊天区域
                 addMessage(message, 'user');
                 userInput.value = '';
-                
+
                 // 获取所有消息历史
                 const messages = [];
                 document.querySelectorAll('.message').forEach(msg => {
@@ -180,10 +180,10 @@
                     const content = msg.textContent;
                     messages.push({ role, content });
                 });
-                
+
                 // 显示加载状态
                 const loadingId = addMessage('正在思考...', 'ai');
-                
+
                 // 发送请求到API
                 fetch('/api/chat', {
                     method: 'POST',
@@ -196,42 +196,46 @@
                 .then(data => {
                     // 移除加载消息
                     document.getElementById(loadingId).remove();
-                    
+
                     // 添加AI响应
                     addMessage(data.response, 'ai');
                 })
                 .catch(error => {
                     // 移除加载消息
                     document.getElementById(loadingId).remove();
-                    
+
                     // 显示错误
                     addMessage('抱歉，发生了错误。请稍后再试。', 'ai');
                     console.error('API请求错误:', error);
                 });
             }
-            
+
             // 发送按钮点击事件
             sendButton.addEventListener('click', sendMessage);
-            
+
             // 输入框回车事件
             userInput.addEventListener('keypress', function(e) {
                 if (e.key === 'Enter') {
                     sendMessage();
                 }
             });
-            
+
             // 测试API连接
             testApiButton.addEventListener('click', function() {
                 apiResult.textContent = '正在测试API连接...';
-                
+
                 fetch('/api/models')
-                    .then(response => response.json())
+                    .then(response => {
+                        console.log('API响应状态:', response.status);
+                        return response.json();
+                    })
                     .then(data => {
+                        console.log('API响应数据:', data);
                         apiResult.textContent = `API连接成功! 模型: ${data.model}, 状态: ${data.status}`;
                     })
                     .catch(error => {
-                        apiResult.textContent = `API连接失败: ${error.message}`;
                         console.error('API测试错误:', error);
+                        apiResult.textContent = `API连接失败: ${error.message}`;
                     });
             });
         });
