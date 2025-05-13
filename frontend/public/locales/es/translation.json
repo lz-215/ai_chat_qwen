@@ -1,0 +1,184 @@
+{
+  "app": {
+    "title": "Chat AI Qwen3",
+    "header": {
+      "home": "Inicio",
+      "cases": "Casos",
+      "news": "Noticias",
+      "docs": "Documentación",
+      "media": "Media",
+      "login": "Iniciar sesión / Registrarse",
+      "logout": "Cerrar sesión",
+      "welcome": "Bienvenido, {{name}}",
+      "chat": "Iniciar chat"
+    },
+    "footer": {
+      "rights": "Todos los derechos reservados.",
+      "contact": "Contáctenos",
+      "privacy": "Política de privacidad"
+    },
+    "home": {
+      "welcome": "Bienvenido a la plataforma de chat Qwen3 AI",
+      "description": "Experimente el poder de la conversación con IA",
+      "getStarted": "Comenzar",
+      "modelDescription": "Qwen-3 es un modelo de lenguaje de IA de vanguardia dedicado a proporcionar experiencias conversacionales inteligentes, eficientes y seguras, capaz de comprender y responder con precisión a una amplia gama de consultas humanas.",
+      "freeTier": "Nivel gratuito 100% disponible",
+      "cuttingEdge": "Modelos de IA de vanguardia",
+      "noSignUp": "Sin registro para funciones básicas",
+      "scalable": "Escalable y confiable",
+      "discoverTitle": "Descubra lo que puede hacer",
+      "discoverDescription": "Haga clic en una tarjeta a continuación para interactuar con una IA especializada en ese tema.",
+      "selectPersona": "¡Seleccione un personaje y comience a chatear!",
+      "featureCards": {
+        "viralTitle": {
+          "title": "Generador de Títulos Virales",
+          "description": "Cree títulos de contenido atractivos."
+        },
+        "businessText": {
+          "title": "Reescritura de Textos Empresariales",
+          "description": "Mejore documentos corporativos profesionalmente."
+        },
+        "weeklyReport": {
+          "title": "Visualización de Informes Semanales",
+          "description": "Transforme datos brutos en información visual."
+        },
+        "kpiGoal": {
+          "title": "Desglose de Objetivos KPI",
+          "description": "Transforme metas en objetivos accionables."
+        },
+        "competitiveAnalysis": {
+          "title": "Informe de Análisis Competitivo",
+          "description": "Análisis y estrategias exhaustivas sobre competidores."
+        },
+        "crossBorder": {
+          "title": "Marketing de Comercio Electrónico Transfronterizo",
+          "description": "Localización y promoción global de marcas."
+        },
+        "languageSkills": {
+          "title": "Entrenamiento de Habilidades Lingüísticas",
+          "description": "Aprendizaje y evaluación de idiomas personalizado."
+        },
+        "legalDocument": {
+          "title": "Optimización de Documentos Legales",
+          "description": "Simplifique y mejore documentos legales."
+        }
+      },
+      "featuresSection": {
+        "title": "Explore las Potentes Funciones de Qwen3 AI",
+        "description": "Aproveche las capacidades de vanguardia de Qwen3 AI, diseñadas para transformar la forma en que trabaja, crea y resuelve problemas.",
+        "advancedReasoning": {
+          "title": "Razonamiento Avanzado",
+          "description": "Qwen3 sobresale en la resolución de problemas complejos, razonamiento lógico y pensamiento paso a paso en diversos dominios, desde matemáticas hasta programación."
+        },
+        "multilingualExcellence": {
+          "title": "Excelencia Multilingüe",
+          "description": "Comuníquese sin problemas en múltiples idiomas con fluidez casi nativa, apoyando la traducción integral y la creación de contenido intercultural."
+        },
+        "codeGeneration": {
+          "title": "Generación y Análisis de Código",
+          "description": "Cree, depure y optimice código en múltiples lenguajes de programación con explicaciones detalladas y documentación."
+        },
+        "creativeContent": {
+          "title": "Creación de Contenido Creativo",
+          "description": "Genere artículos, textos de marketing, historias y más de alta calidad con tono, estilo y formato personalizables para satisfacer sus necesidades específicas."
+        },
+        "knowledgeIntegration": {
+          "title": "Integración de Conocimientos",
+          "description": "Acceda a una amplia base de conocimientos que abarca ciencia, historia, eventos actuales y dominios especializados para obtener información precisa y actualizada."
+        },
+        "contextualUnderstanding": {
+          "title": "Comprensión Contextual",
+          "description": "Mantenga conversaciones coherentes y relevantes con memoria mejorada y conciencia contextual a lo largo de interacciones extendidas."
+        }
+      },
+      "trustSection": {
+        "title": "Confiado por Millones de Usuarios",
+        "subtitle": "FIABILIDAD",
+        "description": "Nuestra plataforma procesa millones de interacciones, proporcionando asistencia de IA constante y de alta calidad.",
+        "activeUsers": {
+          "title": "Usuarios Activos",
+          "value": "3M+",
+          "subtitle": "Usuarios activos mensuales"
+        },
+        "dailyInteractions": {
+          "title": "Interacciones Diarias",
+          "value": "500K+",
+          "subtitle": "Intercambios significativos diariamente"
+        },
+        "userSatisfaction": {
+          "title": "Satisfacción del Usuario",
+          "value": "4.9",
+          "subtitle": "Calificación promedio de la plataforma"
+        }
+      },
+      "testimonialsSection": {
+        "title": "Lo que dicen nuestros usuarios",
+        "description": "Escuche directamente de quienes han experimentado el poder y la comodidad de nuestra Plataforma de Chat AI.",
+        "testimonials": {
+          "sarah": {
+            "quote": "Esta plataforma de IA ha revolucionado cómo abordo mis tareas diarias de escritura. ¡Las sugerencias de la IA son perfectas!",
+            "name": "Sarah L.",
+            "role": "Creadora de Contenido"
+          },
+          "john": {
+            "quote": "La función de traducción es increíblemente precisa y rápida. Ha sido un cambio de juego para nuestro negocio internacional.",
+            "name": "John B.",
+            "role": "Dueño de Negocio"
+          },
+          "mike": {
+            "quote": "Al principio era escéptico, pero las herramientas de búsqueda y resumen de IA me ahorran horas de investigación cada semana. ¡Muy recomendado!",
+            "name": "Mike P.",
+            "role": "Investigador"
+          },
+          "alice": {
+            "quote": "La interfaz es tan intuitiva y fácil de usar. ¡Me familiaricé con ella en minutos!",
+            "name": "Alice G.",
+            "role": "Estudiante"
+          },
+          "david": {
+            "quote": "El soporte al cliente fue muy receptivo y útil cuando tuve una pregunta.",
+            "name": "David K.",
+            "role": "Freelance"
+          },
+          "emily": {
+            "quote": "Una excelente herramienta para lluvia de ideas y superar el bloqueo del escritor. ¡Me encantan las indicaciones creativas!",
+            "name": "Emily R.",
+            "role": "Autora"
+          }
+        }
+      }
+    },
+    "chat": {
+      "placeholder": "Escribe tu mensaje aquí...",
+      "send": "Enviar",
+      "sending": "Enviando",
+      "clear": "Limpiar chat",
+      "welcomeMessage": "¡Hola! Soy el asistente de IA Qwen3-plus. ¿En qué puedo ayudarte hoy?",
+      "modelInfoError": "Error al obtener información del modelo:",
+      "apiError": "Error en la solicitud API: {{status}}",
+      "sendError": "Error al enviar mensaje:",
+      "errorMessage": "Lo siento, ocurrió un error al procesar tu solicitud.",
+      "model_info": "Modelo actual",
+      "model": "Modelo",
+      "status": "Estado",
+      "device": "Dispositivo",
+      "loading": "Cargando",
+      "ready": "Listo",
+      "unknown": "Desconocido",
+      "error": "Error",
+      "userMessage": "Mensaje del usuario",
+      "aiMessage": "Mensaje de IA"
+    },
+    "login": {
+      "title": "Iniciar sesión",
+      "username": "Nombre de usuario",
+      "password": "Contraseña",
+      "submit": "Iniciar sesión",
+      "forgotPassword": "¿Olvidaste tu contraseña?",
+      "loggingIn": "Iniciando sesión..."
+    },
+    "languageSelector": {
+      "language": "Idioma"
+    }
+  }
+} 

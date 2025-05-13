@@ -1,0 +1,102 @@
+{
+  "app": {
+    "title": "Chat IA Qwen3",
+    "header": {
+      "home": "Accueil",
+      "cases": "Études de cas",
+      "news": "Actualités",
+      "docs": "Documentation",
+      "media": "Média",
+      "login": "Connexion / Inscription",
+      "logout": "Déconnexion",
+      "welcome": "Bienvenue, {{name}}",
+      "chat": "Démarrer le chat"
+    },
+    "footer": {
+      "rights": "Tous droits réservés.",
+      "contact": "Contactez-nous",
+      "privacy": "Politique de confidentialité"
+    },
+    "home": {
+      "welcome": "Bienvenue sur la plateforme de chat Qwen3 IA",
+      "description": "Découvrez la puissance de la conversation avec l'IA",
+      "getStarted": "Commencer",
+      "modelDescription": "Qwen-3 est un modèle de langage IA à la pointe de la technologie dédié à fournir des expériences conversationnelles intelligentes, efficaces et sécurisées, capable de comprendre avec précision et de répondre à un large éventail de requêtes humaines.",
+      "freeTier": "Niveau gratuit 100% disponible",
+      "cuttingEdge": "Modèles IA de pointe",
+      "noSignUp": "Pas d'inscription pour les fonctionnalités de base",
+      "scalable": "Évolutif et fiable",
+      "discoverTitle": "Découvrez ce que vous pouvez faire",
+      "discoverDescription": "Cliquez sur une carte ci-dessous pour interagir avec une IA spécialisée sur ce sujet.",
+      "selectPersona": "Sélectionnez un personnage et commencez à discuter !",
+      "testimonialsSection": {
+        "title": "Ce que disent nos utilisateurs",
+        "description": "Écoutez directement ceux qui ont expérimenté la puissance et la commodité de notre plateforme de chat IA.",
+        "testimonials": {
+          "sarah": {
+            "quote": "Cette plateforme d'IA a révolutionné ma façon d'aborder mes tâches d'écriture quotidiennes. Les suggestions de l'IA sont parfaites !",
+            "name": "Sarah L.",
+            "role": "Créatrice de contenu"
+          },
+          "john": {
+            "quote": "La fonction de traduction est incroyablement précise et rapide. Cela a changé la donne pour notre entreprise internationale.",
+            "name": "John B.",
+            "role": "Propriétaire d'entreprise"
+          },
+          "mike": {
+            "quote": "J'étais sceptique au début, mais les outils de recherche et de synthèse IA m'épargnent des heures de recherche chaque semaine. Fortement recommandé !",
+            "name": "Mike P.",
+            "role": "Chercheur"
+          },
+          "alice": {
+            "quote": "L'interface est si intuitive et conviviale. Je l'ai maîtrisée en quelques minutes !",
+            "name": "Alice G.",
+            "role": "Étudiante"
+          },
+          "david": {
+            "quote": "Le service client a été très réactif et utile lorsque j'ai eu une question.",
+            "name": "David K.",
+            "role": "Freelance"
+          },
+          "emily": {
+            "quote": "Un excellent outil pour le brainstorming et surmonter le blocage de l'écrivain. J'adore les suggestions créatives !",
+            "name": "Emily R.",
+            "role": "Auteure"
+          }
+        }
+      }
+    },
+    "chat": {
+      "placeholder": "Tapez votre message ici...",
+      "send": "Envoyer",
+      "sending": "Envoi en cours",
+      "clear": "Effacer la conversation",
+      "welcomeMessage": "Bonjour ! Je suis l'assistant IA Qwen3-plus. Comment puis-je vous aider aujourd'hui ?",
+      "modelInfoError": "Échec de l'obtention des informations du modèle :",
+      "apiError": "Échec de la requête API : {{status}}",
+      "sendError": "Erreur lors de l'envoi du message :",
+      "errorMessage": "Désolé, une erreur s'est produite lors du traitement de votre demande.",
+      "model_info": "Modèle actuel",
+      "model": "Modèle",
+      "status": "Statut",
+      "device": "Appareil",
+      "loading": "Chargement",
+      "ready": "Prêt",
+      "unknown": "Inconnu",
+      "error": "Erreur",
+      "userMessage": "Message de l'utilisateur",
+      "aiMessage": "Message de l'IA"
+    },
+    "login": {
+      "title": "Connexion",
+      "username": "Nom d'utilisateur",
+      "password": "Mot de passe",
+      "submit": "Connexion",
+      "forgotPassword": "Mot de passe oublié ?",
+      "loggingIn": "Connexion en cours..."
+    },
+    "languageSelector": {
+      "language": "Langue"
+    }
+  }
+} 

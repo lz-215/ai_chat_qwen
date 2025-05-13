@@ -1,0 +1,184 @@
+{
+  "app": {
+    "title": "Qwen3 AI聊天",
+    "header": {
+      "home": "首页",
+      "cases": "案例",
+      "news": "新闻",
+      "docs": "文档",
+      "media": "媒体",
+      "login": "登录 / 注册",
+      "logout": "退出登录",
+      "welcome": "欢迎，{{name}}",
+      "chat": "开始聊天"
+    },
+    "footer": {
+      "rights": "版权所有",
+      "contact": "联系我们",
+      "privacy": "隐私政策"
+    },
+    "home": {
+      "welcome": "欢迎使用Qwen3 AI聊天平台",
+      "description": "Qwen3大语言模型的强大对话能力",
+      "getStarted": "立即开始",
+      "modelDescription": "Qwen3是一款前沿的AI语言模型，致力于提供智能、高效和安全的对话体验，能够准确理解并回应各种人类询问。",
+      "freeTier": "100%免费使用层级",
+      "cuttingEdge": "前沿AI模型技术",
+      "noSignUp": "基础功能无需注册",
+      "scalable": "可扩展且可靠",
+      "discoverTitle": "探索功能",
+      "discoverDescription": "点击下方卡片与专业AI助手交互",
+      "selectPersona": "选择一个角色并开始聊天！",
+      "featureCards": {
+        "viralTitle": {
+          "title": "爆款标题生成器",
+          "description": "创建吸引眼球的内容标题"
+        },
+        "businessText": {
+          "title": "商业文本改写",
+          "description": "专业提升企业文档质量"
+        },
+        "weeklyReport": {
+          "title": "周报数据可视化",
+          "description": "将原始数据转化为可视化洞察"
+        },
+        "kpiGoal": {
+          "title": "KPI目标拆解",
+          "description": "将目标转化为可执行的计划"
+        },
+        "competitiveAnalysis": {
+          "title": "竞争分析报告",
+          "description": "全面的竞争对手分析与策略"
+        },
+        "crossBorder": {
+          "title": "跨境电商营销",
+          "description": "全球品牌本地化与推广"
+        },
+        "languageSkills": {
+          "title": "语言技能培训",
+          "description": "个性化语言学习与评估"
+        },
+        "legalDocument": {
+          "title": "法律文档优化",
+          "description": "简化并增强法律文档"
+        }
+      },
+      "featuresSection": {
+        "title": "探索Qwen3的强大功能",
+        "description": "利用Qwen3的前沿能力，彻底改变您的工作、创作和解决问题的方式",
+        "advancedReasoning": {
+          "title": "高级推理能力",
+          "description": "Qwen3擅长复杂问题解决、逻辑推理，可在数学到编程等多个领域提供逐步思考"
+        },
+        "multilingualExcellence": {
+          "title": "多语言卓越表现",
+          "description": "以接近母语的流利度无缝沟通多种语言，支持全面翻译和跨文化内容创作"
+        },
+        "codeGeneration": {
+          "title": "代码生成与分析",
+          "description": "创建、调试并优化多种编程语言的代码，提供详细解释和文档"
+        },
+        "creativeContent": {
+          "title": "创意内容创作",
+          "description": "生成高质量文章、营销文案、故事等，可根据特定需求自定义语调、风格和格式"
+        },
+        "knowledgeIntegration": {
+          "title": "知识整合",
+          "description": "访问涵盖科学、历史、时事和专业领域的庞大知识库，获取准确、最新的信息"
+        },
+        "contextualUnderstanding": {
+          "title": "上下文理解",
+          "description": "在长时间互动中保持连贯、相关的对话，具有增强的记忆力和上下文意识"
+        }
+      },
+      "trustSection": {
+        "title": "数百万用户的信赖之选",
+        "subtitle": "可靠性",
+        "description": "我们的平台处理数百万次互动，提供一致且高质量的AI辅助服务",
+        "activeUsers": {
+          "title": "活跃用户",
+          "value": "3M+",
+          "subtitle": "月活跃用户"
+        },
+        "dailyInteractions": {
+          "title": "日互动量",
+          "value": "500K+",
+          "subtitle": "每日有意义的交流"
+        },
+        "userSatisfaction": {
+          "title": "用户满意度",
+          "value": "4.9",
+          "subtitle": "平台平均评分"
+        }
+      },
+      "testimonialsSection": {
+        "title": "用户怎么说",
+        "description": "直接聆听体验过我们AI聊天平台强大功能和便捷性的用户心声",
+        "testimonials": {
+          "sarah": {
+            "quote": "这个AI平台彻底改变了我处理日常写作任务的方式。AI的建议简直太准确了！",
+            "name": "Sarah L.",
+            "role": "内容创作者"
+          },
+          "john": {
+            "quote": "翻译功能非常准确且快速。这对我们的国际业务来说是一个游戏规则改变者。",
+            "name": "John B.",
+            "role": "企业主"
+          },
+          "mike": {
+            "quote": "一开始我还很怀疑，但AI搜索和总结工具每周为我节省了数小时的研究时间。强烈推荐！",
+            "name": "Mike P.",
+            "role": "研究员"
+          },
+          "alice": {
+            "quote": "界面非常直观和用户友好。我几分钟就掌握了使用方法！",
+            "name": "Alice G.",
+            "role": "学生"
+          },
+          "david": {
+            "quote": "当我有问题时，客户支持非常迅速且乐于助人。",
+            "name": "David K.",
+            "role": "自由职业者"
+          },
+          "emily": {
+            "quote": "对于头脑风暴和克服写作障碍来说，这是一个极好的工具。我喜欢它提供的创意提示！",
+            "name": "Emily R.",
+            "role": "作家"
+          }
+        }
+      }
+    },
+    "chat": {
+      "placeholder": "在此输入您的消息...",
+      "send": "发送",
+      "sending": "发送中",
+      "clear": "清空聊天",
+      "welcomeMessage": "你好！我是Qwen3 AI助手。有什么可以帮助你的吗？",
+      "modelInfoError": "获取模型信息失败:",
+      "apiError": "API请求失败: {{status}}",
+      "sendError": "发送消息错误:",
+      "errorMessage": "抱歉，处理您的请求时出现错误。",
+      "model_info": "当前模型",
+      "model": "模型",
+      "status": "状态",
+      "device": "设备",
+      "loading": "加载中",
+      "ready": "就绪",
+      "unknown": "未知",
+      "error": "错误",
+      "userMessage": "用户消息",
+      "aiMessage": "AI回复"
+    },
+    "login": {
+      "title": "登录",
+      "username": "用户名",
+      "password": "密码",
+      "submit": "登录",
+      "forgotPassword": "忘记密码？",
+      "loggingIn": "正在登录..."
+    },
+    "languageSelector": {
+      "language": "语言"
+    }
+  }
+} 

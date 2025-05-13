@@ -1,0 +1,184 @@
+{
+  "app": {
+    "title": "Qwen3 AI Chat",
+    "header": {
+      "home": "Home",
+      "cases": "Cases",
+      "news": "News",
+      "docs": "Documentation",
+      "media": "Media",
+      "login": "Login / Register",
+      "logout": "Logout",
+      "welcome": "Welcome, {{name}}",
+      "chat": "Start Chat"
+    },
+    "footer": {
+      "rights": "All rights reserved.",
+      "contact": "Contact Us",
+      "privacy": "Privacy Policy"
+    },
+    "home": {
+      "welcome": "Welcome to Qwen3 AI Chat Platform",
+      "description": "Experience the power of AI conversation",
+      "getStarted": "Get Started",
+      "modelDescription": "Qwen-3 is a cutting-edge AI language model dedicated to providing intelligent, efficient, and safe conversational experiences, capable of accurately understanding and responding to a wide range of human inquiries.",
+      "freeTier": "100% Free Tier Available",
+      "cuttingEdge": "Cutting-Edge AI Models",
+      "noSignUp": "No Sign-Up for Basic Features",
+      "scalable": "Scalable & Reliable",
+      "discoverTitle": "Discover What You Can Do",
+      "discoverDescription": "Click on a card below to interact with a specialized AI for that topic.",
+      "selectPersona": "Select a persona and start chatting!",
+      "featureCards": {
+        "viralTitle": {
+          "title": "Viral Title Generator",
+          "description": "Create engaging content titles."
+        },
+        "businessText": {
+          "title": "Business Text Rewriting",
+          "description": "Enhance corporate documents professionally."
+        },
+        "weeklyReport": {
+          "title": "Weekly Report Visualization",
+          "description": "Transform raw data into visual insights."
+        },
+        "kpiGoal": {
+          "title": "KPI Goal Breakdown",
+          "description": "Transform goals into actionable objectives."
+        },
+        "competitiveAnalysis": {
+          "title": "Competitive Analysis Report",
+          "description": "Comprehensive competitor analysis and strategy."
+        },
+        "crossBorder": {
+          "title": "Cross-Border E-commerce Marketing",
+          "description": "Global brand localization and promotion."
+        },
+        "languageSkills": {
+          "title": "Language Skills Training",
+          "description": "Personalized language learning and assessment."
+        },
+        "legalDocument": {
+          "title": "Legal Document Optimization",
+          "description": "Simplify and enhance legal documents."
+        }
+      },
+      "featuresSection": {
+        "title": "Explore Qwen3 AI's Powerful Features",
+        "description": "Harness the cutting-edge capabilities of Qwen3 AI, designed to transform how you work, create, and solve problems.",
+        "advancedReasoning": {
+          "title": "Advanced Reasoning",
+          "description": "Qwen3 excels at complex problem-solving, logical reasoning, and step-by-step thinking across various domains from mathematics to programming."
+        },
+        "multilingualExcellence": {
+          "title": "Multilingual Excellence",
+          "description": "Seamlessly communicate in multiple languages with near-native fluency, supporting comprehensive translation and cross-cultural content creation."
+        },
+        "codeGeneration": {
+          "title": "Code Generation & Analysis",
+          "description": "Create, debug, and optimize code across multiple programming languages with detailed explanations and documentation."
+        },
+        "creativeContent": {
+          "title": "Creative Content Creation",
+          "description": "Generate high-quality articles, marketing copy, stories, and more with customizable tone, style, and formatting to meet your specific needs."
+        },
+        "knowledgeIntegration": {
+          "title": "Knowledge Integration",
+          "description": "Access a vast knowledge base covering science, history, current events, and specialized domains for accurate, up-to-date information."
+        },
+        "contextualUnderstanding": {
+          "title": "Contextual Understanding",
+          "description": "Maintain coherent, relevant conversations with improved memory and contextual awareness throughout extended interactions."
+        }
+      },
+      "trustSection": {
+        "title": "Trusted by Millions of Users",
+        "subtitle": "RELIABILITY",
+        "description": "Our platform processes millions of interactions, delivering consistent and high-quality AI assistance.",
+        "activeUsers": {
+          "title": "Active Users",
+          "value": "3M+",
+          "subtitle": "Monthly Active Users"
+        },
+        "dailyInteractions": {
+          "title": "Daily Interactions",
+          "value": "500K+",
+          "subtitle": "Meaningful exchanges daily"
+        },
+        "userSatisfaction": {
+          "title": "User Satisfaction",
+          "value": "4.9",
+          "subtitle": "Average platform rating"
+        }
+      },
+      "testimonialsSection": {
+        "title": "What Our Users Say",
+        "description": "Hear directly from those who have experienced the power and convenience of our AI Chat Platform.",
+        "testimonials": {
+          "sarah": {
+            "quote": "This AI platform has revolutionized how I approach my daily writing tasks. The AI suggestions are spot on!",
+            "name": "Sarah L.",
+            "role": "Content Creator"
+          },
+          "john": {
+            "quote": "The translation feature is incredibly accurate and fast. It has been a game-changer for our international business.",
+            "name": "John B.",
+            "role": "Business Owner"
+          },
+          "mike": {
+            "quote": "I was skeptical at first, but the AI search and summarization tools save me hours of research each week. Highly recommended!",
+            "name": "Mike P.",
+            "role": "Researcher"
+          },
+          "alice": {
+            "quote": "The interface is so intuitive and user-friendly. I got the hang of it in minutes!",
+            "name": "Alice G.",
+            "role": "Student"
+          },
+          "david": {
+            "quote": "Customer support was very responsive and helpful when I had a question.",
+            "name": "David K.",
+            "role": "Freelancer"
+          },
+          "emily": {
+            "quote": "An excellent tool for brainstorming and overcoming writer's block. Love the creative prompts!",
+            "name": "Emily R.",
+            "role": "Author"
+          }
+        }
+      }
+    },
+    "chat": {
+      "placeholder": "Type your message here...",
+      "send": "Send",
+      "sending": "Sending",
+      "clear": "Clear Chat",
+      "welcomeMessage": "Hello! I am the Qwen3-plus AI assistant. How can I help you today?",
+      "modelInfoError": "Failed to get model information:",
+      "apiError": "API request failed: {{status}}",
+      "sendError": "Error sending message:",
+      "errorMessage": "Sorry, an error occurred while processing your request.",
+      "model_info": "Current Model",
+      "model": "Model",
+      "status": "Status",
+      "device": "Device",
+      "loading": "Loading",
+      "ready": "Ready",
+      "unknown": "Unknown",
+      "error": "Error",
+      "userMessage": "User message",
+      "aiMessage": "AI message"
+    },
+    "login": {
+      "title": "Login",
+      "username": "Username",
+      "password": "Password",
+      "submit": "Login",
+      "forgotPassword": "Forgot Password?",
+      "loggingIn": "Logging in..."
+    },
+    "languageSelector": {
+      "language": "Language"
+    }
+  }
+} 

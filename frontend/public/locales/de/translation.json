@@ -1,0 +1,102 @@
+{
+  "app": {
+    "title": "Qwen3 KI-Chat",
+    "header": {
+      "home": "Startseite",
+      "cases": "Fallstudien",
+      "news": "Neuigkeiten",
+      "docs": "Dokumentation",
+      "media": "Medien",
+      "login": "Anmelden / Registrieren",
+      "logout": "Abmelden",
+      "welcome": "Willkommen, {{name}}",
+      "chat": "Chat starten"
+    },
+    "footer": {
+      "rights": "Alle Rechte vorbehalten.",
+      "contact": "Kontaktieren Sie uns",
+      "privacy": "Datenschutzrichtlinie"
+    },
+    "home": {
+      "welcome": "Willkommen bei der Qwen3 KI-Chat-Plattform",
+      "description": "Erleben Sie die Macht der KI-Konversation",
+      "getStarted": "Loslegen",
+      "modelDescription": "Qwen-3 ist ein hochmodernes KI-Sprachmodell, das intelligente, effiziente und sichere Gesprächserlebnisse bietet und in der Lage ist, ein breites Spektrum an menschlichen Anfragen präzise zu verstehen und zu beantworten.",
+      "freeTier": "100% kostenloses Nutzungskontingent verfügbar",
+      "cuttingEdge": "Hochmoderne KI-Modelle",
+      "noSignUp": "Keine Anmeldung für Grundfunktionen",
+      "scalable": "Skalierbar & zuverlässig",
+      "discoverTitle": "Entdecken Sie die Möglichkeiten",
+      "discoverDescription": "Klicken Sie auf eine der Karten unten, um mit einer spezialisierten KI zu diesem Thema zu interagieren.",
+      "selectPersona": "Wählen Sie eine Persona und beginnen Sie zu chatten!",
+      "testimonialsSection": {
+        "title": "Was unsere Nutzer sagen",
+        "description": "Hören Sie direkt von denen, die die Leistungsfähigkeit und Bequemlichkeit unserer KI-Chat-Plattform erlebt haben.",
+        "testimonials": {
+          "sarah": {
+            "quote": "Diese KI-Plattform hat revolutioniert, wie ich an meine täglichen Schreibaufgaben herangehe. Die KI-Vorschläge sind genau richtig!",
+            "name": "Sarah L.",
+            "role": "Content Creator"
+          },
+          "john": {
+            "quote": "Die Übersetzungsfunktion ist unglaublich genau und schnell. Sie war ein Game-Changer für unser internationales Geschäft.",
+            "name": "John B.",
+            "role": "Geschäftsinhaber"
+          },
+          "mike": {
+            "quote": "Ich war anfangs skeptisch, aber die KI-Such- und Zusammenfassungstools sparen mir jede Woche Stunden an Recherche. Sehr empfehlenswert!",
+            "name": "Mike P.",
+            "role": "Forscher"
+          },
+          "alice": {
+            "quote": "Die Oberfläche ist so intuitiv und benutzerfreundlich. Ich habe es in Minuten verstanden!",
+            "name": "Alice G.",
+            "role": "Studentin"
+          },
+          "david": {
+            "quote": "Der Kundensupport war sehr reaktionsschnell und hilfreich, als ich eine Frage hatte.",
+            "name": "David K.",
+            "role": "Freiberufler"
+          },
+          "emily": {
+            "quote": "Ein ausgezeichnetes Tool für Brainstorming und um Schreibblockaden zu überwinden. Ich liebe die kreativen Anregungen!",
+            "name": "Emily R.",
+            "role": "Autorin"
+          }
+        }
+      }
+    },
+    "chat": {
+      "placeholder": "Geben Sie Ihre Nachricht hier ein...",
+      "send": "Senden",
+      "sending": "Senden",
+      "clear": "Chat löschen",
+      "welcomeMessage": "Hallo! Ich bin der Qwen3-plus KI-Assistent. Wie kann ich Ihnen heute helfen?",
+      "modelInfoError": "Modellinformationen konnten nicht abgerufen werden:",
+      "apiError": "API-Anfrage fehlgeschlagen: {{status}}",
+      "sendError": "Fehler beim Senden der Nachricht:",
+      "errorMessage": "Entschuldigung, bei der Verarbeitung Ihrer Anfrage ist ein Fehler aufgetreten.",
+      "model_info": "Aktuelles Modell",
+      "model": "Modell",
+      "status": "Status",
+      "device": "Gerät",
+      "loading": "Laden",
+      "ready": "Bereit",
+      "unknown": "Unbekannt",
+      "error": "Fehler",
+      "userMessage": "Benutzernachricht",
+      "aiMessage": "KI-Nachricht"
+    },
+    "login": {
+      "title": "Anmelden",
+      "username": "Benutzername",
+      "password": "Passwort",
+      "submit": "Anmelden",
+      "forgotPassword": "Passwort vergessen?",
+      "loggingIn": "Anmeldung läuft..."
+    },
+    "languageSelector": {
+      "language": "Sprache"
+    }
+  }
+} 
