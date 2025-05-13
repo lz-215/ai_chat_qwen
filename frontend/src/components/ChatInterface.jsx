@@ -33,7 +33,7 @@ const ChatInterface = () => {
         console.error(t('app.chat.modelInfoError', 'Failed to get model information:'), error);
       }
     };
-    
+
     fetchModelInfo();
   }, [t]);
 
@@ -53,55 +53,66 @@ const ChatInterface = () => {
 
   const sendMessage = async (text) => {
     if (!text.trim()) return;
-    
+
     console.log("1. 开始发送消息:", text);
-    
+
     // 添加用户消息
     const userMessage = { id: Date.now(), text, sender: 'user' };
     setMessages(prev => [...prev, userMessage]);
     setIsLoading(true);
-    
+
     try {
       // 准备消息历史
       const messageHistory = messages.map(msg => ({
         role: msg.sender === 'user' ? 'user' : 'assistant',
         content: msg.text
       }));
-      
+
       // 添加当前用户消息
       messageHistory.push({ role: 'user', content: text });
-      
+
       console.log("2. 准备发送API请求，消息历史:", messageHistory);
-      
+
       // 调用后端API
       console.log("3. API请求地址:", '/api/chat');
-      const response = await fetch('/api/chat', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ messages: messageHistory })
-      });
-      
-      console.log("4. API响应状态:", response.status, response.statusText);
-      
-      if (!response.ok) {
-        throw new Error(t('app.chat.apiError', 'API request failed: {{status}}', { status: response.statusText }));
+      console.log("3.1 请求数据:", JSON.stringify({ messages: messageHistory }, null, 2));
+
+      let response;
+      try {
+        response = await fetch('/api/chat', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ messages: messageHistory })
+        });
+
+        console.log("4. API响应状态:", response.status, response.statusText);
+
+        if (!response.ok) {
+          const errorText = await response.text();
+          console.error("4.1 API错误响应:", errorText);
+          throw new Error(t('app.chat.apiError', 'API request failed: {{status}} - {{text}}',
+            { status: response.status, text: errorText.substring(0, 100) }));
+        }
+      } catch (error) {
+        console.error("4.2 API请求异常:", error);
+        throw error;
       }
-      
+
       const data = await response.json();
       console.log("5. API响应数据:", data);
-      
-      setMessages(prev => [...prev, { 
-        id: Date.now() + 1, 
-        text: data.response, 
-        sender: 'ai' 
+
+      setMessages(prev => [...prev, {
+        id: Date.now() + 1,
+        text: data.response,
+        sender: 'ai'
       }]);
     } catch (error) {
       console.error("6. 错误详情:", error);
       console.error(t('app.chat.sendError', 'Error sending message:'), error);
-      setMessages(prev => [...prev, { 
-        id: Date.now() + 1, 
-        text: t('app.chat.errorMessage', 'Sorry, an error occurred while processing your request.'), 
-        sender: 'ai' 
+      setMessages(prev => [...prev, {
+        id: Date.now() + 1,
+        text: t('app.chat.errorMessage', 'Sorry, an error occurred while processing your request.'),
+        sender: 'ai'
       }]);
     } finally {
       setIsLoading(false);

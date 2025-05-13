@@ -167,7 +167,8 @@
       "unknown": "Unknown",
       "error": "Error",
       "userMessage": "User message",
-      "aiMessage": "AI message"
+      "aiMessage": "AI message",
+      "selectedPersona": "You've selected the {{name}} persona. How can I assist you today?"
     },
     "login": {
       "title": "Login",

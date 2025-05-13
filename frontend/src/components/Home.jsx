@@ -74,12 +74,32 @@ const Home = () => {
         setActiveSystemPrompt(prompt);
         const featurePersona = featureCardPersonas.find(fcp => fcp.prompt === prompt);
         const originalPersona = personas.find(p => p.prompt === prompt);
-        const personaDisplayName = featurePersona ? featurePersona.title : (originalPersona ? originalPersona.name : "Specialized AI");
+        
+        // 获取功能卡片的翻译键
+        let featureKey = '';
+        if (featurePersona) {
+          if (featurePersona.id === 'viral_titles_card') featureKey = 'viralTitle';
+          else if (featurePersona.id === 'business_text_rewrite_card') featureKey = 'businessText';
+          else if (featurePersona.id === 'data_visualization_card') featureKey = 'weeklyReport';
+          else if (featurePersona.id === 'kpi_breakdown_card') featureKey = 'kpiGoal';
+          else if (featurePersona.id === 'competitive_analysis_card') featureKey = 'competitiveAnalysis';
+          else if (featurePersona.id === 'cross_border_ecommerce_card') featureKey = 'crossBorder';
+          else if (featurePersona.id === 'language_skills_training_card') featureKey = 'languageSkills';
+          else if (featurePersona.id === 'legal_document_optimization_card') featureKey = 'legalDocument';
+        }
+        
+        // 获取翻译后的角色名称
+        const personaDisplayName = featureKey 
+          ? t(`app.home.featureCards.${featureKey}.title`) 
+          : (originalPersona ? originalPersona.name : "Specialized AI");
+        
+        // 使用翻译后的角色名称直接构建欢迎消息
+        const welcomeMessage = t('app.chat.selectedPersona', { name: personaDisplayName });
         
         // Set an initial AI message to confirm persona selection and prompt for input.
         const initialAiMessage = { 
           sender: 'ai',
-          text: `You've selected the ${personaDisplayName} persona. How can I assist you today?`
+          text: welcomeMessage
         };
         setMessages([initialAiMessage]); // Initialize chat with this AI-generated message
   
@@ -93,10 +113,20 @@ const Home = () => {
         const newUserMessage = { sender: 'user', text: userInput };
         setMessages(prevMessages => [...prevMessages, newUserMessage]);
 
-        // 【重要】此处是您调用后端API的地方
-        // 您需要将 userInput 和 activeSystemPrompt 发送到您的服务器
-        // 您的服务器再将这些信息传递给 DeepSeek-V3 API
-        // 例如:
+        // 准备消息历史
+        const messageHistory = messages.map(msg => ({
+          role: msg.sender === 'user' ? 'user' : 'assistant',
+          content: msg.text
+        }));
+
+        // 添加当前用户消息
+        messageHistory.push({ role: 'user', content: userInput });
+
+        // 如果有系统提示，添加到消息开头
+        if (activeSystemPrompt) {
+          messageHistory.unshift({ role: 'system', content: activeSystemPrompt });
+        }
+
         try {
           const response = await fetch('/api/chat', {
             method: 'POST',
@@ -104,19 +134,17 @@ const Home = () => {
               'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-              message: userInput,
-              system_prompt: activeSystemPrompt
+              messages: messageHistory
             })
           });
           const data = await response.json();
-          const aiResponse = { sender: 'ai', text: data.reply };
+          const aiResponse = { sender: 'ai', text: data.response };
           setMessages(prevMessages => [...prevMessages, aiResponse]);
         } catch (error) {
           console.error("Error sending message:", error);
           setMessages(prevMessages => [...prevMessages, { 
-            id: Date.now() + 1, 
-            text: 'Sorry, an error occurred while processing your request.', 
-            sender: 'ai' 
+            sender: 'ai', 
+            text: 'Sorry, an error occurred while processing your request.' 
           }]);
         }
 
@@ -250,16 +278,6 @@ const Home = () => {
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 lg:grid-cols-4 gap-6">
             {featureCardPersonas.map((feature, index) => {
-              const icons = [
-                <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z" />,
-                <path strokeLinecap="round" strokeLinejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L10.582 16.07a4.5 4.5 0 01-1.897 1.13L6 18l.8-2.685a4.5 4.5 0 011.13-1.897l8.932-8.931zm0 0L19.5 7.125M18 14v4.75A2.25 2.25 0 0115.75 21H5.25A2.25 2.25 0 013 18.75V8.25A2.25 2.25 0 015.25 6H10" />,
-                <path strokeLinecap="round" strokeLinejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5" />,
-                <path strokeLinecap="round" strokeLinejoin="round" d="M12 21a9.004 9.004 0 008.716-6.747M12 21a9.004 9.004 0 01-8.716-6.747M12 21c2.485 0 4.5-4.03 4.5-9S14.485 3 12 3m0 18c-2.485 0-4.5-4.03-4.5-9S9.515 3 12 3m0 0a8.997 8.997 0 017.843 4.582M12 3a8.997 8.997 0 00-7.843 4.582m15.686 0A11.953 11.953 0 0112 10.5c-2.998 0-5.74-1.1-7.843-2.918m15.686 0A8.959 8.959 0 0121.75 12H2.25a8.959 8.959 0 013.907-5.332" />,
-                <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />,
-                <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75" />,
-                <path strokeLinecap="round" strokeLinejoin="round" d="M3 13.125C3 12.504 3.504 12 4.125 12h2.25c.621 0 1.125.504 1.125 1.125v6.75C7.5 20.496 6.996 21 6.375 21h-2.25A1.125 1.125 0 013 19.875v-6.75zM9.75 8.625c0-.621.504-1.125 1.125-1.125h2.25c.621 0 1.125.504 1.125 1.125v11.25c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V8.625zM16.5 4.125c0-.621.504-1.125 1.125-1.125h2.25C20.496 3 21 3.504 21 4.125v15.75c0 .621-.504 1.125-1.125 1.125h-2.25a1.125 1.125 0 01-1.125-1.125V4.125z" />,
-                <path strokeLinecap="round" strokeLinejoin="round" d="M12 18v-5.25m0 0a6.01 6.01 0 001.5-.189m-1.5.189a6.01 6.01 0 01-1.5-.189m3.75 7.478a12.06 12.06 0 01-4.5 0m3.75 2.354a15.055 15.055 0 01-4.5 0M3 10.5a5.982 5.982 0 011.568-4.076 9.004 9.004 0 014.903-2.848M3 10.5a5.982 5.982 0 001.568 4.076 9.004 9.004 0 004.903 2.848M3 10.5h.008v.008H3V10.5zm12 6a5.982 5.982 0 011.568-4.076 9.004 9.004 0 014.903-2.848M15 16.5a5.982 5.982 0 001.568 4.076 9.004 9.004 0 004.903 2.848M15 16.5h.008v.008H15V16.5z" />
-              ];
               const isActive = activeSystemPrompt === feature.prompt;
 
               // 获取功能卡片的翻译键
@@ -281,10 +299,12 @@ const Home = () => {
                     ${isActive ? 'ring-2 ring-offset-2 ring-indigo-300 border-indigo-400' : 'hover:bg-gray-50 border-gray-300'}
                   `}
                 >
-                  <div className="flex-shrink-0 bg-purple-100 p-3 rounded-lg">
-                    <svg className="w-8 h-8 text-purple-600" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor">
-                      {icons[index % icons.length]}
-                    </svg>
+                  <div className="flex-shrink-0">
+                    <img 
+                      src={`/icon${index + 1}.png`} 
+                      alt={feature.title} 
+                      className="w-12 h-12 object-contain"
+                    />
                   </div>
                   <div className="flex-grow">
                     <h3 className="text-lg font-semibold text-gray-800 mb-1">

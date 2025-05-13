@@ -167,7 +167,8 @@
       "unknown": "未知",
       "error": "错误",
       "userMessage": "用户消息",
-      "aiMessage": "AI回复"
+      "aiMessage": "AI回复",
+      "selectedPersona": "您已选择{{name}}角色。我能为您提供什么帮助？"
     },
     "login": {
       "title": "登录",

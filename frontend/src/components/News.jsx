@@ -20,7 +20,7 @@ const News = () => {
       date: '2025-03-10 14:30',
       image: 'https://placehold.co/400x250/ADD8E6/000000?text=Future+of+AI',
       description: 'Explore the evolving role of artificial intelligence in shaping the future of customer service and engagement.',
-      externalUrl: 'https://www.example.com/news2'
+      externalUrl: 'https://mp.weixin.qq.com/s/C8_tWWLbXpZRM71U0ZTUTg'
     },
     {
       id: 3,
@@ -33,12 +33,12 @@ const News = () => {
     },
     {
       id: 4,
-      category: 'Latest News',
+      category: 'Awards & Reviews',
       title: 'Wenxin China Trip - Beijing Station | Wenxin Kuaima WORKSHOP Successfully Held',
       date: '2025-01-22 19:53',
       image: 'https://placehold.co/400x250/FFD700/000000?text=Event+Beijing',
       description: 'On January 14th, the Wenxin China Trip - Beijing Station, themed "Intelligent Gathering in Beijing, Driving a New Chapter", was successfully held. Government leaders, scientific researchers, industry representatives, and AI technology developers gathered together to explore new opportunities for industrial development in the era of large models.',
-      externalUrl: 'https://www.example.com/news4'
+      externalUrl: 'https://mp.weixin.qq.com/s/WRHTJvsXH0basYY7FZRtUA'
     },
     {
       id: 5,

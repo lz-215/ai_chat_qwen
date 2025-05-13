@@ -54,7 +54,7 @@ class handler(BaseHTTPRequestHandler):
             try:
                 messages = request_data.get('messages', [])
 
-                # 构建请求数据
+                # 构建请求数据 - 正确的Qwen API格式
                 qwen_request = {
                     "model": "qwen-plus",
                     "messages": messages,
@@ -63,19 +63,33 @@ class handler(BaseHTTPRequestHandler):
                     "max_tokens": 2000
                 }
 
-                # 调用Qwen API
-                response = httpx.post(
-                    QWEN3_API_ENDPOINT,
-                    headers={
-                        "Authorization": f"Bearer {QWEN3_API_KEY}",
-                        "Content-Type": "application/json"
-                    },
-                    json=qwen_request,
-                    timeout=60.0
-                )
+                # 调用Qwen API，禁用SSL验证（仅用于测试）
+                print(f"正在调用Qwen API: {QWEN3_API_ENDPOINT}")
+                print(f"请求数据: {json.dumps(qwen_request, ensure_ascii=False)}")
+
+                try:
+                    response = httpx.post(
+                        QWEN3_API_ENDPOINT,
+                        headers={
+                            "Authorization": f"Bearer {QWEN3_API_KEY}",
+                            "Content-Type": "application/json",
+                            "Accept": "application/json"
+                        },
+                        json=qwen_request,
+                        timeout=60.0,
+                        verify=False  # 禁用SSL验证，仅用于测试
+                    )
+                    print(f"API响应状态码: {response.status_code}")
+                except Exception as e:
+                    import traceback
+                    print(f"调用API时出错: {str(e)}")
+                    print(traceback.format_exc())
+                    raise
 
                 if response.status_code == 200:
                     result = response.json()
+                    print(f"API响应内容: {json.dumps(result, ensure_ascii=False)}")
+                    # 使用正确的Qwen API响应格式
                     ai_response = result.get('choices', [{}])[0].get('message', {}).get('content', '')
 
                     self.send_response(200)
@@ -90,7 +104,7 @@ class handler(BaseHTTPRequestHandler):
                     add_cors_headers(self)
                     self.end_headers()
 
-                    error_message = f"API request failed with status code: {response.status_code}"
+                    error_message = f"API request failed with status code: {response.status_code}, response: {response.text}"
                     self.wfile.write(json.dumps({"error": error_message}).encode())
 
             except Exception as e:
