@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qwen3 AI Chat</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+        h1 {
+            color: #4f46e5;
+        }
+        p {
+            margin-bottom: 20px;
+        }
+        .button {
+            display: inline-block;
+            background-color: #4f46e5;
+            color: white;
+            padding: 10px 20px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Qwen3 AI Chat</h1>
+    <p>这是一个使用通义千问API的聊天应用</p>
+    <p>如果您看到此页面，说明基本部署成功，但可能存在路由配置问题</p>
+    
+    <a href="/frontend/dist/index.html" class="button">尝试访问前端应用</a>
+    
+    <div style="margin-top: 40px;">
+        <h2>API测试</h2>
+        <button id="testApi">测试API连接</button>
+        <div id="apiResult" style="margin-top: 20px; padding: 10px; background-color: #f0f0f0; border-radius: 5px;"></div>
+    </div>
+
+    <script>
+        document.getElementById('testApi').addEventListener('click', async () => {
+            const resultDiv = document.getElementById('apiResult');
+            resultDiv.textContent = '正在测试API连接...';
+            
+            try {
+                const response = await fetch('/api/models');
+                if (response.ok) {
+                    const data = await response.json();
+                    resultDiv.textContent = `API连接成功! 模型: ${data.model}, 状态: ${data.status}`;
+                } else {
+                    resultDiv.textContent = `API连接失败: ${response.status} ${response.statusText}`;
+                }
+            } catch (error) {
+                resultDiv.textContent = `API连接错误: ${error.message}`;
+            }
+        });
+    </script>
+</body>
+</html>
