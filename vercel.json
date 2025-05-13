@@ -1,7 +1,7 @@
 {
   "version": 2,
   "builds": [
-    { "src": "api/index.py", "use": "@vercel/python" },
+    { "src": "api/*.py", "use": "@vercel/python" },
     {
       "src": "package.json",
       "use": "@vercel/static-build",
@@ -11,8 +11,13 @@
     }
   ],
   "routes": [
-    { "src": "/api/(.*)", "dest": "/api/index.py" },
+    { "src": "/api/chat", "dest": "/api/chat.py" },
+    { "src": "/api/models", "dest": "/api/models.py" },
     { "handle": "filesystem" },
     { "src": "/(.*)", "dest": "/frontend/dist/index.html" }
-  ]
+  ],
+  "env": {
+    "QWEN3_API_KEY": "${QWEN3_API_KEY}",
+    "QWEN3_API_ENDPOINT": "${QWEN3_API_ENDPOINT}"
+  }
 }
