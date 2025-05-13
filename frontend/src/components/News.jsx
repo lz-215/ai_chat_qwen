@@ -42,12 +42,12 @@ const News = () => {
     },
     {
       id: 5,
-      category: 'Latest News',
+      category: 'Awards & Reviews',
       title: 'Wenxin Kuaima | "Greater Bay Area Digitalization Summit" Successfully Held',
       date: '2025-01-16 17:10',
       image: 'https://placehold.co/400x250/DA70D6/000000?text=GBA+Summit',
       description: 'On December 21, 2024, the Greater Bay Area Digitalization Summit, hosted by Anmeng滙 and co-organized by Wenxin Kuaima, was successfully held at the Futian Investment Building in Shenzhen. This event attracted CTOs, CIOs, CSOs, CDOs, and other senior managers from various industries to participate in a knowledge feast.',
-      externalUrl: 'https://www.example.com/news5'
+      externalUrl: 'https://www.woshipm.com/ai/6212320.html'
     },
     {
       id: 6,
