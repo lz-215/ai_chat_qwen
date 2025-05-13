@@ -8,17 +8,17 @@ from urllib.parse import parse_qs
 QWEN3_API_KEY = os.environ.get("QWEN3_API_KEY")
 QWEN3_API_ENDPOINT = os.environ.get("QWEN3_API_ENDPOINT", "https://api.qwen.ai/v1/chat/completions")
 
-# 添加CORS支持
-def add_cors_headers(handler):
-    handler.send_header('Access-Control-Allow-Origin', '*')
-    handler.send_header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
-    handler.send_header('Access-Control-Allow-Headers', 'Content-Type, Authorization')
-    handler.send_header('Access-Control-Max-Age', '86400')
+# 调试信息
+print(f"API密钥前5位: {QWEN3_API_KEY[:5] if QWEN3_API_KEY else 'None'}")
+print(f"API端点: {QWEN3_API_ENDPOINT}")
 
 class handler(BaseHTTPRequestHandler):
     def do_OPTIONS(self):
         self.send_response(200)
-        add_cors_headers(self)
+        self.send_header('Access-Control-Allow-Origin', '*')
+        self.send_header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS')
+        self.send_header('Access-Control-Allow-Headers', 'Content-Type, Authorization')
+        self.send_header('Access-Control-Max-Age', '86400')
         self.end_headers()
         return
 
@@ -26,21 +26,32 @@ class handler(BaseHTTPRequestHandler):
         if self.path.startswith('/api/models'):
             self.send_response(200)
             self.send_header('Content-type', 'application/json')
-            add_cors_headers(self)
+            self.send_header('Access-Control-Allow-Origin', '*')
             self.end_headers()
 
             response = {
                 "model": "qwen-plus",
                 "api_type": "Qwen API",
                 "status": "API mode",
-                "device": "Qwen Cloud"
+                "device": "Qwen Cloud",
+                "api_key_status": "Available" if QWEN3_API_KEY else "Missing",
+                "api_endpoint": QWEN3_API_ENDPOINT
             }
 
             self.wfile.write(json.dumps(response).encode())
             return
 
+        # 添加健康检查端点
+        if self.path == '/api/health':
+            self.send_response(200)
+            self.send_header('Content-type', 'application/json')
+            self.send_header('Access-Control-Allow-Origin', '*')
+            self.end_headers()
+            self.wfile.write(json.dumps({"status": "ok"}).encode())
+            return
+
         self.send_response(404)
-        add_cors_headers(self)
+        self.send_header('Access-Control-Allow-Origin', '*')
         self.end_headers()
         return
 
@@ -63,11 +74,20 @@ class handler(BaseHTTPRequestHandler):
                     "max_tokens": 2000
                 }
 
-                # 调用Qwen API，禁用SSL验证（仅用于测试）
-                print(f"正在调用Qwen API: {QWEN3_API_ENDPOINT}")
-                print(f"请求数据: {json.dumps(qwen_request, ensure_ascii=False)}")
+                # 检查API密钥是否存在
+                if not QWEN3_API_KEY:
+                    self.send_response(500)
+                    self.send_header('Content-type', 'application/json')
+                    self.send_header('Access-Control-Allow-Origin', '*')
+                    self.end_headers()
+                    self.wfile.write(json.dumps({"error": "API密钥未设置，请在Vercel中配置QWEN3_API_KEY环境变量"}).encode())
+                    return
 
+                # 调用Qwen API
                 try:
+                    print(f"正在调用Qwen API: {QWEN3_API_ENDPOINT}")
+                    print(f"请求数据: {json.dumps(qwen_request, ensure_ascii=False)}")
+
                     response = httpx.post(
                         QWEN3_API_ENDPOINT,
                         headers={
@@ -76,15 +96,17 @@ class handler(BaseHTTPRequestHandler):
                             "Accept": "application/json"
                         },
                         json=qwen_request,
-                        timeout=60.0,
-                        verify=False  # 禁用SSL验证，仅用于测试
+                        timeout=60.0
                     )
                     print(f"API响应状态码: {response.status_code}")
                 except Exception as e:
-                    import traceback
                     print(f"调用API时出错: {str(e)}")
-                    print(traceback.format_exc())
-                    raise
+                    self.send_response(500)
+                    self.send_header('Content-type', 'application/json')
+                    self.send_header('Access-Control-Allow-Origin', '*')
+                    self.end_headers()
+                    self.wfile.write(json.dumps({"error": f"调用API时出错: {str(e)}"}).encode())
+                    return
 
                 if response.status_code == 200:
                     result = response.json()
@@ -94,30 +116,31 @@ class handler(BaseHTTPRequestHandler):
 
                     self.send_response(200)
                     self.send_header('Content-type', 'application/json')
-                    add_cors_headers(self)
+                    self.send_header('Access-Control-Allow-Origin', '*')
                     self.end_headers()
 
                     self.wfile.write(json.dumps({"response": ai_response}).encode())
                 else:
                     self.send_response(500)
                     self.send_header('Content-type', 'application/json')
-                    add_cors_headers(self)
+                    self.send_header('Access-Control-Allow-Origin', '*')
                     self.end_headers()
 
-                    error_message = f"API request failed with status code: {response.status_code}, response: {response.text}"
+                    error_message = f"API请求失败，状态码: {response.status_code}, 响应: {response.text}"
                     self.wfile.write(json.dumps({"error": error_message}).encode())
 
             except Exception as e:
+                print(f"处理请求时发生错误: {str(e)}")
                 self.send_response(500)
                 self.send_header('Content-type', 'application/json')
-                add_cors_headers(self)
+                self.send_header('Access-Control-Allow-Origin', '*')
                 self.end_headers()
 
-                self.wfile.write(json.dumps({"error": str(e)}).encode())
+                self.wfile.write(json.dumps({"error": f"处理请求时发生错误: {str(e)}"}).encode())
 
             return
 
         self.send_response(404)
-        add_cors_headers(self)
+        self.send_header('Access-Control-Allow-Origin', '*')
         self.end_headers()
         return
