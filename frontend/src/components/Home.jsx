@@ -97,29 +97,28 @@ const Home = () => {
         // 您需要将 userInput 和 activeSystemPrompt 发送到您的服务器
         // 您的服务器再将这些信息传递给 DeepSeek-V3 API
         // 例如:
-        // try {
-        //   const response = await fetch('/api/your-chat-endpoint', {
-        //     method: 'POST',
-        //     headers: { 'Content-Type': 'application/json' },
-        //     body: JSON.stringify({
-        //       message: userInput,
-        //       system_prompt: activeSystemPrompt // 将角色提示词发送给后端
-        //     })
-        //   });
-        //   const data = await response.json();
-        //   const aiResponse = { sender: 'ai', text: data.reply };
-        //   setMessages(prevMessages => [...prevMessages, aiResponse]);
-        // } catch (error) {
-        //   console.error("Error sending message:", error);
-        //   // 处理错误，例如显示错误消息
-        // }
-
-        // 以下是模拟AI回复，实际应替换为API调用
-        setTimeout(() => {
-          const personaName = personas.find(p => p.prompt === activeSystemPrompt)?.name || "Default AI";
-          const aiResponse = { sender: 'ai', text: `(As ${personaName}) You said: ${userInput}` };
+        try {
+          const response = await fetch('/api/chat', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              message: userInput,
+              system_prompt: activeSystemPrompt
+            })
+          });
+          const data = await response.json();
+          const aiResponse = { sender: 'ai', text: data.reply };
           setMessages(prevMessages => [...prevMessages, aiResponse]);
-        }, 500);
+        } catch (error) {
+          console.error("Error sending message:", error);
+          setMessages(prevMessages => [...prevMessages, { 
+            id: Date.now() + 1, 
+            text: 'Sorry, an error occurred while processing your request.', 
+            sender: 'ai' 
+          }]);
+        }
 
         setUserInput('');
       };
