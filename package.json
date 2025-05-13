@@ -1,0 +1,13 @@
+{
+  "name": "ai-chat-qwen",
+  "version": "1.0.0",
+  "description": "AI Chat application with Qwen API",
+  "private": true,
+  "scripts": {
+    "build": "cd frontend && npm install && npm run build",
+    "start": "cd frontend && npm run preview"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  }
+}
