@@ -108,38 +108,27 @@
       const userInput = document.getElementById('userInput');
       const sendButton = document.getElementById('sendButton');
       const statusElement = document.getElementById('status');
-
-      // 检查API健康状态
-      fetch('/api/health')
-        .then(response => {
-          if (response.ok) {
-            console.log('API健康检查通过');
-            // 获取模型信息
-            return fetch('/api/models');
-          } else {
-            throw new Error('API健康检查失败');
-          }
-        })
+      
+      // 获取模型信息
+      fetch('/api/models')
         .then(response => response.json())
         .then(data => {
-          console.log('模型信息:', data);
-          statusElement.textContent = `模型: ${data.model} | 状态: ${data.status} | 设备: ${data.device} | API密钥: ${data.api_key_status}`;
+          statusElement.textContent = `模型: ${data.model} | 状态: ${data.status} | 设备: ${data.device}`;
         })
         .catch(error => {
-          console.error('API连接失败:', error);
-          statusElement.textContent = '模型: 连接失败 - 请检查API配置';
-          statusElement.style.color = 'red';
+          console.error('获取模型信息失败:', error);
+          statusElement.textContent = '模型: 连接失败';
         });
-
+      
       // 发送消息
       function sendMessage() {
         const message = userInput.value.trim();
         if (!message) return;
-
+        
         // 添加用户消息到聊天区域
         addMessage(message, 'user');
         userInput.value = '';
-
+        
         // 获取所有消息历史
         const messages = [];
         document.querySelectorAll('.message').forEach(msg => {
@@ -147,12 +136,10 @@
           const content = msg.textContent;
           messages.push({ role, content });
         });
-
+        
         // 显示加载状态
         const loadingId = addMessage('正在思考...', 'ai');
-
-        console.log('发送消息到API:', messages);
-
+        
         // 发送请求到API
         fetch('/api/chat', {
           method: 'POST',
@@ -161,23 +148,11 @@
           },
           body: JSON.stringify({ messages })
         })
-        .then(response => {
-          if (!response.ok) {
-            return response.json().then(errData => {
-              throw new Error(errData.error || `HTTP错误 ${response.status}`);
-            });
-          }
-          return response.json();
-        })
+        .then(response => response.json())
         .then(data => {
-          console.log('API响应:', data);
           // 移除加载消息
           document.getElementById(loadingId).remove();
-
-          if (data.error) {
-            throw new Error(data.error);
-          }
-
+          
           // 添加AI响应
           addMessage(data.response, 'ai');
         })
@@ -185,19 +160,19 @@
           console.error('发送消息失败:', error);
           // 移除加载消息
           document.getElementById(loadingId).remove();
-
+          
           // 添加错误消息
-          addMessage(`错误: ${error.message || '未知错误，请稍后再试'}`, 'ai');
+          addMessage('抱歉，发生了错误，请稍后再试。', 'ai');
         });
       }
-
+      
       // 添加消息到聊天区域
       function addMessage(text, sender) {
         const messageElement = document.createElement('div');
         messageElement.classList.add('message');
         messageElement.classList.add(sender === 'user' ? 'user-message' : 'ai-message');
         messageElement.textContent = text;
-
+        
         // 为加载消息添加ID
         if (text === '正在思考...') {
           const id = 'loading-' + Date.now();
@@ -205,44 +180,11 @@
           chatArea.appendChild(messageElement);
           return id;
         }
-
+        
         chatArea.appendChild(messageElement);
         chatArea.scrollTop = chatArea.scrollHeight;
       }
-
-      // 测试API连接
-      const testApiButton = document.getElementById('testApiButton');
-      testApiButton.addEventListener('click', function() {
-        testApiButton.disabled = true;
-        testApiButton.textContent = '测试中...';
-
-        fetch('/api/test')
-          .then(response => response.json())
-          .then(data => {
-            console.log('API测试结果:', data);
-
-            if (data.status === 'success') {
-              statusElement.textContent = `API测试成功 | ${statusElement.textContent}`;
-              statusElement.style.color = 'green';
-              alert('API连接测试成功！您可以开始聊天了。');
-            } else {
-              statusElement.textContent = `API测试失败: ${data.message} | ${statusElement.textContent}`;
-              statusElement.style.color = 'red';
-              alert(`API连接测试失败: ${data.message}`);
-            }
-          })
-          .catch(error => {
-            console.error('API测试失败:', error);
-            statusElement.textContent = `API测试失败: ${error.message} | ${statusElement.textContent}`;
-            statusElement.style.color = 'red';
-            alert(`API测试失败: ${error.message}`);
-          })
-          .finally(() => {
-            testApiButton.disabled = false;
-            testApiButton.textContent = '测试API连接';
-          });
-      });
-
+      
       // 事件监听器
       sendButton.addEventListener('click', sendMessage);
       userInput.addEventListener('keypress', function(e) {
