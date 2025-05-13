@@ -210,6 +210,39 @@
         chatArea.scrollTop = chatArea.scrollHeight;
       }
 
+      // 测试API连接
+      const testApiButton = document.getElementById('testApiButton');
+      testApiButton.addEventListener('click', function() {
+        testApiButton.disabled = true;
+        testApiButton.textContent = '测试中...';
+
+        fetch('/api/test')
+          .then(response => response.json())
+          .then(data => {
+            console.log('API测试结果:', data);
+
+            if (data.status === 'success') {
+              statusElement.textContent = `API测试成功 | ${statusElement.textContent}`;
+              statusElement.style.color = 'green';
+              alert('API连接测试成功！您可以开始聊天了。');
+            } else {
+              statusElement.textContent = `API测试失败: ${data.message} | ${statusElement.textContent}`;
+              statusElement.style.color = 'red';
+              alert(`API连接测试失败: ${data.message}`);
+            }
+          })
+          .catch(error => {
+            console.error('API测试失败:', error);
+            statusElement.textContent = `API测试失败: ${error.message} | ${statusElement.textContent}`;
+            statusElement.style.color = 'red';
+            alert(`API测试失败: ${error.message}`);
+          })
+          .finally(() => {
+            testApiButton.disabled = false;
+            testApiButton.textContent = '测试API连接';
+          });
+      });
+
       // 事件监听器
       sendButton.addEventListener('click', sendMessage);
       userInput.addEventListener('keypress', function(e) {
