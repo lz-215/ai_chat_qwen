@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>简单API测试</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .container {
+            border: 1px solid #ddd;
+            padding: 20px;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        pre {
+            background-color: #f5f5f5;
+            padding: 10px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>简单API测试</h1>
+    
+    <div class="container">
+        <h2>测试 /api/simple 端点 (GET)</h2>
+        <button id="testSimpleGet">测试GET请求</button>
+        <div id="simpleGetResult"></div>
+    </div>
+    
+    <div class="container">
+        <h2>测试 /api/simple 端点 (POST)</h2>
+        <button id="testSimplePost">测试POST请求</button>
+        <div id="simplePostResult"></div>
+    </div>
+    
+    <div class="container">
+        <h2>测试 /api/chat 端点</h2>
+        <button id="testChat">测试聊天API</button>
+        <div id="chatResult"></div>
+    </div>
+
+    <script>
+        // 测试 /api/simple GET请求
+        document.getElementById('testSimpleGet').addEventListener('click', async () => {
+            const resultDiv = document.getElementById('simpleGetResult');
+            resultDiv.innerHTML = '<p>正在发送请求...</p>';
+            
+            try {
+                const response = await fetch('/api/simple');
+                const status = response.status;
+                const statusText = response.statusText;
+                
+                let resultHtml = `<p>状态码: ${status} ${statusText}</p>`;
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    resultHtml += `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+                } else {
+                    const text = await response.text();
+                    resultHtml += `<p>错误: ${text}</p>`;
+                }
+                
+                resultDiv.innerHTML = resultHtml;
+            } catch (error) {
+                resultDiv.innerHTML = `<p>请求失败: ${error.message}</p>`;
+            }
+        });
+        
+        // 测试 /api/simple POST请求
+        document.getElementById('testSimplePost').addEventListener('click', async () => {
+            const resultDiv = document.getElementById('simplePostResult');
+            resultDiv.innerHTML = '<p>正在发送请求...</p>';
+            
+            try {
+                const response = await fetch('/api/simple', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        messages: [
+                            { role: 'user', content: '你好，这是一个测试消息' }
+                        ]
+                    })
+                });
+                
+                const status = response.status;
+                const statusText = response.statusText;
+                
+                let resultHtml = `<p>状态码: ${status} ${statusText}</p>`;
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    resultHtml += `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+                } else {
+                    const text = await response.text();
+                    resultHtml += `<p>错误: ${text}</p>`;
+                }
+                
+                resultDiv.innerHTML = resultHtml;
+            } catch (error) {
+                resultDiv.innerHTML = `<p>请求失败: ${error.message}</p>`;
+            }
+        });
+        
+        // 测试 /api/chat 端点
+        document.getElementById('testChat').addEventListener('click', async () => {
+            const resultDiv = document.getElementById('chatResult');
+            resultDiv.innerHTML = '<p>正在发送请求...</p>';
+            
+            try {
+                const response = await fetch('/api/chat', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        messages: [
+                            { role: 'user', content: '你好，这是一个测试消息' }
+                        ]
+                    })
+                });
+                
+                const status = response.status;
+                const statusText = response.statusText;
+                
+                let resultHtml = `<p>状态码: ${status} ${statusText}</p>`;
+                
+                if (response.ok) {
+                    const data = await response.json();
+                    resultHtml += `<pre>${JSON.stringify(data, null, 2)}</pre>`;
+                } else {
+                    const text = await response.text();
+                    resultHtml += `<p>错误: ${text}</p>`;
+                }
+                
+                resultDiv.innerHTML = resultHtml;
+            } catch (error) {
+                resultDiv.innerHTML = `<p>请求失败: ${error.message}</p>`;
+            }
+        });
+    </script>
+</body>
+</html>
