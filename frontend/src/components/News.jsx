@@ -1,7 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
+import { useTranslation } from 'react-i18next';
 
 const News = () => {
+  const { t } = useTranslation();
   // 初始新闻数据
   const defaultNewsData = [
     {
@@ -10,6 +12,9 @@ const News = () => {
       title: 'AI Chat Platform Launches New Feature',
       date: '2025-03-15 10:00',
       image: 'https://placehold.co/400x250/FFA07A/000000?text=AI+Innovation',
+      bannerText: 'AI Innovation',
+      bannerBgColor: 'bg-orange-400',
+      bannerTextColor: 'text-black',
       description: 'Our latest feature leverages advanced AI to provide even more intuitive and personalized chat experiences. Discover how it can transform your interactions.',
       externalUrl: 'https://mp.weixin.qq.com/s/GoAiXr_AOAOPtKUXeecdfw'
     },
@@ -19,6 +24,9 @@ const News = () => {
       title: 'The Future of AI in Customer Service',
       date: '2025-03-10 14:30',
       image: 'https://placehold.co/400x250/ADD8E6/000000?text=Future+of+AI',
+      bannerText: 'Future of AI',
+      bannerBgColor: 'bg-sky-300',
+      bannerTextColor: 'text-black',
       description: 'Explore the evolving role of artificial intelligence in shaping the future of customer service and engagement.',
       externalUrl: 'https://mp.weixin.qq.com/s/C8_tWWLbXpZRM71U0ZTUTg'
     },
@@ -28,6 +36,9 @@ const News = () => {
       title: 'AI Chat Platform Recognized for Innovation',
       date: '2025-02-20 09:00',
       image: 'https://placehold.co/400x250/90EE90/000000?text=Award+Winning',
+      bannerText: 'Award Winning',
+      bannerBgColor: 'bg-green-400',
+      bannerTextColor: 'text-black',
       description: 'We are honored to receive the "Tech Innovator of the Year" award for our groundbreaking work in AI chat solutions.',
       externalUrl: 'https://36kr.com/p/3282404556661635'
     },
@@ -37,6 +48,9 @@ const News = () => {
       title: 'Wenxin China Trip - Beijing Station | Wenxin Kuaima WORKSHOP Successfully Held',
       date: '2025-01-22 19:53',
       image: 'https://placehold.co/400x250/FFD700/000000?text=Event+Beijing',
+      bannerText: 'Event Beijing',
+      bannerBgColor: 'bg-yellow-400',
+      bannerTextColor: 'text-black',
       description: 'On January 14th, the Wenxin China Trip - Beijing Station, themed "Intelligent Gathering in Beijing, Driving a New Chapter", was successfully held. Government leaders, scientific researchers, industry representatives, and AI technology developers gathered together to explore new opportunities for industrial development in the era of large models.',
       externalUrl: 'https://mp.weixin.qq.com/s/WRHTJvsXH0basYY7FZRtUA'
     },
@@ -46,6 +60,9 @@ const News = () => {
       title: 'Wenxin Kuaima | "Greater Bay Area Digitalization Summit" Successfully Held',
       date: '2025-01-16 17:10',
       image: 'https://placehold.co/400x250/DA70D6/000000?text=GBA+Summit',
+      bannerText: 'GBA Summit',
+      bannerBgColor: 'bg-pink-500',
+      bannerTextColor: 'text-white',
       description: 'On December 21, 2024, the Greater Bay Area Digitalization Summit, hosted by Anmeng滙 and co-organized by Wenxin Kuaima, was successfully held at the Futian Investment Building in Shenzhen. This event attracted CTOs, CIOs, CSOs, CDOs, and other senior managers from various industries to participate in a knowledge feast.',
       externalUrl: 'https://www.woshipm.com/ai/6212320.html'
     },
@@ -55,6 +72,9 @@ const News = () => {
       title: 'Wenxin Kuaima | "AI Native New Paradigm Enterprise Landing Closed-Door Seminar" - Shanghai Station Successfully Held!',
       date: '2025-01-03 16:35',
       image: 'https://placehold.co/400x250/87CEFA/000000?text=Shanghai+Seminar',
+      bannerText: 'Shanghai Seminar',
+      bannerBgColor: 'bg-sky-400',
+      bannerTextColor: 'text-black',
       description: 'On December 26th, a special closed-door seminar themed "AI Native New Paradigm Enterprise Landing Closed-Door Seminar" was held in Shanghai. This closed-door meeting, jointly organized by Baidu Wenxin and Baidu Enterprise Efficiency Platform, brought together many industry leaders from Baidu, Ximalaya, Kaiyuan China, Beijing University of Aeronautics and Astronautics and other enterprises and institutions to discuss cutting-edge technologies such as large models and intelligent agents.',
       externalUrl: 'https://www.example.com/news6'
     }
@@ -63,6 +83,7 @@ const News = () => {
   const [newsData, setNewsData] = useState([]);
   const [activeTab, setActiveTab] = useState('Latest News');
   const [isLoading, setIsLoading] = useState(false);
+  const [initialMetadataFetched, setInitialMetadataFetched] = useState(false);
 
   // 页面加载时从localStorage加载数据，如果没有则使用默认数据
   useEffect(() => {
@@ -80,38 +101,61 @@ const News = () => {
     localStorage.setItem('newsData', JSON.stringify(news));
   };
 
-  // 抓取外部链接的元数据
-  const fetchMetadata = async () => {
+  // 抓取外部链接的元数据 (memoized with useCallback)
+  const fetchMetadata = useCallback(async () => {
+    if (!newsData.length || initialMetadataFetched) return; // Prevent fetch if no data or already fetched initially
+
     setIsLoading(true);
-    const updatedNews = [...newsData];
+    // Create a deep copy to avoid direct state mutation issues if item properties are objects/arrays
+    const updatedNews = newsData.map(item => ({ ...item }));
     
+    let changed = false;
     for (let i = 0; i < updatedNews.length; i++) {
-      try {
-        const response = await fetch(`/api/fetch-media-meta?url=${encodeURIComponent(updatedNews[i].externalUrl)}`);
-        if (response.ok) {
-          const data = await response.json();
-          
-          // 只有在成功获取到元数据时才更新
-          if (data.title) updatedNews[i].title = data.title;
-          if (data.description) updatedNews[i].description = data.description;
-          if (data.image && data.image !== '') updatedNews[i].image = data.image;
+      // Only fetch if externalUrl is present and not a placeholder example.com URL if desired
+      if (updatedNews[i].externalUrl && !updatedNews[i].externalUrl.includes('example.com')) {
+        try {
+          const response = await fetch(`/api/fetch-media-meta?url=${encodeURIComponent(updatedNews[i].externalUrl)}`);
+          if (response.ok) {
+            const data = await response.json();
+            let itemChanged = false;
+            if (data.title && updatedNews[i].title !== data.title) {
+              updatedNews[i].title = data.title;
+              itemChanged = true;
+            }
+            if (data.description && updatedNews[i].description !== data.description) {
+              updatedNews[i].description = data.description;
+              itemChanged = true;
+            }
+            // We keep bannerText, bannerBgColor, bannerTextColor from defaultNewsData
+            // The fetched image might be used as a fallback or detail image later if needed
+            if (data.image && data.image !== '' && updatedNews[i].image !== data.image) {
+              updatedNews[i].image = data.image; 
+              itemChanged = true;
+            }
+            if (itemChanged) changed = true;
+          }
+        } catch (error) {
+          console.error(`获取元数据失败: ${updatedNews[i].externalUrl}`, error);
         }
-      } catch (error) {
-        console.error(`获取元数据失败: ${updatedNews[i].externalUrl}`, error);
       }
     }
     
-    setNewsData(updatedNews);
-    saveNewsToLocalStorage(updatedNews); // 保存到localStorage
+    if (changed) {
+      setNewsData(updatedNews);
+      saveNewsToLocalStorage(updatedNews); 
+    }
+    setInitialMetadataFetched(true); // Mark initial fetch attempt as complete
     setIsLoading(false);
-  };
+  }, [newsData, initialMetadataFetched]); // Added dependencies
 
   // 页面加载时抓取元数据
   useEffect(() => {
-    if (newsData.length > 0) {
+    // Trigger fetchMetadata when newsData is populated from localStorage/defaults
+    // and initial fetch hasn't been completed.
+    if (newsData.length > 0 && !initialMetadataFetched) {
       fetchMetadata();
     }
-  }, []);
+  }, [newsData, initialMetadataFetched, fetchMetadata]); // Added fetchMetadata to dependencies
 
   const filteredNews = newsData.filter(item => item.category === activeTab);
 
@@ -156,15 +200,29 @@ const News = () => {
               rel="noopener noreferrer" 
               className="block bg-white rounded-lg shadow-lg overflow-hidden transform hover:scale-105 transition-transform duration-300 ease-in-out no-underline hover:no-underline focus:no-underline active:no-underline"
             >
-              <img src={item.image} alt={item.title} className="w-full h-48 object-cover"/>
+              {/* Banner instead of image */}
+              {item.bannerText && item.bannerBgColor && (
+                <div 
+                  className={`w-full h-48 flex items-center justify-center ${item.bannerBgColor}`}
+                >
+                  <span 
+                    className={`text-3xl font-bold text-center px-4 ${item.bannerTextColor}`}
+                  >
+                    {item.bannerText}
+                  </span>
+                </div>
+              )}
+              {/* Fallback to image if no bannerText, or remove this block if banners are mandatory */}
+              {/* {!item.bannerText && item.image && ( <img src={item.image} alt={item.title} className="w-full h-48 object-cover"/> )} */}
+              
               <div className="p-6">
-                <h3 className="text-xl font-semibold text-gray-800 mb-2 h-16 group-hover:text-indigo-600 transition-colors duration-300">{item.title}</h3>
+                <h3 className="text-xl font-semibold text-gray-800 mb-2 group-hover:text-indigo-600 transition-colors duration-300">{item.title}</h3>
                 <p className="text-sm text-gray-500 mb-3">{item.date}</p>
                 <p className="text-gray-700 text-sm mb-4 h-24 overflow-hidden">
                   {item.description}
                 </p>
                 <span className="inline-block text-indigo-600 group-hover:text-indigo-800 font-medium transition-colors duration-300">
-                  阅读全文 &rarr;
+                  {t('app.article.readMore')} &rarr;
                 </span>
               </div>
             </a>

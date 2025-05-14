@@ -29,43 +29,48 @@
       "discoverTitle": "探索功能",
       "discoverDescription": "点击下方卡片与专业AI助手交互",
       "selectPersona": "选择一个角色并开始聊天！",
-      "featureCards": {
-        "viralTitle": {
-          "title": "爆款标题生成器",
-          "description": "创建吸引眼球的内容标题"
-        },
-        "businessText": {
-          "title": "商业文本改写",
-          "description": "专业提升企业文档质量"
-        },
-        "weeklyReport": {
-          "title": "周报数据可视化",
-          "description": "将原始数据转化为可视化洞察"
-        },
-        "kpiGoal": {
-          "title": "KPI目标拆解",
-          "description": "将目标转化为可执行的计划"
-        },
-        "competitiveAnalysis": {
-          "title": "竞争分析报告",
-          "description": "全面的竞争对手分析与策略"
-        },
-        "crossBorder": {
-          "title": "跨境电商营销",
-          "description": "全球品牌本地化与推广"
-        },
-        "languageSkills": {
-          "title": "语言技能培训",
-          "description": "个性化语言学习与评估"
-        },
-        "legalDocument": {
-          "title": "法律文档优化",
-          "description": "简化并增强法律文档"
-        }
+      "featuredPersonas": {
+        "codeHelper": "编程助手",
+        "creativeWriter": "创意写手",
+        "knowledgeExpert": "知识专家",
+        "dataAnalyst": "数据分析师",
+        "travelPlanner": "旅行规划师",
+        "fitnessCoach": "健身教练"
+      },
+      "solutions": {
+        "title": "AI解决方案",
+        "items": [
+          "AI 搜索",
+          "帮我写作",
+          "AI 翻译",
+          "帮我提点子",
+          "内容摘要",
+          "情感分析",
+          "AI 绘画",
+          "虚拟老师",
+          "专业咨询",
+          "日常聊天"
+        ]
       },
       "featuresSection": {
-        "title": "探索Qwen3的强大功能",
-        "description": "利用Qwen3的前沿能力，彻底改变您的工作、创作和解决问题的方式",
+        "title": "强大功能",
+        "description": "探索我们平台的核心功能，旨在彻底改变您的互动方式。",
+        "search": {
+          "title": "AI搜索",
+          "content": "利用AI驱动的搜索即时找到准确的信息。"
+        },
+        "writing": {
+          "title": "帮我写作",
+          "content": "无论是邮件、报告还是创意内容，都能获得AI辅助。"
+        },
+        "translation": {
+          "title": "AI翻译",
+          "content": "轻松翻译文本，打破语言障碍。"
+        },
+        "ideas": {
+          "title": "帮我提点子",
+          "content": "为您的项目和创作过程产生创新想法。"
+        },
         "advancedReasoning": {
           "title": "高级推理能力",
           "description": "Qwen3擅长复杂问题解决、逻辑推理，可在数学到编程等多个领域提供逐步思考"
@@ -114,38 +119,7 @@
       "testimonialsSection": {
         "title": "用户怎么说",
         "description": "直接聆听体验过我们AI聊天平台强大功能和便捷性的用户心声",
-        "testimonials": {
-          "sarah": {
-            "quote": "这个AI平台彻底改变了我处理日常写作任务的方式。AI的建议简直太准确了！",
-            "name": "Sarah L.",
-            "role": "内容创作者"
-          },
-          "john": {
-            "quote": "翻译功能非常准确且快速。这对我们的国际业务来说是一个游戏规则改变者。",
-            "name": "John B.",
-            "role": "企业主"
-          },
-          "mike": {
-            "quote": "一开始我还很怀疑，但AI搜索和总结工具每周为我节省了数小时的研究时间。强烈推荐！",
-            "name": "Mike P.",
-            "role": "研究员"
-          },
-          "alice": {
-            "quote": "界面非常直观和用户友好。我几分钟就掌握了使用方法！",
-            "name": "Alice G.",
-            "role": "学生"
-          },
-          "david": {
-            "quote": "当我有问题时，客户支持非常迅速且乐于助人。",
-            "name": "David K.",
-            "role": "自由职业者"
-          },
-          "emily": {
-            "quote": "对于头脑风暴和克服写作障碍来说，这是一个极好的工具。我喜欢它提供的创意提示！",
-            "name": "Emily R.",
-            "role": "作家"
-          }
-        }
+        "viewAll": "查看所有评价"
       }
     },
     "chat": {
@@ -180,6 +154,101 @@
     },
     "languageSelector": {
       "language": "语言"
+    },
+    "casesPage": {
+      "title": "客户成功案例",
+      "description": "探索领先组织如何通过我们的AI平台取得卓越成果。"
+    },
+    "newsPage": {
+      "title": "新闻与更新",
+      "description": "随时了解AI和我们平台的最新动态。",
+      "latestNews": "最新消息",
+      "awardsReviews": "奖项与评价"
+    },
+    "case": {
+      "view": "访问案例"
+    },
+    "article": {
+      "readMore": "阅读全文"
+    },
+    "privacyPolicy": {
+      "helmetTitle": "隐私政策 - Qwen3 AI聊天平台",
+      "helmetDescription": "阅读Qwen3 AI聊天平台的隐私政策。",
+      "helmetKeywords": "隐私政策, AI聊天, 条款, 条件, Qwen3",
+      "pageTitle": "隐私政策",
+      "lastUpdated": "最后更新于: {{date}}",
+      "introduction": {
+        "title": "1. 引言",
+        "paragraph1": "欢迎来到Qwen3 AI聊天平台。我们致力于保护您的隐私并确保您个人信息的安全。本隐私政策解释了当您使用我们的平台时，我们如何收集、使用、披露和保护您的信息。",
+        "paragraph2": "通过访问或使用我们的服务，即表示您已阅读并理解本隐私政策。"
+      },
+      "informationWeCollect": {
+        "title": "2. 我们收集的信息",
+        "personalInformation": {
+          "title": "2.1 个人信息",
+          "paragraph1": "当您进行以下操作时，我们可能会收集您自愿提供给我们的个人信息：",
+          "item1": "创建账户（姓名、电子邮件地址、用户名）",
+          "item2": "使用我们的聊天界面（消息内容、互动数据）",
+          "item3": "联系我们的支持团队",
+          "item4": "订阅新闻通讯或促销材料"
+        },
+        "usageData": {
+          "title": "2.2 使用数据",
+          "paragraph1": "当您访问、使用或浏览我们的平台时，我们会自动收集某些信息。这些信息可能包括：",
+          "item1": "设备和浏览器信息（IP地址、浏览器类型、设备类型）",
+          "item2": "使用模式和互动（访问的页面、使用的功能、花费的时间）",
+          "item3": "聊天会话数据和内容"
+        }
+      },
+      "howWeUseYourInformation": {
+        "title": "3. 我们如何使用您的信息",
+        "paragraph1": "我们将收集到的信息用于多种目的，包括：",
+        "item1": "提供、维护和改进我们的服务",
+        "item2": "个性化您的体验",
+        "item3": "处理交易和管理账户",
+        "item4": "回应您的咨询和支持请求",
+        "item5": "训练和改进我们的AI模型",
+        "item6": "分析使用模式以增强用户体验",
+        "item7": "发送管理信息和更新",
+        "item8": "防止未经授权的访问和欺诈活动"
+      },
+      "sharingAndDisclosure": {
+        "title": "4. 共享与披露",
+        "paragraph1": "我们可能在以下情况下共享您的信息：",
+        "item1": "与协助运营我们平台的服务提供商和业务合作伙伴共享",
+        "item2": "与业务交易相关（合并、收购、资产出售）",
+        "item3": "法律要求或为保护我们的权利和安全时",
+        "item4": "征得您的同意或按您的指示"
+      },
+      "dataSecurity": {
+        "title": "5. 数据安全",
+        "paragraph1": "我们采取适当的技术和组织措施来保护您的个人信息免遭未经授权的访问、披露、更改或销毁。然而，没有任何电子传输或存储系统是完全安全的，我们不能保证绝对安全。"
+      },
+      "yourRights": {
+        "title": "6. 您的权利",
+        "paragraph1": "根据您所在的地区，您可能对您的个人信息拥有某些权利，包括：",
+        "item1": "访问您的个人数据",
+        "item2": "更正不准确或不完整的信息",
+        "item3": "删除您的个人数据",
+        "item4": "限制或反对处理",
+        "item5": "数据可移植性",
+        "item6": "撤回同意",
+        "paragraph2": "要行使这些权利，请使用本政策末尾提供的信息与我们联系。"
+      },
+      "childrensPrivacy": {
+        "title": "7. 儿童隐私",
+        "paragraph1": "我们的平台不适用于13岁以下的个人。我们不会故意收集儿童的个人信息。如果我们意识到我们在未经父母同意的情况下收集了儿童的个人信息，我们将采取措施删除该信息。"
+      },
+      "updatesToThisPolicy": {
+        "title": "8. 本政策的更新",
+        "paragraph1": "我们可能会不时更新本隐私政策，以反映我们实践的变化或出于其他运营、法律或监管原因。我们将通过在我们的网站上发布更新的政策或通过其他沟通渠道通知您任何重大变更。"
+      },
+      "contactUs": {
+        "title": "9. 联系我们",
+        "paragraph1": "如果您对本隐私政策或我们的隐私实践有任何疑问、疑虑或请求，请通过以下方式与我们联系：",
+        "email": "邮箱：ytsgabcde21@2925.com",
+        "registration": "备案号：渝ICP备2023003198号-91"
+      }
     }
   }
 } 

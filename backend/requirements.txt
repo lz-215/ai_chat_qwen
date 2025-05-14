@@ -1,0 +1,5 @@
+fastapi
+uvicorn[standard]
+python-dotenv
+requests
+httpx # 虽然当前 qwen_api 是同步的，但 FastAPI 生态常用 httpx 

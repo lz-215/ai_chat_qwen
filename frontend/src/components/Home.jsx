@@ -9,6 +9,7 @@ const Home = () => {
       const [activeSystemPrompt, setActiveSystemPrompt] = useState('');
       const [userInput, setUserInput] = useState('');
       const [messages, setMessages] = useState([]);
+      const [isLoading, setIsLoading] = useState(false);
 
       // Define available AI personas
       const personas = [
@@ -110,25 +111,26 @@ const Home = () => {
       const handleSendMessage = async () => {
         if (!userInput.trim()) return;
 
+        setIsLoading(true);
         const newUserMessage = { sender: 'user', text: userInput };
         setMessages(prevMessages => [...prevMessages, newUserMessage]);
+        const currentInput = userInput;
+        setUserInput('');
 
-        // 准备消息历史
-        const messageHistory = messages.map(msg => ({
+        const currentMessagesForHistory = [...messages, newUserMessage];
+
+        const messageHistory = currentMessagesForHistory.map(msg => ({
           role: msg.sender === 'user' ? 'user' : 'assistant',
           content: msg.text
         }));
-
-        // 添加当前用户消息
-        messageHistory.push({ role: 'user', content: userInput });
-
-        // 如果有系统提示，添加到消息开头
+        
         if (activeSystemPrompt) {
           messageHistory.unshift({ role: 'system', content: activeSystemPrompt });
         }
+        messageHistory.push({ role: 'user', content: currentInput });
 
         try {
-          const response = await fetch('/api/chat', {
+          const response = await fetch('http://localhost:8000/api/chat', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -137,18 +139,42 @@ const Home = () => {
               messages: messageHistory
             })
           });
+
+          if (!response.ok) {
+            const errorText = await response.text();
+            console.error("API Error Response:", errorText);
+            setMessages(prev => prev.slice(0, -1));
+            throw new Error(`API request failed with status ${response.status}: ${errorText}`);
+          }
+
           const data = await response.json();
-          const aiResponse = { sender: 'ai', text: data.response };
+          
+          let aiText = 'Sorry, an error occurred while processing your request.';
+          if (data && data.choices && data.choices.length > 0 && data.choices[0].message && data.choices[0].message.content) {
+            aiText = data.choices[0].message.content;
+          } else if (data && data.error) {
+            if (typeof data.error === 'string') {
+              aiText = data.error;
+            } else if (data.error.message && typeof data.error.message === 'string') {
+              aiText = data.error.message;
+            } else if (data.error.details && typeof data.error.details === 'string') {
+              aiText = data.error.details;
+            }
+          } else if (data && data.message && typeof data.message === 'string') {
+             aiText = data.message;
+          }
+          
+          const aiResponse = { sender: 'ai', text: aiText };
           setMessages(prevMessages => [...prevMessages, aiResponse]);
         } catch (error) {
           console.error("Error sending message:", error);
           setMessages(prevMessages => [...prevMessages, { 
             sender: 'ai', 
-            text: 'Sorry, an error occurred while processing your request.' 
+            text: error.message || 'Sorry, an error occurred while processing your request.'
           }]);
+        } finally {
+          setIsLoading(false);
         }
-
-        setUserInput('');
       };
   
 
@@ -239,7 +265,18 @@ const Home = () => {
                       </div>
                     </div>
                   ))}
-                  {messages.length === 0 && activeSystemPrompt && ( // 只有当选择了角色但没有消息时才显示提示
+                  {isLoading && (
+                    <div className="flex justify-start">
+                      <div className="max-w-[70%] lg:max-w-[60%] px-3 py-2 rounded-xl shadow-sm bg-blue-50 text-gray-800 border border-blue-300 flex items-center" style={{ minHeight: '40px' }}> {/* Ensured min-height for dots visibility */}
+                        <div className="flex space-x-1">
+                          <div className="w-2 h-2 bg-indigo-500 rounded-full animate-bounce [animation-delay:-0.3s]"></div>
+                          <div className="w-2 h-2 bg-indigo-500 rounded-full animate-bounce [animation-delay:-0.15s]"></div>
+                          <div className="w-2 h-2 bg-indigo-500 rounded-full animate-bounce"></div>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                  {messages.length === 0 && activeSystemPrompt && !isLoading && ( // 只有当选择了角色但没有消息时才显示提示
                      <p className="text-gray-400 text-sm text-center py-4">{t('app.home.selectPersona')}</p>
                   )}
                 </div>

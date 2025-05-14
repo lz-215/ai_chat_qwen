@@ -1,5 +1,6 @@
 from http.server import BaseHTTPRequestHandler
 import json
+import os
 
 class handler(BaseHTTPRequestHandler):
     def set_cors_headers(self):
@@ -22,7 +23,7 @@ class handler(BaseHTTPRequestHandler):
             
             response_data = {
                 "model": "qwen-plus",
-                "api_type": "Qwen API",
+                "api_type": "Qwen API (DashScope)",
                 "status": "API mode",
                 "device": "Qwen Cloud"
             }

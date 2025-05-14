@@ -3,13 +3,16 @@ import MessageList from './MessageList';
 import MessageInput from './MessageInput';
 import { useTranslation } from 'react-i18next';
 
+// API基础URL
+const API_BASE_URL = 'http://localhost:8001';
+
 const ChatInterface = () => {
   const { t, i18n } = useTranslation();
   const [messages, setMessages] = useState([
     { id: 1, text: t('app.chat.welcomeMessage', 'Hello! I am the Qwen3-plus AI assistant. How can I help you today?'), sender: 'ai' }
   ]);
   const [isLoading, setIsLoading] = useState(false);
-  const [modelInfo, setModelInfo] = useState({ model: 'qwen3-plus', status: 'unknown', device: 'unknown' });
+  const [modelInfo, setModelInfo] = useState({ model: 'qwen-max', status: 'unknown', device: 'unknown' });
   const messagesEndRef = useRef(null);
 
   const scrollToBottom = () => {
@@ -24,7 +27,7 @@ const ChatInterface = () => {
   useEffect(() => {
     const fetchModelInfo = async () => {
       try {
-        const response = await fetch('/api/models');
+        const response = await fetch(`${API_BASE_URL}/api/models`);
         if (response.ok) {
           const data = await response.json();
           setModelInfo(data);
@@ -74,15 +77,31 @@ const ChatInterface = () => {
       console.log("2. 准备发送API请求，消息历史:", messageHistory);
 
       // 调用后端API
-      console.log("3. API请求地址:", '/api/chat');
-      console.log("3.1 请求数据:", JSON.stringify({ messages: messageHistory }, null, 2));
+      const apiUrl = `${API_BASE_URL}/api/chat`;
+      console.log("3. API请求地址:", apiUrl);
+      console.log("3.1 请求数据:", JSON.stringify({ 
+        model: modelInfo.model || "qwen-plus",
+        messages: messageHistory,
+        temperature: 0.7,
+        top_p: 0.9,
+        max_tokens: 2000
+      }, null, 2));
 
       let response;
       try {
-        response = await fetch('/api/chat', {
+        response = await fetch(apiUrl, {
           method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ messages: messageHistory })
+          headers: { 
+            'Content-Type': 'application/json',
+            'Accept': 'application/json'
+          },
+          body: JSON.stringify({ 
+            model: modelInfo.model || "qwen-plus",
+            messages: messageHistory,
+            temperature: 0.7,
+            top_p: 0.9,
+            max_tokens: 2000
+          })
         });
 
         console.log("4. API响应状态:", response.status, response.statusText);
@@ -101,9 +120,26 @@ const ChatInterface = () => {
       const data = await response.json();
       console.log("5. API响应数据:", data);
 
+      let assistantMessageText = t('app.chat.errorMessage', 'Sorry, an error occurred while processing your request.');
+      if (data && data.choices && data.choices.length > 0 && data.choices[0].message && data.choices[0].message.content) {
+        assistantMessageText = data.choices[0].message.content;
+      } else if (data && data.error) {
+        if (typeof data.error === 'string') {
+          assistantMessageText = data.error;
+        } else if (data.error.message && typeof data.error.message === 'string') {
+          assistantMessageText = data.error.message;
+        } else if (data.error.details && typeof data.error.details === 'string') {
+          assistantMessageText = data.error.details;
+        } 
+      } else if (data && data.message && typeof data.message === 'string') {
+         assistantMessageText = data.message;
+      } else if (typeof data === 'string') {
+        assistantMessageText = data;
+      }
+
       setMessages(prev => [...prev, {
         id: Date.now() + 1,
-        text: data.response,
+        text: assistantMessageText,
         sender: 'ai'
       }]);
     } catch (error) {

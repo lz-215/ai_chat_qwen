@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 // Helper function to create a slug from title
 const generateSlug = (title) => {
@@ -8,6 +9,7 @@ const generateSlug = (title) => {
 };
 
 const Cases = () => {
+  const { t } = useTranslation();
   // 初始案例数据
   const defaultCaseStudies = [
     {
@@ -64,6 +66,7 @@ const Cases = () => {
   
   const [caseStudies, setCaseStudies] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [initialMetadataFetched, setInitialMetadataFetched] = useState(false);
 
   // 页面加载时从localStorage加载数据，如果没有则使用默认数据
   useEffect(() => {
@@ -123,10 +126,15 @@ const Cases = () => {
 
   // 页面加载时抓取元数据
   useEffect(() => {
-    if (caseStudies.length > 0) {
-      fetchMetadata();
+    // Fetch metadata only when caseStudies are populated and it's the initial fetch attempt
+    if (caseStudies.length > 0 && !initialMetadataFetched) {
+      const performFetch = async () => {
+        await fetchMetadata(); // Call the existing fetchMetadata
+        setInitialMetadataFetched(true); // Mark as fetched
+      };
+      performFetch();
     }
-  }, []);
+  }, [caseStudies, initialMetadataFetched, fetchMetadata]); // Updated dependencies, ensure fetchMetadata is stable if it's memoized or add its own dependencies if defined outside. Given it's defined in component scope, it's recreated on each render, so including it or its actual dependencies is important. For simplicity here, assuming `fetchMetadata` itself doesn't change in a way that causes loops with these dependencies. A common pattern is to wrap fetchMetadata in useCallback or define it inside the effect if it's only used there.
 
   return (
     <HelmetProvider>
@@ -174,7 +182,7 @@ const Cases = () => {
                     {study.description}
                   </p>
                   <p className={`${study.linkColor} text-sm font-medium inline-flex items-center`}>
-                    访问案例
+                    {t('app.case.view')}
                     <svg className="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M14 5l7 7m0 0l-7 7m7-7H3"></path>
                     </svg>

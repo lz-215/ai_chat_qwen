@@ -20,14 +20,14 @@ i18n
   .init({
     fallbackLng: defaultLanguage,
     supportedLngs,
-    debug: false,
+    debug: true,
     detection: {
       // 语言检测顺序
       order: ['querystring', 'navigator', 'localStorage', 'sessionStorage', 'htmlTag', 'path', 'cookie'],
       // 检测参数名称 (例如: ?lng=en)
       lookupQuerystring: 'lng',
       // 本地存储里的键名
-      lookupLocalStorage: 'i18nextLng',
+      lookupLocalStorage: 'userLanguage',
       // 缓存语言选择
       caches: ['localStorage', 'cookie'],
       // Cookie名称

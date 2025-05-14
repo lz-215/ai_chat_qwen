@@ -18,9 +18,9 @@ function App() {
         </main>
         <footer className="bg-gray-50 text-gray-800 p-6 text-center text-sm border-t border-gray-200">
           <p className="mb-2">&copy; {new Date().getFullYear()} {t('app.title')}. {t('app.footer.rights')}</p>
-          <p className="mb-2">{t('app.footer.contact')}: ytsgabcde20@2925.com</p>
+          <p className="mb-2">{t('app.footer.contact')}: ytsgabcde21@2925.com</p>
           <div className="space-x-4">
-            <a href="#" className="text-indigo-600 hover:text-indigo-800 transition-colors duration-300">渝ICP备2023003198号-90</a>
+            <a href="#" className="text-indigo-600 hover:text-indigo-800 transition-colors duration-300">渝ICP备2023003198号-91</a>
             <span className="text-gray-400">|</span>
             <Link to="/privacy-policy" className="text-indigo-600 hover:text-indigo-800 transition-colors duration-300">
               {t('app.footer.privacy')}

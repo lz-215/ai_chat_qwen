@@ -180,6 +180,91 @@
     },
     "languageSelector": {
       "language": "Language"
+    },
+    "case": {
+      "view": "View Case Study"
+    },
+    "article": {
+      "readMore": "Read More"
+    },
+    "privacyPolicy": {
+      "helmetTitle": "Privacy Policy - Qwen3 AI Chat Platform",
+      "helmetDescription": "Read the Privacy Policy for Qwen3 AI Chat Platform.",
+      "helmetKeywords": "privacy policy, AI chat, terms, conditions, Qwen3",
+      "pageTitle": "Privacy Policy",
+      "lastUpdated": "Last Updated: {{date}}",
+      "introduction": {
+        "title": "1. Introduction",
+        "paragraph1": "Welcome to the Qwen3 AI Chat Platform. We are committed to protecting your privacy and ensuring the security of your personal information. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our platform.",
+        "paragraph2": "By accessing or using our service, you acknowledge that you have read and understood this Privacy Policy."
+      },
+      "informationWeCollect": {
+        "title": "2. Information We Collect",
+        "personalInformation": {
+          "title": "2.1 Personal Information",
+          "paragraph1": "We may collect personal information that you voluntarily provide to us when you:",
+          "item1": "Create an account (name, email address, username)",
+          "item2": "Use our chat interface (message content, interaction data)",
+          "item3": "Contact our support team",
+          "item4": "Subscribe to newsletters or promotional materials"
+        },
+        "usageData": {
+          "title": "2.2 Usage Data",
+          "paragraph1": "We automatically collect certain information when you visit, use, or navigate our platform. This information may include:",
+          "item1": "Device and browser information (IP address, browser type, device type)",
+          "item2": "Usage patterns and interactions (pages visited, features used, time spent)",
+          "item3": "Chat session data and content"
+        }
+      },
+      "howWeUseYourInformation": {
+        "title": "3. How We Use Your Information",
+        "paragraph1": "We use the information we collect for various purposes, including:",
+        "item1": "Providing, maintaining, and improving our services",
+        "item2": "Personalizing your experience",
+        "item3": "Processing transactions and managing accounts",
+        "item4": "Responding to your inquiries and support requests",
+        "item5": "Training and improving our AI models",
+        "item6": "Analyzing usage patterns to enhance user experience",
+        "item7": "Sending administrative information and updates",
+        "item8": "Protecting against unauthorized access and fraudulent activity"
+      },
+      "sharingAndDisclosure": {
+        "title": "4. Sharing and Disclosure",
+        "paragraph1": "We may share your information in the following circumstances:",
+        "item1": "With service providers and business partners who assist in operating our platform",
+        "item2": "In connection with a business transaction (merger, acquisition, sale of assets)",
+        "item3": "When required by law or to protect our rights and safety",
+        "item4": "With your consent or at your direction"
+      },
+      "dataSecurity": {
+        "title": "5. Data Security",
+        "paragraph1": "We implement appropriate technical and organizational measures to protect your personal information from unauthorized access, disclosure, alteration, or destruction. However, no electronic transmission or storage system is completely secure, and we cannot guarantee absolute security."
+      },
+      "yourRights": {
+        "title": "6. Your Rights",
+        "paragraph1": "Depending on your location, you may have certain rights regarding your personal information, including:",
+        "item1": "Access to your personal data",
+        "item2": "Correction of inaccurate or incomplete information",
+        "item3": "Deletion of your personal data",
+        "item4": "Restriction or objection to processing",
+        "item5": "Data portability",
+        "item6": "Withdrawal of consent",
+        "paragraph2": "To exercise these rights, please contact us using the information provided at the end of this policy."
+      },
+      "childrensPrivacy": {
+        "title": "7. Children's Privacy",
+        "paragraph1": "Our platform is not intended for individuals under the age of 13. We do not knowingly collect personal information from children. If we become aware that we have collected personal information from a child without parental consent, we will take steps to delete that information."
+      },
+      "updatesToThisPolicy": {
+        "title": "8. Updates to This Policy",
+        "paragraph1": "We may update this Privacy Policy from time to time to reflect changes in our practices or for other operational, legal, or regulatory reasons. We will notify you of any material changes by posting the updated policy on our website or through other communication channels."
+      },
+      "contactUs": {
+        "title": "9. Contact Us",
+        "paragraph1": "If you have any questions, concerns, or requests regarding this Privacy Policy or our privacy practices, please contact us at:",
+        "email": "Email: ytsgabcde21@2925.com",
+        "registration": "Registration: 渝ICP备2023003198号-91"
+      }
     }
   }
 } 
