@@ -13,54 +13,46 @@ const Cases = () => {
   // 初始案例数据
   const defaultCaseStudies = [
     {
-      title: "Alpha Corp Boosts Innovation",
-      description: "Leveraging our AI, Alpha Corp cut down development cycles by 40% and introduced three new products. (Content to be finalized)",
+      title: "千问3（Qwen3）模型开源以及初体验",
       icon: <svg className="w-16 h-16 text-white opacity-75" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>,
       gradient: "from-purple-500 to-indigo-600",
       hoverColor: "group-hover:text-indigo-700",
       linkColor: "text-indigo-600 hover:text-indigo-800",
-      externalUrl: "https://mp.weixin.qq.com/s/GoAiXr_AOAOPtKUXeecdfw",
-      image: ""
+      externalUrl: "https://blog.csdn.net/liupeng9494/article/details/147619006"
     },
     {
-      title: "Beta Solutions Enhances CX",
-      description: "Beta Solutions saw a 25% increase in customer satisfaction scores after implementing our AI chat solutions. (Content to be finalized)",
+      title: "亲测阿里千问3这8个神仙用法后，感觉有点上头！",
       icon: <svg className="w-16 h-16 text-white opacity-75" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>,
       gradient: "from-green-500 to-teal-600",
       hoverColor: "group-hover:text-teal-700",
       linkColor: "text-teal-600 hover:text-teal-800",
-      externalUrl: "https://www.example.com/case2",
-      image: ""
+      externalUrl: "https://blog.csdn.net/liupeng9494/article/details/147619006"
     },
     {
-      title: "Gamma Inc. Achieves Efficiency",
-      description: "Gamma Inc. automated 60% of their manual data entry tasks, freeing up valuable employee time. (Content to be finalized)",
+      title: "亲测阿里千问3这8个神仙用法后，感觉有点上头！",
       icon: <svg className="w-16 h-16 text-white opacity-75" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg>,
       gradient: "from-pink-500 to-rose-600",
       hoverColor: "group-hover:text-rose-700",
       linkColor: "text-rose-600 hover:text-rose-800",
-      externalUrl: "https://www.example.com/case3",
-      image: ""
+      externalUrl: "https://www.53ai.com/news/LargeLanguageModel/2025050635097.html"
     },
     {
-      title: "Delta Systems Unlocks Insights",
-      description: "With our analytics tools, Delta Systems identified new market segments, boosting revenue by 15%. (Content to be finalized)",
+      title: "AI大模型测评，深度解析最强开源模型Qwen3",
       icon: <svg className="w-16 h-16 text-white opacity-75" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 6.253v11.494m0 0a8.485 8.485 0 0011.494 0M12 17.747a8.485 8.485 0 01-11.494 0M12 17.747v-5.434m0 5.434L6.506 12m5.494 5.747L17.494 12M6.506 12L12 6.253m5.494 5.747L12 6.253"></path></svg>,
       gradient: "from-amber-400 to-orange-500",
       hoverColor: "group-hover:text-orange-700",
       linkColor: "text-orange-600 hover:text-orange-800",
-      externalUrl: "https://www.example.com/case4",
-      image: ""
+      externalUrl: "https://www.woshipm.com/ai/6212320.html",
+      image: "https://image.woshipm.com/2023/04/14/89a13ea6-da9e-11ed-9b82-00163e0b5ff3.png"
     },
     {
-      title: "Epsilon Group Streamlines Ops",
-      description: "Epsilon Group automated key operational workflows, resulting in a 30% reduction in processing time. (Content to be finalized)",
+      title: "使用阿里开源大模型通义千问Qwen进行推理",
       icon: <svg className="w-16 h-16 text-white opacity-75" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>,
       gradient: "from-sky-400 to-blue-600",
       hoverColor: "group-hover:text-blue-700",
       linkColor: "text-blue-600 hover:text-blue-800",
-      externalUrl: "https://www.example.com/case5",
-      image: ""
+      externalUrl: "https://blog.csdn.net/l35633/article/details/143960995",
+      image: "https://mmbiz.qpic.cn/sz_mmbiz_jpg/rzBnCiaEmdz0GiahueVMGymkFZnpYHSkicG7r1rCPobMYeTbU9cDwXyenz7WFXjsfb8jkicRWzYLkzwAOrCbsoWXiag/0?wx_fmt=jpeg"
     }
   ];
   
@@ -111,7 +103,6 @@ const Cases = () => {
           
           // 只有在成功获取到元数据时才更新
           if (data.title) updatedCases[i].title = data.title;
-          if (data.description) updatedCases[i].description = data.description;
           if (data.image) updatedCases[i].image = data.image;
         }
       } catch (error) {
@@ -139,7 +130,7 @@ const Cases = () => {
   return (
     <HelmetProvider>
       <Helmet>
-        <title>Success Cases - AI Chat Platform</title>
+        <title>{t('app.title')} - {t('app.subtitle')} | {t('app.casesPage.title', 'Success Cases')}</title>
         <meta name="description" content="Explore success cases and industry applications of AI Chat Platform." />
         <meta name="keywords" content="success cases, case studies, industry applications, AI solutions" />
       </Helmet>
@@ -178,9 +169,6 @@ const Cases = () => {
                   <h3 className={`text-xl font-semibold text-gray-900 mb-2 ${study.hoverColor} transition-colors duration-300`}>
                     {study.title}
                   </h3>
-                  <p className="text-gray-600 text-sm leading-relaxed mb-4">
-                    {study.description}
-                  </p>
                   <p className={`${study.linkColor} text-sm font-medium inline-flex items-center`}>
                     {t('app.case.view')}
                     <svg className="ml-1 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">

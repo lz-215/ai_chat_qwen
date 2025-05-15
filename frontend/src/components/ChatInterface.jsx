@@ -3,8 +3,9 @@ import MessageList from './MessageList';
 import MessageInput from './MessageInput';
 import { useTranslation } from 'react-i18next';
 
-// API基础URL
-const API_BASE_URL = 'http://localhost:8001';
+// API基础URL - 根据环境使用不同的URL
+// 在生产环境中使用相对路径，这样可以在Vercel上正常工作
+const API_BASE_URL = '';
 
 const ChatInterface = () => {
   const { t, i18n } = useTranslation();
@@ -79,7 +80,7 @@ const ChatInterface = () => {
       // 调用后端API
       const apiUrl = `${API_BASE_URL}/api/chat`;
       console.log("3. API请求地址:", apiUrl);
-      console.log("3.1 请求数据:", JSON.stringify({ 
+      console.log("3.1 请求数据:", JSON.stringify({
         model: modelInfo.model || "qwen-plus",
         messages: messageHistory,
         temperature: 0.7,
@@ -89,26 +90,39 @@ const ChatInterface = () => {
 
       let response;
       try {
+        // 更新请求格式，确保符合OpenAI API规范
+        const requestBody = {
+          model: modelInfo.model || "qwen-plus",
+          messages: messageHistory,
+          temperature: 0.7,
+          top_p: 0.9,
+          max_tokens: 2000
+        };
+        
+        console.log("3.2 最终请求体:", JSON.stringify(requestBody));
+        
         response = await fetch(apiUrl, {
           method: 'POST',
-          headers: { 
+          headers: {
             'Content-Type': 'application/json',
             'Accept': 'application/json'
           },
-          body: JSON.stringify({ 
+          body: JSON.stringify(requestBody)
+        });
+
+        console.log("4. API响应状态:", response.status, response.statusText);
+        
+        // 添加更详细的错误日志
+        if (!response.ok) {
+          const errorText = await response.text();
+          console.error("4.1 API错误响应:", errorText);
+          console.error("4.1.1 请求数据:", JSON.stringify({
             model: modelInfo.model || "qwen-plus",
             messages: messageHistory,
             temperature: 0.7,
             top_p: 0.9,
             max_tokens: 2000
-          })
-        });
-
-        console.log("4. API响应状态:", response.status, response.statusText);
-
-        if (!response.ok) {
-          const errorText = await response.text();
-          console.error("4.1 API错误响应:", errorText);
+          }));
           throw new Error(t('app.chat.apiError', 'API request failed: {{status}} - {{text}}',
             { status: response.status, text: errorText.substring(0, 100) }));
         }
@@ -121,20 +135,36 @@ const ChatInterface = () => {
       console.log("5. API响应数据:", data);
 
       let assistantMessageText = t('app.chat.errorMessage', 'Sorry, an error occurred while processing your request.');
-      if (data && data.choices && data.choices.length > 0 && data.choices[0].message && data.choices[0].message.content) {
+
+      // 处理我们自定义API的响应格式
+      if (data && data.response && typeof data.response === 'string') {
+        // 我们的API返回格式: { response: "AI回复内容", request_id: "xxx", usage: {...} }
+        assistantMessageText = data.response;
+        console.log("从response字段提取回复:", assistantMessageText.substring(0, 100));
+      }
+      // 处理标准OpenAI格式
+      else if (data && data.choices && data.choices.length > 0 && data.choices[0].message && data.choices[0].message.content) {
         assistantMessageText = data.choices[0].message.content;
-      } else if (data && data.error) {
+        console.log("从choices[0].message.content提取回复:", assistantMessageText.substring(0, 100));
+      }
+      // 处理错误情况
+      else if (data && data.error) {
         if (typeof data.error === 'string') {
           assistantMessageText = data.error;
         } else if (data.error.message && typeof data.error.message === 'string') {
           assistantMessageText = data.error.message;
         } else if (data.error.details && typeof data.error.details === 'string') {
           assistantMessageText = data.error.details;
-        } 
-      } else if (data && data.message && typeof data.message === 'string') {
+        }
+        console.log("从error字段提取错误信息:", assistantMessageText);
+      }
+      // 处理其他可能的响应格式
+      else if (data && data.message && typeof data.message === 'string') {
          assistantMessageText = data.message;
+         console.log("从message字段提取信息:", assistantMessageText);
       } else if (typeof data === 'string') {
         assistantMessageText = data;
+        console.log("使用字符串响应:", assistantMessageText.substring(0, 100));
       }
 
       setMessages(prev => [...prev, {

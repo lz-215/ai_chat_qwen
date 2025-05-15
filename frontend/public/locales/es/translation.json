@@ -1,6 +1,7 @@
 {
   "app": {
     "title": "Chat AI Qwen3",
+    "subtitle": "Asistente Conversacional Inteligente",
     "header": {
       "home": "Inicio",
       "cases": "Casos",

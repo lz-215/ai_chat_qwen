@@ -14,7 +14,7 @@ const PrivacyPolicy = () => {
   return (
     <HelmetProvider>
       <Helmet>
-        <title>{t('app.privacyPolicy.helmetTitle')}</title>
+        <title>{t('app.title')} - {t('app.subtitle')} | {t('app.privacyPolicy.pageTitle')}</title>
         <meta name="description" content={t('app.privacyPolicy.helmetDescription')} />
         <meta name="keywords" content={t('app.privacyPolicy.helmetKeywords')} />
       </Helmet>

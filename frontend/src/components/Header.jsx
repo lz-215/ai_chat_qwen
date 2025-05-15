@@ -27,9 +27,14 @@ const Header = () => {
       <div className="container mx-auto px-8 py-4 flex flex-row items-center">
         {/* 左侧: 标题 */}
         <div className="flex-1 flex justify-start">
-          <h1 className="text-4xl font-bold text-indigo-600">
-            <Link to="/">{t('app.title')}</Link>
-          </h1>
+          <div className="flex flex-col">
+            <h1 className="text-4xl font-bold text-indigo-600">
+              <Link to="/">{t('app.title')}</Link>
+            </h1>
+            <p className="text-md text-indigo-400 mt-1">
+              {t('app.subtitle')}
+            </p>
+          </div>
         </div>
 
         {/* 中间: 导航链接 */}

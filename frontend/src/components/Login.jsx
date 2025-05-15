@@ -37,7 +37,7 @@ const Login = () => {
   return (
     <HelmetProvider>
       <Helmet>
-        <title>{t('app.login.title')} - {t('app.title')}</title>
+        <title>{t('app.title')} - {t('app.subtitle')} | {t('app.login.title')}</title>
         <meta name="description" content={`${t('app.login.title')} ${t('app.title')}`} />
         <meta name="keywords" content="login, account, AI chat" />
       </Helmet>

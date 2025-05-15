@@ -2,9 +2,9 @@ import React, {useState, useEffect} from 'react'
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
 
-const Home = () => {      
+const Home = () => {
       const { t } = useTranslation();
-      
+
       // State for AI persona, user input, and chat messages
       const [activeSystemPrompt, setActiveSystemPrompt] = useState('');
       const [userInput, setUserInput] = useState('');
@@ -18,7 +18,7 @@ const Home = () => {
         { id: 'creative_writer', name: 'Creative Writer', prompt: 'You are a creative writer. Help brainstorm ideas, write stories, or craft marketing copy. Use vivid language.' },
         { id: 'language_tutor', name: 'Language Tutor', prompt: 'You are a patient language tutor. Help with grammar, vocabulary, and conversation practice for English learners.' },
       ];
-    
+
     const featureCardPersonas = [
       {
         id: 'viral_titles_card',
@@ -75,7 +75,7 @@ const Home = () => {
         setActiveSystemPrompt(prompt);
         const featurePersona = featureCardPersonas.find(fcp => fcp.prompt === prompt);
         const originalPersona = personas.find(p => p.prompt === prompt);
-        
+
         // 获取功能卡片的翻译键
         let featureKey = '';
         if (featurePersona) {
@@ -88,22 +88,22 @@ const Home = () => {
           else if (featurePersona.id === 'language_skills_training_card') featureKey = 'languageSkills';
           else if (featurePersona.id === 'legal_document_optimization_card') featureKey = 'legalDocument';
         }
-        
+
         // 获取翻译后的角色名称
-        const personaDisplayName = featureKey 
-          ? t(`app.home.featureCards.${featureKey}.title`) 
+        const personaDisplayName = featureKey
+          ? t(`app.home.featureCards.${featureKey}.title`)
           : (originalPersona ? originalPersona.name : "Specialized AI");
-        
+
         // 使用翻译后的角色名称直接构建欢迎消息
         const welcomeMessage = t('app.chat.selectedPersona', { name: personaDisplayName });
-        
+
         // Set an initial AI message to confirm persona selection and prompt for input.
-        const initialAiMessage = { 
+        const initialAiMessage = {
           sender: 'ai',
           text: welcomeMessage
         };
         setMessages([initialAiMessage]); // Initialize chat with this AI-generated message
-  
+
         console.log("AI Persona set to: " + personaDisplayName);
       };
 
@@ -123,14 +123,14 @@ const Home = () => {
           role: msg.sender === 'user' ? 'user' : 'assistant',
           content: msg.text
         }));
-        
+
         if (activeSystemPrompt) {
           messageHistory.unshift({ role: 'system', content: activeSystemPrompt });
         }
         messageHistory.push({ role: 'user', content: currentInput });
 
         try {
-          const response = await fetch('http://localhost:8000/api/chat', {
+          const response = await fetch('/api/chat', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -148,11 +148,23 @@ const Home = () => {
           }
 
           const data = await response.json();
-          
+          console.log("API响应数据:", data);
+
           let aiText = 'Sorry, an error occurred while processing your request.';
-          if (data && data.choices && data.choices.length > 0 && data.choices[0].message && data.choices[0].message.content) {
+
+          // 处理我们自定义API的响应格式
+          if (data && data.response && typeof data.response === 'string') {
+            // 我们的API返回格式: { response: "AI回复内容", request_id: "xxx", usage: {...} }
+            aiText = data.response;
+            console.log("从response字段提取回复:", aiText.substring(0, 100));
+          }
+          // 处理标准OpenAI格式
+          else if (data && data.choices && data.choices.length > 0 && data.choices[0].message && data.choices[0].message.content) {
             aiText = data.choices[0].message.content;
-          } else if (data && data.error) {
+            console.log("从choices[0].message.content提取回复:", aiText.substring(0, 100));
+          }
+          // 处理错误情况
+          else if (data && data.error) {
             if (typeof data.error === 'string') {
               aiText = data.error;
             } else if (data.error.message && typeof data.error.message === 'string') {
@@ -160,30 +172,37 @@ const Home = () => {
             } else if (data.error.details && typeof data.error.details === 'string') {
               aiText = data.error.details;
             }
-          } else if (data && data.message && typeof data.message === 'string') {
-             aiText = data.message;
+            console.log("从error字段提取错误信息:", aiText);
           }
-          
+          // 处理其他可能的响应格式
+          else if (data && data.message && typeof data.message === 'string') {
+             aiText = data.message;
+             console.log("从message字段提取信息:", aiText);
+          } else if (typeof data === 'string') {
+            aiText = data;
+            console.log("使用字符串响应:", aiText.substring(0, 100));
+          }
+
           const aiResponse = { sender: 'ai', text: aiText };
           setMessages(prevMessages => [...prevMessages, aiResponse]);
         } catch (error) {
           console.error("Error sending message:", error);
-          setMessages(prevMessages => [...prevMessages, { 
-            sender: 'ai', 
+          setMessages(prevMessages => [...prevMessages, {
+            sender: 'ai',
             text: error.message || 'Sorry, an error occurred while processing your request.'
           }]);
         } finally {
           setIsLoading(false);
         }
       };
-  
+
 
       // 现在 JSX 需要被显式返回
       return ( // 这个 'return (' 现在会包裹您现有的从 <HelmetProvider> 开始的 JSX}
 
   <HelmetProvider>
     <Helmet>
-      <title>{t('app.title')} - {t('app.home.welcome')}</title>
+      <title>{t('app.title')} - {t('app.subtitle')}</title>
       <meta name="description" content={t('app.home.description')} />
       <meta name="keywords" content="AI chat, intelligent assistant, AI search, writing tool, translation, AI reading" />
     </Helmet>
@@ -195,16 +214,19 @@ const Home = () => {
           <div className="mb-3 sm:mb-4">
             <span className="inline-block shadow-md">
               {/* Circular Qwen3 logo image */}
-              <img 
-                src="/Qwen3.png" 
-                alt="Qwen3 Logo" 
-                className="w-12 h-12 sm:w-16 sm:h-16 rounded-full object-cover object-center shadow-md" 
+              <img
+                src="/Qwen3.png"
+                alt="Qwen3 Logo"
+                className="w-12 h-12 sm:w-16 sm:h-16 rounded-full object-cover object-center shadow-md"
               />
             </span>
           </div>
           <h1 className="text-2xl font-extrabold sm:text-3xl md:text-3xl lg:text-4xl leading-tight mb-1 sm:mb-2 text-indigo-600 tracking-tight">
             {t('app.home.welcome')}
           </h1>
+          <h2 className="text-base sm:text-lg md:text-xl lg:text-2xl mb-2 text-gray-500 font-light">
+            {t('app.home.subtitle', '智能AI助手，随时随地为您服务')}
+          </h2>
           <p className="text-sm sm:text-base md:text-base lg:text-lg mb-2 sm:mb-3 max-w-2xl mx-auto text-gray-600">
             {t('app.home.modelDescription')}
           </p>
@@ -337,9 +359,9 @@ const Home = () => {
                   `}
                 >
                   <div className="flex-shrink-0">
-                    <img 
-                      src={`/icon${index + 1}.png`} 
-                      alt={feature.title} 
+                    <img
+                      src={`/icon${index + 1}.png`}
+                      alt={feature.title}
                       className="w-12 h-12 object-contain"
                     />
                   </div>
@@ -372,27 +394,27 @@ const Home = () => {
               [
                 {
                   key: 'advancedReasoning',
-                  icon: '🧠' 
+                  icon: '🧠'
                 },
                 {
                   key: 'multilingualExcellence',
-                  icon: '🌐' 
+                  icon: '🌐'
                 },
                 {
                   key: 'codeGeneration',
-                  icon: '💻' 
+                  icon: '💻'
                 },
                 {
                   key: 'creativeContent',
-                  icon: '✍️' 
+                  icon: '✍️'
                 },
                 {
                   key: 'knowledgeIntegration',
-                  icon: '📚' 
+                  icon: '📚'
                 },
                 {
                   key: 'contextualUnderstanding',
-                  icon: '🔄' 
+                  icon: '🔄'
                 }
               ].map((feature) => (
                 <div key={feature.key} className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 border border-gray-300">
@@ -464,7 +486,7 @@ const Home = () => {
               {t('app.home.testimonialsSection.description')}
             </p>
           </div>
-          
+
           {/* Carousel Start */}
           {(() => {
             const testimonials = [
@@ -522,7 +544,7 @@ const Home = () => {
 
             const itemWidthWithGapRem = cardWidthRem + cardGapRem;
             const displayTestimonials = [...testimonials, ...testimonials]; // Duplicate for seamless loop
-            
+
             const totalAnimationDistanceRem = numOriginalTestimonials * itemWidthWithGapRem;
             // Speed: approx 6.8 seconds per original card to traverse its own width + gap
             const animationDurationSeconds = numOriginalTestimonials * 6.8; // Adjusted for new, larger gap and perceived speed
@@ -563,7 +585,7 @@ const Home = () => {
             const numGapsInViewport = Math.max(0, numVisibleCards - 1);
             const viewportContentWidthRem = numVisibleCards * cardWidthRem + numGapsInViewport * cardGapRem;
             const actualViewportWidthStyle = `${viewportContentWidthRem}rem`;
-            
+
             // If only one card, no animation needed, center it, no fades unless viewport is smaller than card.
             if (numOriginalTestimonials === 1) {
               return (
@@ -601,10 +623,10 @@ const Home = () => {
                   <style>{sideFadeStyles}</style>
                 </Helmet>
                 <div className={`testimonial-viewport relative overflow-hidden mx-auto py-8 max-w-full`} style={{ width: actualViewportWidthStyle }}>
-                  <div 
+                  <div
                     className="flex"
                     style={{
-                      width: `${displayTestimonials.length * itemWidthWithGapRem}rem`, 
+                      width: `${displayTestimonials.length * itemWidthWithGapRem}rem`,
                       animation: `marqueeAnimation ${animationDurationSeconds}s linear infinite`
                     }}
                   >
@@ -637,7 +659,7 @@ const Home = () => {
                 </div>
               </>
             );
-          })()} 
+          })()}
           {/* Carousel End */}
         </div>
       </section>
@@ -648,4 +670,4 @@ const Home = () => {
   );
 };
 
-export default Home; 
+export default Home;

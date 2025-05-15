@@ -54,3 +54,5 @@ server_log.txt
 
 # Misc
 frontend/dist.zip
+
+.vercel

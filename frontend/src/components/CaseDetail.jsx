@@ -1,13 +1,17 @@
-import React from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useParams, Link } from 'react-router-dom';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
+import { useTranslation } from 'react-i18next';
 
 const CaseDetail = () => {
   const { caseId } = useParams();
+  const [caseData, setCaseData] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const { t } = useTranslation();
 
   // In a real application, you would fetch case data based on caseId
   // For now, we'll use placeholder content.
-  const caseData = {
+  const caseDataPlaceholder = {
     title: caseId ? caseId.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ') : 'Case Study',
     content: `This is the detailed content for the case study: ${caseId}. 
               More comprehensive information will be displayed here once the actual content is developed. 
@@ -22,14 +26,14 @@ const CaseDetail = () => {
   return (
     <HelmetProvider>
       <Helmet>
-        <title>{caseData.title} - AI Chat Platform</title>
+        <title>{t('app.title')} - {t('app.subtitle')} | {caseData.title}</title>
         <meta name="description" content={`Read the detailed case study for ${caseData.title}.`} />
       </Helmet>
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <article className="prose lg:prose-xl max-w-none">
           <header className="mb-8">
             <h1 className="text-4xl font-extrabold text-gray-900 sm:text-5xl lg:text-6xl mb-4">
-              {caseData.title}
+              {caseDataPlaceholder.title}
             </h1>
             <p className="text-lg text-gray-600">
               <em>Detailed analysis of the success story.</em>
@@ -39,7 +43,7 @@ const CaseDetail = () => {
           <div className="bg-white shadow-lg rounded-lg p-8">
             <h2 className="text-2xl font-semibold text-gray-800 mb-4">Project Overview</h2>
             <p className="text-gray-700 leading-relaxed mb-6">
-              {caseData.content}
+              {caseDataPlaceholder.content}
             </p>
 
             <h3 className="text-xl font-semibold text-gray-800 mb-3">Challenges Faced</h3>

@@ -1,6 +1,7 @@
 {
   "app": {
     "title": "Qwen3 AI聊天",
+    "subtitle": "智能对话助手",
     "header": {
       "home": "首页",
       "cases": "案例",
@@ -19,6 +20,7 @@
     },
     "home": {
       "welcome": "欢迎使用Qwen3 AI聊天平台",
+      "subtitle": "智能AI助手，随时随地为您服务",
       "description": "Qwen3大语言模型的强大对话能力",
       "getStarted": "立即开始",
       "modelDescription": "Qwen3是一款前沿的AI语言模型，致力于提供智能、高效和安全的对话体验，能够准确理解并回应各种人类询问。",
@@ -29,6 +31,40 @@
       "discoverTitle": "探索功能",
       "discoverDescription": "点击下方卡片与专业AI助手交互",
       "selectPersona": "选择一个角色并开始聊天！",
+      "featureCards": {
+        "viralTitle": {
+          "title": "爆款标题生成器",
+          "description": "创建引人注目的内容标题。"
+        },
+        "businessText": {
+          "title": "商业文本改写",
+          "description": "专业提升企业文档质量。"
+        },
+        "weeklyReport": {
+          "title": "周报可视化",
+          "description": "将原始数据转化为直观洞察。"
+        },
+        "kpiGoal": {
+          "title": "KPI目标分解",
+          "description": "将目标转化为可执行的行动计划。"
+        },
+        "competitiveAnalysis": {
+          "title": "竞争分析报告",
+          "description": "全面的竞争对手分析与策略。"
+        },
+        "crossBorder": {
+          "title": "跨境电商营销",
+          "description": "全球品牌本地化与推广。"
+        },
+        "languageSkills": {
+          "title": "语言技能培训",
+          "description": "个性化语言学习与评估。"
+        },
+        "legalDocument": {
+          "title": "法律文档优化",
+          "description": "简化并提升法律文档质量。"
+        }
+      },
       "featuredPersonas": {
         "codeHelper": "编程助手",
         "creativeWriter": "创意写手",
@@ -119,7 +155,39 @@
       "testimonialsSection": {
         "title": "用户怎么说",
         "description": "直接聆听体验过我们AI聊天平台强大功能和便捷性的用户心声",
-        "viewAll": "查看所有评价"
+        "viewAll": "查看所有评价",
+        "testimonials": {
+          "sarah": {
+            "quote": "我曾经对这个AI搜索不抱期望，但它为我节省了宝贵的时间！现在我每周用它做各种搜索和总结。强烈推荐！",
+            "name": "Mike P.",
+            "role": "研究员"
+          },
+          "john": {
+            "quote": "界面非常直观友好，几分钟内就上手了！",
+            "name": "Alice G.",
+            "role": "学生"
+          },
+          "mike": {
+            "quote": "起初我持怀疑态度，但AI搜索总结工具为我节省了数小时的搜索时间。每周都用，强烈推荐！",
+            "name": "Mike P.",
+            "role": "研究员"
+          },
+          "alice": {
+            "quote": "界面非常直观且用户友好。几分钟内我就掌握了使用方法！",
+            "name": "Alice G.",
+            "role": "学生"
+          },
+          "david": {
+            "quote": "客户支持非常迅速且乐于助人，当我有问题时总能得到及时解答。",
+            "name": "David K.",
+            "role": "自由职业者"
+          },
+          "emily": {
+            "quote": "克服写作障碍的绝佳工具！创意提示功能帮助我突破思维限制。",
+            "name": "Emily R.",
+            "role": "作家"
+          }
+        }
       }
     },
     "chat": {

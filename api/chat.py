@@ -99,19 +99,14 @@ class handler(BaseHTTPRequestHandler):
             # qwen-max是正式环境的模型名称
             qwen_request = {
                 "model": model,
-                "input": {
-                    "messages": valid_messages
-                },
-                "parameters": {
-                    "temperature": temperature,
-                    "top_p": top_p,
-                    "result_format": "message"
-                }
+                "messages": valid_messages,
+                "temperature": temperature,
+                "top_p": top_p
             }
             
             # 添加max_tokens参数，但避免为0
             if max_tokens > 0:
-                qwen_request["parameters"]["max_tokens"] = max_tokens
+                qwen_request["max_tokens"] = max_tokens
 
             print(f"请求体: {json.dumps(qwen_request, ensure_ascii=False)}")
             print(f"准备调用DashScope API: {QWEN3_API_ENDPOINT}")
@@ -131,8 +126,7 @@ class handler(BaseHTTPRequestHandler):
                         headers={
                             "Authorization": f"Bearer {QWEN3_API_KEY}",
                             "Content-Type": "application/json",
-                            "Accept": "application/json",
-                            "X-DashScope-Client": "api_client"
+                            "Accept": "application/json"
                         },
                         json=qwen_request,
                         timeout=60.0
@@ -163,20 +157,26 @@ class handler(BaseHTTPRequestHandler):
                     result = response.json()
                     print(f"API响应内容: {json.dumps(result, ensure_ascii=False)[:200]}...")
                     
-                    # 根据阿里云DashScope API的响应格式提取内容
+                    # 从兼容OpenAI格式的响应中提取内容
                     ai_response = "无法解析的响应格式"
                     
                     if result and isinstance(result, dict):
-                        # 提取output部分
-                        output = result.get("output")
-                        if output and isinstance(output, dict):
+                        # 检查是否为OpenAI格式响应
+                        if "choices" in result and isinstance(result["choices"], list) and len(result["choices"]) > 0:
+                            first_choice = result["choices"][0]
+                            if "message" in first_choice and isinstance(first_choice["message"], dict):
+                                ai_response = first_choice["message"].get("content", "消息内容为空")
+                                print(f"成功从OpenAI格式choices[0].message.content提取回复: {ai_response[:100]}...")
+                        # 检查是否为DashScope原生响应格式
+                        elif "output" in result and isinstance(result["output"], dict):
+                            output = result["output"]
                             # 在choices中查找回复
                             choices = output.get("choices")
                             if choices and isinstance(choices, list) and len(choices) > 0:
                                 choice = choices[0]
                                 if "message" in choice and isinstance(choice["message"], dict):
                                     ai_response = choice["message"].get("content", "消息内容为空")
-                                    print(f"成功从choices[0].message.content提取回复: {ai_response[:100]}...")
+                                    print(f"成功从DashScope格式choices[0].message.content提取回复: {ai_response[:100]}...")
                             # 直接查找message结构
                             elif "message" in output and isinstance(output["message"], dict):
                                 ai_response = output["message"].get("content", "消息内容为空")
@@ -185,10 +185,8 @@ class handler(BaseHTTPRequestHandler):
                             elif "text" in output:
                                 ai_response = output["text"]
                                 print(f"成功从output.text提取回复: {ai_response[:100]}...")
-                            else:
-                                print(f"未知的输出格式: {json.dumps(output, ensure_ascii=False)}")
                         else:
-                            print(f"响应中缺少output字段或格式不正确: {json.dumps(result, ensure_ascii=False)}")
+                            print(f"未知的输出格式: {json.dumps(result, ensure_ascii=False)}")
                     else:
                         print(f"响应不是有效的JSON对象: {result}")
 
@@ -198,7 +196,7 @@ class handler(BaseHTTPRequestHandler):
                     self.end_headers()
 
                     usage = {}
-                    if result and isinstance(result, dict) and "usage" in result:
+                    if "usage" in result and isinstance(result["usage"], dict):
                         usage = result["usage"]
 
                     response_data = {

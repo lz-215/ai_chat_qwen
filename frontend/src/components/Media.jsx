@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
+import { useTranslation } from 'react-i18next';
 // 假设我们有一个图片资源，或者后续会添加
 // import placeholderImage from './placeholder.png'; // 示例图片路径
 
@@ -20,32 +21,17 @@ const mediaData = [
     imageUrl: 'https://i.ytimg.com/vi/3JZ_D3ELwOQ/hqdefault.jpg', // Example YouTube Thumbnail
     type: 'YouTube Video'
   },
-  {
-    id: 3,
-    link: 'https://www.bilibili.com/video/BV1mpVczYEwZ/',
-    title: 'Exploring AI Ethics (Bilibili)',
-    description: 'Insights into ethical considerations in AI development from Bilibili.',
-    imageUrl: 'https://i0.hdslb.com/bfs/archive/f2c0806a8f37685917c0187e37c5973c471201d6.jpg@672w_378h_1c_!web-home-common-cover.avif', // Example Bilibili Thumbnail
-    type: 'Bilibili Video'
-  },
-  {
-    id: 4,
-    link: 'https://www.tiktok.com/@flighthouse/video/7000000000000000000',
-    title: 'Creative AI Showcase (TikTok)',
-    description: 'A showcase of creative AI applications on TikTok.',
-    imageUrl: 'https://via.placeholder.com/300x200.png?text=TikTok+Video', // Placeholder, TikTok thumbnails are harder to get manually without tools/inspection
-    type: 'TikTok Video'
-  },
   // Add more media items here manually
 ];
 
 const Media = () => {
   const [mediaList, setMediaList] = useState(mediaData);
+  const { t } = useTranslation();
 
   return (
     <HelmetProvider>
       <Helmet>
-        <title>Media & Resources - AI Chat Platform</title>
+        <title>{t('app.title')} - {t('app.subtitle')} | Media & Resources</title>
         <meta
           name="description"
           content="Listen to podcasts, watch video tutorials, and read expert interviews related to AI Chat Platform."

@@ -1,6 +1,7 @@
 {
   "app": {
     "title": "Qwen3 AI Chat",
+    "subtitle": "Intelligent Conversational Assistant",
     "header": {
       "home": "Home",
       "cases": "Cases",
@@ -19,7 +20,8 @@
     },
     "home": {
       "welcome": "Welcome to Qwen3 AI Chat Platform",
-      "description": "Experience the power of AI conversation",
+      "subtitle": "Intelligent AI Assistant, at your service anytime, anywhere",
+      "description": "The powerful conversational capabilities of the Qwen3 language model",
       "getStarted": "Get Started",
       "modelDescription": "Qwen-3 is a cutting-edge AI language model dedicated to providing intelligent, efficient, and safe conversational experiences, capable of accurately understanding and responding to a wide range of human inquiries.",
       "freeTier": "100% Free Tier Available",

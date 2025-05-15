@@ -1,6 +1,7 @@
 {
   "app": {
     "title": "Qwen3 KI-Chat",
+    "subtitle": "Intelligenter Konversationsassistent",
     "header": {
       "home": "Startseite",
       "cases": "Fallstudien",

@@ -1,6 +1,7 @@
-import React from 'react';
-import { useParams } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useParams, useNavigate } from 'react-router-dom';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
+import { useTranslation } from 'react-i18next';
 
 // Placeholder news data - in a real app, you'd fetch this based on articleId
 const allNewsData = {
@@ -14,17 +15,32 @@ const allNewsData = {
 
 const ArticlePage = () => {
   const { articleId } = useParams();
-  const article = allNewsData[articleId];
+  const navigate = useNavigate();
+  const [article, setArticle] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const { t } = useTranslation();
 
-  if (!article) {
+  useEffect(() => {
+    const fetchArticle = async () => {
+      setArticle(allNewsData[articleId]);
+      setLoading(false);
+    };
+
+    fetchArticle();
+  }, [articleId]);
+
+  if (!article && !loading) {
     return (
       <HelmetProvider>
         <Helmet>
-          <title>Article Not Found - AI Chat Platform</title>
+          <title>{t('app.title')} - {t('app.subtitle')} | Article Not Found</title>
         </Helmet>
-        <div className="text-center py-20">
-          <h1 className="text-3xl font-bold text-gray-700">404 - Article Not Found</h1>
-          <p className="text-gray-500 mt-4">Sorry, the article you are looking for does not exist.</p>
+        <div className="container mx-auto px-4 py-12 text-center">
+          <h1 className="text-3xl font-bold mb-4">Article Not Found</h1>
+          <p className="mb-8">The article you're looking for doesn't exist or has been removed.</p>
+          <button onClick={() => navigate('/news')} className="bg-indigo-600 text-white px-6 py-2 rounded hover:bg-indigo-700">
+            Back to News
+          </button>
         </div>
       </HelmetProvider>
     );
@@ -33,7 +49,7 @@ const ArticlePage = () => {
   return (
     <HelmetProvider>
       <Helmet>
-        <title>{`${article.title} - AI Chat Platform`}</title>
+        <title>{t('app.title')} - {t('app.subtitle')} | {article.title}</title>
         <meta name="description" content={article.fullContent.substring(0, 160)} />
       </Helmet>
       <div className="container mx-auto px-4 py-12">
