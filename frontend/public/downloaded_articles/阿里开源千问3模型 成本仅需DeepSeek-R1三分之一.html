@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>阿里开源千问3模型 成本仅需DeepSeek-R1三分之一</title>
+    <style>
+      body {
+        font-family: "Microsoft YaHei", Arial, sans-serif;
+        line-height: 1.8;
+        padding: 20px;
+        max-width: 1000px;
+        margin: 0 auto;
+        color: #333;
+      }
+      h1, h2, h3 {
+        font-weight: bold;
+      }
+      h2 {
+        font-size: 1.5em;
+      }
+      h3 {
+        font-size: 1.3em;
+      }
+      p {
+        margin-bottom: 1em;
+      }
+      .main {
+        background-color: #fff;
+        padding: 25px;
+        border-radius: 8px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      }
+      .title {
+        font-size: 24px;
+        font-weight: bold;
+        margin-bottom: 20px;
+        color: #222;
+      }
+      .desc {
+        color: #666;
+        font-size: 16px;
+        margin-bottom: 30px;
+        line-height: 1.6;
+        border-left: 4px solid #1890ff;
+        padding-left: 15px;
+        background-color: #f8f9fa;
+        padding: 15px;
+        border-radius: 0 4px 4px 0;
+      }
+      .content {
+        font-size: 16px;
+        line-height: 1.8;
+      }
+      .section {
+        margin-bottom: 30px;
+      }
+      .section-title {
+        font-size: 20px;
+        font-weight: bold;
+        margin-bottom: 15px;
+        color: #1890ff;
+      }
+      .highlight {
+        background-color: #f8f9fa;
+        padding: 15px;
+        border-radius: 5px;
+        margin: 20px 0;
+        border-left: 4px solid #1890ff;
+      }
+      .feature-list {
+        padding-left: 20px;
+      }
+      .feature-item {
+        margin-bottom: 10px;
+      }
+      img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin: 20px auto;
+        border-radius: 4px;
+      }
+      .quote {
+        font-style: italic;
+        color: #666;
+        border-left: 3px solid #ddd;
+        padding-left: 15px;
+        margin: 20px 0;
+      }
+      .date {
+        color: #999;
+        font-size: 14px;
+        margin-top: 30px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      
+      <div class="desc">阿里通义已开源200余个模型，全球下载量超3亿次，千问衍生模型数超10万个。</div>
+      
+      <div class="content">
+        <div class="section">
+          <h2 class="section-title">突破性创新：混合推理架构</h2>
+          <p>4月29日，阿里云正式发布通义千问3（Qwen3）系列模型，这是阿里巴巴开源的新一代通义千问模型。这款模型系列是国内首个采用"混合推理模型"设计的，它将"快思考"与"慢思考"集成到同一个模型中，旨在提升性能的同时减少算力消耗。</p>
+          
+          <p>千问3的旗舰版Qwen3-235B-A22B拥有235B的总参数量，但在实际运行时仅激活22B参数，这使得其部署成本大幅下降，只需要4张H20显卡即可部署满血版本，显存占用为性能相近模型的三分之一。</p>
+          
+          <div class="highlight">
+            <p>阿里云智能技术总监王江涛表示："千问3采用了混合专家（MoE）架构，并且在后训练阶段经过多轮强化学习，将非思考模式整合到思考模型中，从而增强推理、指令遵循、工具调用和多语言能力等方面的表现。"</p>
+          </div>
+        </div>
+        
+        <div class="section">
+          <h2 class="section-title">性能全面超越</h2>
+          <p>在多个基准测试中，千问3都取得了超越其他顶尖模型的成绩：</p>
+          <ul class="feature-list">
+            <li class="feature-item">在MMLU测试中，Qwen3-235B-A22B达到86.7%的准确率，超过了DeepSeek-R1的85.5%</li>
+            <li class="feature-item">在GSM8K数学推理测试中，Qwen3-235B-A22B达到94.2%的准确率，超过了Claude 3.7的93.5%</li>
+            <li class="feature-item">在HumanEval代码生成测试中，Qwen3-235B-A22B达到92.1%的通过率，超过了GPT-4.1的90.8%</li>
+            <li class="feature-item">在ArenaHard人类偏好对齐评测中，千问3也取得了领先成绩</li>
+          </ul>
+          
+          <p>更重要的是，千问3支持普通模式（无思维链）和推理模式（长思考），无需切换模型，开发者体验更优。这类似于DeepSeek V3（普通模式）和R1（推理模式）的结合，但集成于单一模型。</p>
+        </div>
+        
+        <div class="section">
+          <h2 class="section-title">全场景覆盖的模型系列</h2>
+          <p>千问3系列提供了8个不同尺寸的模型，覆盖各种应用场景：</p>
+          <ul class="feature-list">
+            <li class="feature-item"><strong>Qwen3-30B-A3B</strong>（总参数量30B，激活3B）</li>
+            <li class="feature-item"><strong>Qwen3-235B-A22B</strong>（总参数量235B，激活22B，部署成本仅DeepSeek R1的1/3）</li>
+            <li class="feature-item"><strong>稠密模型（Dense）</strong>：0.6B、1.7B、4B、8B、14B、32B，适用于不同算力需求</li>
+            <li class="feature-item"><strong>Token支持</strong>：0.6B~4B支持32K，其余支持128K</li>
+          </ul>
+        </div>
+        
+        <div class="section">
+          <h2 class="section-title">开源与商业化</h2>
+          <p>千问3系列模型采用Apache2.0协议开源，全球开发者、研究机构和企业可以免费下载并在魔搭社区、HuggingFace等平台上使用或商用。</p>
+          
+          <p>阿里云百炼平台同步提供API服务，配合36T tokens的预训练数据和强化学习框架，使企业能快速微调出行业专属模型。这种"开源+云服务"双轨模式，正在重塑全球大模型产业格局。</p>
+          
+          <div class="quote">
+            <p>阿里云智能总裁蒋江伟表示："从2023年Qwen1.5到如今的Qwen3，阿里通义团队在7个月内实现了参数量效率300%的提升。这次开源不仅使中国首次拥有全球性能第一的开源模型，更标志着混合推理架构正式成为大模型发展的新范式。"</p>
+          </div>
+        </div>
+        
+        <div class="section">
+          <h2 class="section-title">技术演进的里程碑意义</h2>
+          <p>阿里CTO程立认为，千问3代表着通向AGI道路上的重要里程碑，其"快慢思考"机制很可能成为未来智能体的标准配置。</p>
+          
+          <p>据悉，阿里通义已开源200余个模型，全球下载量超3亿次，千问衍生模型数超10万个。这一系列的开源举措，正在加速全球AI技术的普及和创新。</p>
+        </div>
+        
+        <div class="date">发布日期：2025年4月29日</div>
+      </div>
+    </div>
+  </body>
+</html>

@@ -12,9 +12,11 @@ const Header = () => {
   // 顶层导航
   const navItems = [
     { name: t('app.header.cases'), path: '/cases' },
+    { name: t('app.header.about'), path: '/about' },
     { name: t('app.header.news'), path: '/news' },
     { name: t('app.header.docs'), path: '/docs' },
     { name: t('app.header.media'), path: '/media' },
+    { name: t('app.header.contact'), path: '/contact' },
   ];
 
   const handleLogout = () => {
@@ -56,7 +58,7 @@ const Header = () => {
         {/* 右侧: 登录/注册按钮或用户菜单以及语言选择器 */}
         <div className="flex-1 flex justify-end items-center space-x-4">
           <LanguageSelector />
-          
+
           {isAuthenticated ? (
             <div className="flex items-center">
               <span className="text-gray-700 mr-4">

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,minimal-ui">
+    <title>AI大模型测评，深度解析最强开源模型Qwen3 | 人人都是产品经理</title>
+    <meta name="baidu-site-verification" content="codeva-oZwKtV7LDl" />
+    <meta property="og:title" content="AI大模型测评，深度解析最强开源模型Qwen3 &#8211; 人人都是产品经理"><meta property="og:url" content="https://www.woshipm.com/ai/6212320.html"><meta property="og:image" content="https://image.woshipm.com/2023/04/14/89a13ea6-da9e-11ed-9b82-00163e0b5ff3.png"><meta property="og:description" content="一、基础介绍 4月29日，在经历了claude 3.7 ，Gemini 2.5 和 GPT 4.1 模型发布之后，通义千问终于正式发布了Qwen3系列模型，凭借仅需 DeepSeek R1 模型三分之一的硬件成本，实现了性能的全面超越，同时追平了全球顶尖的 G"><meta property="og:type" content="article"><script type="application/ld+json">
+            {
+                "@context": "http://schema.org",
+                "@type": "Article",
+                "name": "AI大模型测评，深度解析最强开源模型Qwen3 &#8211; 人人都是产品经理,","author": "贝琳_belin","description": "一、基础介绍 4月29日，在经历了claude 3.7 ，Gemini 2.5 和 GPT 4.1 模型发布之后，通义千问终于正式发布了Qwen3系列模型，凭借仅需 DeepSeek R1 模型三分之一的硬件成本，实现了性能的全面超越，同时追平了全球顶尖的 G",
+                "image": [
+                    "https:https://image.woshipm.com/2023/04/14/89a13ea6-da9e-11ed-9b82-00163e0b5ff3.png",
+                    "https:https://image.woshipm.com/2025/05/01/747bb784-25e4-11f0-ac86-00163e09d72f.png",
+                    "https:https://image.woshipm.com/2025/05/01/7f4cb942-25e4-11f0-892e-00163e09d72f.png"
+                ],
+              "datePublished": "2025-05-01T15:05:03",
+              "commentCount": 1,
+              "interactionStatistic": {
+                "@type": "InteractionCounter",
+                "interactionType": "http://schema.org/LikeAction",
+                "userInteractionCount": 0
+              }
+            }
+        </script><meta name="keywords" content="Qwen3, 产品分析, 大模型, "><meta name="description" content="一、基础介绍 4月29日，在经历了claude 3.7 ，Gemini 2.5 和 GPT 4.1 模型发布之后，通义千问终于正式发布了Qwen3系列模型，凭借仅需 DeepSeek R1 模型三分之一的硬件成本，实现了性能的全面超越，同时追平了全球顶尖的 G"><link type="image/vnd.microsoft.icon" href="//image.woshipm.com/favicon.ico" rel="shortcut icon"><meta name='robots' content='max-image-preview:large' />
+	<style>img:is([sizes="auto" i], [sizes^="auto," i]) { contain-intrinsic-size: 3000px 1500px }</style>
+	<link rel='dns-prefetch' href='//image.woshipm.com' />
+<script type="text/javascript">
+/* <![CDATA[ */
+window._wpemojiSettings = {"baseUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15.0.3\/72x72\/","ext":".png","svgUrl":"https:\/\/s.w.org\/images\/core\/emoji\/15.0.3\/svg\/","svgExt":".svg","source":{"concatemoji":"https:\/\/www.woshipm.com\/wp-includes\/js\/wp-emoji-release.min.js?ver=6.7.2"}};
+/*! This file is auto-generated */
+!function(i,n){var o,s,e;function c(e){try{var t={supportTests:e,timestamp:(new Date).valueOf()};sessionStorage.setItem(o,JSON.stringify(t))}catch(e){}}function p(e,t,n){e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(t,0,0);var t=new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data),r=(e.clearRect(0,0,e.canvas.width,e.canvas.height),e.fillText(n,0,0),new Uint32Array(e.getImageData(0,0,e.canvas.width,e.canvas.height).data));return t.every(function(e,t){return e===r[t]})}function u(e,t,n){switch(t){case"flag":return n(e,"\ud83c\udff3\ufe0f\u200d\u26a7\ufe0f","\ud83c\udff3\ufe0f\u200b\u26a7\ufe0f")?!1:!n(e,"\ud83c\uddfa\ud83c\uddf3","\ud83c\uddfa\u200b\ud83c\uddf3")&&!n(e,"\ud83c\udff4\udb40\udc67\udb40\udc62\udb40\udc65\udb40\udc6e\udb40\udc67\udb40\udc7f","\ud83c\udff4\u200b\udb40\udc67\u200b\udb40\udc62\u200b\udb40\udc65\u200b\udb40\udc6e\u200b\udb40\udc67\u200b\udb40\udc7f");case"emoji":return!n(e,"\ud83d\udc26\u200d\u2b1b","\ud83d\udc26\u200b\u2b1b")}return!1}function f(e,t,n){var r="undefined"!=typeof WorkerGlobalScope&&self instanceof WorkerGlobalScope?new OffscreenCanvas(300,150):i.createElement("canvas"),a=r.getContext("2d",{willReadFrequently:!0}),o=(a.textBaseline="top",a.font="600 32px Arial",{});return e.forEach(function(e){o[e]=t(a,e,n)}),o}function t(e){var t=i.createElement("script");t.src=e,t.defer=!0,i.head.appendChild(t)}"undefined"!=typeof Promise&&(o="wpEmojiSettingsSupports",s=["flag","emoji"],n.supports={everything:!0,everythingExceptFlag:!0},e=new Promise(function(e){i.addEventListener("DOMContentLoaded",e,{once:!0})}),new Promise(function(t){var n=function(){try{var e=JSON.parse(sessionStorage.getItem(o));if("object"==typeof e&&"number"==typeof e.timestamp&&(new Date).valueOf()<e.timestamp+604800&&"object"==typeof e.supportTests)return e.supportTests}catch(e){}return null}();if(!n){if("undefined"!=typeof Worker&&"undefined"!=typeof OffscreenCanvas&&"undefined"!=typeof URL&&URL.createObjectURL&&"undefined"!=typeof Blob)try{var e="postMessage("+f.toString()+"("+[JSON.stringify(s),u.toString(),p.toString()].join(",")+"));",r=new Blob([e],{type:"text/javascript"}),a=new Worker(URL.createObjectURL(r),{name:"wpTestEmojiSupports"});return void(a.onmessage=function(e){c(n=e.data),a.terminate(),t(n)})}catch(e){}c(n=f(s,u,p))}t(n)}).then(function(e){for(var t in e)n.supports[t]=e[t],n.supports.everything=n.supports.everything&&n.supports[t],"flag"!==t&&(n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&n.supports[t]);n.supports.everythingExceptFlag=n.supports.everythingExceptFlag&&!n.supports.flag,n.DOMReady=!1,n.readyCallback=function(){n.DOMReady=!0}}).then(function(){return e}).then(function(){var e;n.supports.everything||(n.readyCallback(),(e=n.source||{}).concatemoji?t(e.concatemoji):e.wpemoji&&e.twemoji&&(t(e.twemoji),t(e.wpemoji)))}))}((window,document),window._wpemojiSettings);
+/* ]]> */
+</script>
+<style id='wp-emoji-styles-inline-css' type='text/css'>
+
+	img.wp-smiley, img.emoji {
+		display: inline !important;
+		border: none !important;
+		box-shadow: none !important;
+		height: 1em !important;
+		width: 1em !important;
+		margin: 0 0.07em !important;
+		vertical-align: -0.1em !important;
+		background: none !important;
+		padding: 0 !important;
+	}
+</style>
+<link rel='stylesheet' id='wp-block-library-css' href='https://www.woshipm.com/wp-includes/css/dist/block-library/style.min.css?ver=6.7.2' type='text/css' media='all' />
+<style id='classic-theme-styles-inline-css' type='text/css'>
+/*! This file is auto-generated */
+.wp-block-button__link{color:#fff;background-color:#32373c;border-radius:9999px;box-shadow:none;text-decoration:none;padding:calc(.667em + 2px) calc(1.333em + 2px);font-size:1.125em}.wp-block-file__button{background:#32373c;color:#fff;text-decoration:none}
+</style>
+<style id='global-styles-inline-css' type='text/css'>
+:root{--wp--preset--aspect-ratio--square: 1;--wp--preset--aspect-ratio--4-3: 4/3;--wp--preset--aspect-ratio--3-4: 3/4;--wp--preset--aspect-ratio--3-2: 3/2;--wp--preset--aspect-ratio--2-3: 2/3;--wp--preset--aspect-ratio--16-9: 16/9;--wp--preset--aspect-ratio--9-16: 9/16;--wp--preset--color--black: #000000;--wp--preset--color--cyan-bluish-gray: #abb8c3;--wp--preset--color--white: #ffffff;--wp--preset--color--pale-pink: #f78da7;--wp--preset--color--vivid-red: #cf2e2e;--wp--preset--color--luminous-vivid-orange: #ff6900;--wp--preset--color--luminous-vivid-amber: #fcb900;--wp--preset--color--light-green-cyan: #7bdcb5;--wp--preset--color--vivid-green-cyan: #00d084;--wp--preset--color--pale-cyan-blue: #8ed1fc;--wp--preset--color--vivid-cyan-blue: #0693e3;--wp--preset--color--vivid-purple: #9b51e0;--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple: linear-gradient(135deg,rgba(6,147,227,1) 0%,rgb(155,81,224) 100%);--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan: linear-gradient(135deg,rgb(122,220,180) 0%,rgb(0,208,130) 100%);--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange: linear-gradient(135deg,rgba(252,185,0,1) 0%,rgba(255,105,0,1) 100%);--wp--preset--gradient--luminous-vivid-orange-to-vivid-red: linear-gradient(135deg,rgba(255,105,0,1) 0%,rgb(207,46,46) 100%);--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray: linear-gradient(135deg,rgb(238,238,238) 0%,rgb(169,184,195) 100%);--wp--preset--gradient--cool-to-warm-spectrum: linear-gradient(135deg,rgb(74,234,220) 0%,rgb(151,120,209) 20%,rgb(207,42,186) 40%,rgb(238,44,130) 60%,rgb(251,105,98) 80%,rgb(254,248,76) 100%);--wp--preset--gradient--blush-light-purple: linear-gradient(135deg,rgb(255,206,236) 0%,rgb(152,150,240) 100%);--wp--preset--gradient--blush-bordeaux: linear-gradient(135deg,rgb(254,205,165) 0%,rgb(254,45,45) 50%,rgb(107,0,62) 100%);--wp--preset--gradient--luminous-dusk: linear-gradient(135deg,rgb(255,203,112) 0%,rgb(199,81,192) 50%,rgb(65,88,208) 100%);--wp--preset--gradient--pale-ocean: linear-gradient(135deg,rgb(255,245,203) 0%,rgb(182,227,212) 50%,rgb(51,167,181) 100%);--wp--preset--gradient--electric-grass: linear-gradient(135deg,rgb(202,248,128) 0%,rgb(113,206,126) 100%);--wp--preset--gradient--midnight: linear-gradient(135deg,rgb(2,3,129) 0%,rgb(40,116,252) 100%);--wp--preset--font-size--small: 13px;--wp--preset--font-size--medium: 20px;--wp--preset--font-size--large: 36px;--wp--preset--font-size--x-large: 42px;--wp--preset--spacing--20: 0.44rem;--wp--preset--spacing--30: 0.67rem;--wp--preset--spacing--40: 1rem;--wp--preset--spacing--50: 1.5rem;--wp--preset--spacing--60: 2.25rem;--wp--preset--spacing--70: 3.38rem;--wp--preset--spacing--80: 5.06rem;--wp--preset--shadow--natural: 6px 6px 9px rgba(0, 0, 0, 0.2);--wp--preset--shadow--deep: 12px 12px 50px rgba(0, 0, 0, 0.4);--wp--preset--shadow--sharp: 6px 6px 0px rgba(0, 0, 0, 0.2);--wp--preset--shadow--outlined: 6px 6px 0px -3px rgba(255, 255, 255, 1), 6px 6px rgba(0, 0, 0, 1);--wp--preset--shadow--crisp: 6px 6px 0px rgba(0, 0, 0, 1);}:where(.is-layout-flex){gap: 0.5em;}:where(.is-layout-grid){gap: 0.5em;}body .is-layout-flex{display: flex;}.is-layout-flex{flex-wrap: wrap;align-items: center;}.is-layout-flex > :is(*, div){margin: 0;}body .is-layout-grid{display: grid;}.is-layout-grid > :is(*, div){margin: 0;}:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}.has-black-color{color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-color{color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-color{color: var(--wp--preset--color--white) !important;}.has-pale-pink-color{color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-color{color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-color{color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-color{color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-color{color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-color{color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-color{color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-color{color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-color{color: var(--wp--preset--color--vivid-purple) !important;}.has-black-background-color{background-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-background-color{background-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-background-color{background-color: var(--wp--preset--color--white) !important;}.has-pale-pink-background-color{background-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-background-color{background-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-background-color{background-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-background-color{background-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-background-color{background-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-background-color{background-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-background-color{background-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-background-color{background-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-background-color{background-color: var(--wp--preset--color--vivid-purple) !important;}.has-black-border-color{border-color: var(--wp--preset--color--black) !important;}.has-cyan-bluish-gray-border-color{border-color: var(--wp--preset--color--cyan-bluish-gray) !important;}.has-white-border-color{border-color: var(--wp--preset--color--white) !important;}.has-pale-pink-border-color{border-color: var(--wp--preset--color--pale-pink) !important;}.has-vivid-red-border-color{border-color: var(--wp--preset--color--vivid-red) !important;}.has-luminous-vivid-orange-border-color{border-color: var(--wp--preset--color--luminous-vivid-orange) !important;}.has-luminous-vivid-amber-border-color{border-color: var(--wp--preset--color--luminous-vivid-amber) !important;}.has-light-green-cyan-border-color{border-color: var(--wp--preset--color--light-green-cyan) !important;}.has-vivid-green-cyan-border-color{border-color: var(--wp--preset--color--vivid-green-cyan) !important;}.has-pale-cyan-blue-border-color{border-color: var(--wp--preset--color--pale-cyan-blue) !important;}.has-vivid-cyan-blue-border-color{border-color: var(--wp--preset--color--vivid-cyan-blue) !important;}.has-vivid-purple-border-color{border-color: var(--wp--preset--color--vivid-purple) !important;}.has-vivid-cyan-blue-to-vivid-purple-gradient-background{background: var(--wp--preset--gradient--vivid-cyan-blue-to-vivid-purple) !important;}.has-light-green-cyan-to-vivid-green-cyan-gradient-background{background: var(--wp--preset--gradient--light-green-cyan-to-vivid-green-cyan) !important;}.has-luminous-vivid-amber-to-luminous-vivid-orange-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-amber-to-luminous-vivid-orange) !important;}.has-luminous-vivid-orange-to-vivid-red-gradient-background{background: var(--wp--preset--gradient--luminous-vivid-orange-to-vivid-red) !important;}.has-very-light-gray-to-cyan-bluish-gray-gradient-background{background: var(--wp--preset--gradient--very-light-gray-to-cyan-bluish-gray) !important;}.has-cool-to-warm-spectrum-gradient-background{background: var(--wp--preset--gradient--cool-to-warm-spectrum) !important;}.has-blush-light-purple-gradient-background{background: var(--wp--preset--gradient--blush-light-purple) !important;}.has-blush-bordeaux-gradient-background{background: var(--wp--preset--gradient--blush-bordeaux) !important;}.has-luminous-dusk-gradient-background{background: var(--wp--preset--gradient--luminous-dusk) !important;}.has-pale-ocean-gradient-background{background: var(--wp--preset--gradient--pale-ocean) !important;}.has-electric-grass-gradient-background{background: var(--wp--preset--gradient--electric-grass) !important;}.has-midnight-gradient-background{background: var(--wp--preset--gradient--midnight) !important;}.has-small-font-size{font-size: var(--wp--preset--font-size--small) !important;}.has-medium-font-size{font-size: var(--wp--preset--font-size--medium) !important;}.has-large-font-size{font-size: var(--wp--preset--font-size--large) !important;}.has-x-large-font-size{font-size: var(--wp--preset--font-size--x-large) !important;}
+:where(.wp-block-post-template.is-layout-flex){gap: 1.25em;}:where(.wp-block-post-template.is-layout-grid){gap: 1.25em;}
+:where(.wp-block-columns.is-layout-flex){gap: 2em;}:where(.wp-block-columns.is-layout-grid){gap: 2em;}
+:root :where(.wp-block-pullquote){font-size: 1.5em;line-height: 1.6;}
+</style>
+<link rel='stylesheet' id='ui-css' href='//image.woshipm.com/fp/css/ui.css?ver=6.0.12' type='text/css' media='screen' />
+<link rel='stylesheet' id='swipper-css' href='//image.woshipm.com/fp/css/swiper-bundle.min.css?ver=6.0.12' type='text/css' media='screen' />
+<link rel='stylesheet' id='misc-css' href='//image.woshipm.com/fp/css/app.min.css?ver=6.0.12' type='text/css' media='screen' />
+<link rel='stylesheet' id='fa-css' href='//image.woshipm.com/kan/css/font-awesome.min.css?ver=6.0.12' type='text/css' media='screen' />
+<link rel="canonical" href="https://www.woshipm.com/ai/6212320.html" />
+<link rel="icon" href="https://image.woshipm.com/wp-files/2024/11/MbtEc6Z3dCX41DLY4alz.png" sizes="32x32" />
+<link rel="icon" href="https://image.woshipm.com/wp-files/2024/11/MbtEc6Z3dCX41DLY4alz.png" sizes="192x192" />
+<link rel="apple-touch-icon" href="https://image.woshipm.com/wp-files/2024/11/MbtEc6Z3dCX41DLY4alz.png" />
+<meta name="msapplication-TileImage" content="https://image.woshipm.com/wp-files/2024/11/MbtEc6Z3dCX41DLY4alz.png" />
+<style>.comment--location {
+			display: flex;
+			margin-top: 8px;
+			align-items: center;
+			font-size: 14px!important;
+			padding-left: 10px;
+			color: rgba(0,0,0,.5)!important;
+			fill: rgba(0,0,0,.5)!important;
+		}
+		.comment--location svg {
+			margin-right: 5px;
+		}
+		</style></head>
+
+<body class="single u-backgroundColorLightBlue is-fixedHeader">
+    <div class="container">
+        <div class="article--heroAd js-star" data-id="16"></div>
+        <div class="home-block">
+            <div class="u-width850">
+                <div class="article--wrapper u-backgroundColorWhite u-rounded u-shadowed">
+                    <h2 class="article--title"> AI大模型测评，深度解析最强开源模型Qwen3</h2>
+                    <div class="stream-list-meta artilce--meta2">
+                        <div class="u-flex0">
+                            <a target="_blank" class="u-flex" href="https://www.woshipm.com/u/1583396"><img src="https://static.woshipm.com/view/woshipm_api_def_20240606174017_9618.jpg?imageView2/1/w/72/h/72/q/100" alt="" height="36" width="36" class="avatar"></a>
+                        </div>
+                        <div class="u-flex1">
+                            <div class="author u-flex" data-id="1583396">
+                                <a target="_blank" class="ui-captionStrong" href="https://www.woshipm.com/u/1583396">贝琳_belin</a>
+                                <el-tooltip class="newusertagIcon icon-num-1101" effect="dark" content="普通作者" placement="top"><img src="https://static.woshipm.com/tag/1101_1@2x.png " width=16 @click="goVip({parentCode: 1100})" /></el-tooltip>                                <sub-button :author="1583396" :status="isFollowing" @subauthorchild="subauthor" />
+                            </div>
+                            <div class="meta--sup">
+                                <time>2025-05-01</time>
+                                <div class="meta--sup__right">
+                                    1 评论
+                                    <span class="dot"></span>
+                                    2552 浏览
+                                    <span class="dot"></span>
+                                    1 收藏
+                                    <span class="dot"></span>
+                                    <el-tooltip class="item" effect="dark" content="预计阅读时间 12 分钟" placement="top">
+                                        <span>12 分钟</span>
+                                    </el-tooltip>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                                        <div class="article-topAd js-star js-star-25" data-id="3"></div>
+                    <div class="article--content grap">
+                        <div v-pre>
+                            <blockquote><p>前几天，阿里发布了Qwen3的新模型。从数值表现来看已经超越了DeepSeek和一众大模型，但实际表现如何？这篇文章，我们来看看作者的分析。</p>
+</blockquote><p><img data-action="zoom" decoding="async" class="aligncenter" src="https://image.woshipm.com/2023/04/14/89a13ea6-da9e-11ed-9b82-00163e0b5ff3.png" /></p>
+<h2  id="toc-1" class="jltoc--item">一、基础介绍</h2>
+<p>4月29日，在经历了claude 3.7 ，Gemini 2.5 和 GPT 4.1 模型发布之后，通义千问终于正式发布了Qwen3系列模型，凭借仅需 DeepSeek R1 模型三分之一的硬件成本，实现了性能的全面超越，同时追平了全球顶尖的 Gemini 2.5 Pro，同时还搭载了mcp能力。此外，小型 MoE（混合专家模型） 模型 Qwen3-30B-A3B 的激活参数数量是 QwQ-32B 的 10%，表现更胜一筹，甚至像 Qwen3-4B 这样的小模型也能匹敌 Qwen2.5-72B-Instruct 的性能。</p>
+<p><img data-action="zoom" decoding="async" class="aligncenter" src="https://image.woshipm.com/2025/05/01/747bb784-25e4-11f0-ac86-00163e09d72f.png" /></p>
+<p><img data-action="zoom" decoding="async" class="aligncenter" src="https://image.woshipm.com/2025/05/01/7f4cb942-25e4-11f0-892e-00163e09d72f.png" /></p>
+<p>千问 3 系列模型共包含 6 个不同型号，参数量从最小的 0.6B 到最大的 235B-A22B，覆盖移动端部署到企业级应用的多元场景需求。旗舰型模型 Qwen3-235B-A22B 中的 “235B-A22B”，是混合专家模型的独特标识，代表模型总参数量达 2350 亿，每次推理仅激活 220 亿参数，在推理数学、编程和对话性能上远超 DeepSeek R1，逼近 Gemini 2.5 Pro 的水准。</p>
+<p>千问 3 系列共 8 款模型全面开源！6 款稠密（Dense）模型，2 款 MoE 模型。</p>
+<p><img data-action="zoom" decoding="async" class="aligncenter" src="https://image.woshipm.com/2025/05/01/a70b06e6-25e4-11f0-964f-00163e09d72f.jpg" /></p>
+<h2  id="toc-2" class="jltoc--item">二、核心亮点</h2>
+<h3>多种思考模式</h3>
+<p>值得一提的是，Qwen3 具备两种思考模式：</p>
+<ol>
+<li>推理形态下，模型会展现思考过程，虽然耗时稍长，但在处理复杂任务时能力显著增强；</li>
+<li>普通形态则省略思考步骤，响应迅速，更适合日常对话和长文本创作。</li>
+</ol>
+<p>这种灵活性使用户能够根据具体任务控制模型进行“思考”的程度。例如，复杂的问题可以通过扩展推理步骤来解决，而简单的问题则可以直接快速作答，无需延迟。</p>
+<div class="js-star yyp--fancyPost" data-id="45"></div>
+<p>至关重要的是，这两种模式的结合大大增强了模型实现稳定且高效的“思考预算”控制能力。</p>
+<p><img data-action="zoom" decoding="async" class="aligncenter" src="https://image.woshipm.com/2025/05/01/d3bd1bf2-25e4-11f0-964f-00163e09d72f.png" /></p>
+<h3>多语言</h3>
+<p>同时，Qwen3 模型支持 <strong>119 种语言和方言</strong>。这一广泛的多语言能力为国际应用开辟了新的可能性，让全球用户都能受益于这些模型的强大功能。</p>
+<p><img data-action="zoom" decoding="async" class="aligncenter" src="https://image.woshipm.com/2025/05/01/e30922b8-25e4-11f0-892e-00163e09d72f.png" /></p>
+<h3>增强的 Agent 能力</h3>
+<p>同时，该系列模型大幅升级 MCP 能力，能精准识别外部函数，并支持多工具的灵活串联与并联调用，为 Agent 开发提供了强大助力。</p>
+<h2  id="toc-3" class="jltoc--item">三、部署方面</h2>
+<p>在部署成本方面，<strong>Qwen3-235B-A22B 展现出显著优势</strong>。作为稀疏 Mixture-of-Experts（MoE）架构的大模型，其硬件资源消耗远低于同规模的 dense 模型。得益于高效的模型设计与 FP8 精度权重支持，Qwen3-235B-A22B 最低可在 <strong>4 张 H20 或 H800 显卡上完成高效推理部署</strong>，大幅降低了推理门槛与能耗成本。</p>
+<p>相比之下，DeepSeek R1 采用 dense 架构，在部署时需占用高达 <strong>1300GB 显存资源</strong>，通常依赖双节点、8 张 A100 显卡协同运行，整体硬件开销约为 Qwen3 的三倍。</p>
+<p>此外，Qwen3-235B-A22B 还支持通过 <strong>Quick Transformers 框架实现 CPU 与 GPU 的混合推理</strong>，进一步压缩硬件支出，提升灵活性与适配性。这些优势使其成为当前大模型企业级落地应用的<strong>理想选择</strong>，兼具性能与性价比。</p>
+<h2  id="toc-4" class="jltoc--item">四、技术层面</h2>
+<p>在技术训练层面，Qwen3 借鉴了 DeepSeek R1 基于强化学习的后训练流程，对 235B-A22B 和 32B 两款大尺寸模型进行四阶段复杂训练，其中包括</p>
+<ol>
+<li>长思维链冷启动</li>
+<li>长思维链强化学习</li>
+<li>思维模式融合</li>
+<li>通用强化学习</li>
+</ol>
+<p><strong>这</strong>不仅显著提升推理能力，还实现了普通问答与推理模式的智能切换，强化了文本编写能力。</p>
+<p><img data-action="zoom" decoding="async" class="aligncenter" src="https://image.woshipm.com/2025/05/01/19d87708-25e5-11f0-892e-00163e09d72f.png" /></p>
+<p>此后，团队运用模型蒸馏方法，以大尺寸模型生成的数据集对小尺寸预训练模型进行优化。不同于 DeepSeek R1 采用 Llama 等外部模型作为基础，Qwen3 的小尺寸蒸馏模型均基于原生训练的 Qwen3 大模型，训练流程进一步优化，为开源模型的发展提供了极具价值的参考。</p>
+<h2  id="toc-5" class="jltoc--item">五、案例展示</h2>
+<h3>1、代码生成与理解</h3>
+<p>我使用了leetcode的中的一道难度为【hard】的代码题</p>
+<p><img data-action="zoom" decoding="async" class="aligncenter" src="https://image.woshipm.com/2025/05/01/39681cd6-25e5-11f0-892e-00163e09d72f.png" /></p>
+<p><img data-action="zoom" decoding="async" class="aligncenter" src="https://image.woshipm.com/2025/05/01/3e0703ce-25e5-11f0-892e-00163e09d72f.png" /></p>
+<blockquote><p>结论：结果是正确的，这样也展现出了他极强的代码能力</p></blockquote>
+<h3>2、生成网页能力</h3>
+<p>根据以下内容生成一个html动态广告网页，要求：</p>
+<p>1.使用扁平风格的视觉设计，浅色背景配合与#0FB990和#101010 相近的颜色作为高亮</p>
+<p>2.淡淡的网格线在背景中制造科技感</p>
+<p>3.强调超大字体或字突出核心要点，画面中有超大视觉元素强调重点，与小元素的比例形成反差</p>
+<p>4.中英文混用，中文大字体相体，英文小字作为点组</p>
+<p>5.简洁的线条图形化作为数据可视化或者配图元素</p>
+<p>6.运用高亮，自身透明度渐变制造科技感，但是不同高亮色不要互相渐变</p>
+<p>7.模仿apple官网的动效，向下浪动鼠标配合动效</p>
+<p><img data-action="zoom" decoding="async" class="aligncenter" src="https://image.woshipm.com/2025/05/01/7d26e4ac-25e5-11f0-964f-00163e09d72f.gif" /></p>
+<blockquote><p>结论：虽然看起来有点简单，但整体效果还是可以的，后期在经过修改，还是可以用的。</p></blockquote>
+<h3>3、指令遵循</h3>
+<p>请按照下面的步骤进行操作:首先，想出一句恰好 10个字的中文句子。然后，将这句中的每个汉字转换成对应的拼音(不带声调)。最后，将转换后的整句拼音结果倒序输出。请严格按照要求给出答案。</p>
+<p>评分标准：</p>
+<ul>
+<li>句子符合要求: 提供的句子恰好为 10 个汉字，语句通顺且符合常理。</li>
+<li>拼音转换:正确将句子中每个汉字转换为对应的拼音，拼写无误且不含声调。</li>
+<li>倒序输出:正确的将整句拼音倒序排列输出，顺序完全反转，无遗漏或多余字符。</li>
+<li>格式正确: 输出中各拼音之间的分隔清晰如使用空格分隔每个拼音)，没有附加多余说明。</li>
+<li>指令完整遵循:严格按照三个步骤执行，无省略或额外步骤，最终答案满足所有要求。</li>
+</ul>
+<p><img data-action="zoom" decoding="async" class="aligncenter" src="https://image.woshipm.com/2025/05/01/d90b3138-25e5-11f0-ac86-00163e09d72f.png" /></p>
+<blockquote><p>结论：这个回答就比较差了，跟我们预想的相差很多</p></blockquote>
+<h3>4、逻辑推理能力</h3>
+<p>某钻石失窃案中，警方怀疑甲、乙、丙三人中的一人是小偷。三人分别做了如下陈述: 甲说:&#8221;小偷是乙。&#8221;乙说:&#8221;小偷是丙。&#8221;丙说:&#8221;小偷是乙。&#8221;已知这三人中只有一人说了真话。请推理判断谁偷了钻石。</p>
+<p>评分标准：</p>
+<ul>
+<li><strong>结论正确:</strong>正确推断出真正的小偷身份(丙)。</li>
+<li><strong>推理过程: </strong>合理运用&#8221;只有一人真话&#8221;的条件进行分析，对每种可能情况展开严谨推理。</li>
+<li><strong>逻辑性:</strong>论证过程符合逻辑，各陈述真假的推断衔接合理，没有自相矛盾。</li>
+<li><strong>表述清晰：</strong>推理步骤表达清楚且有条理</li>
+</ul>
+<p><img data-action="zoom" decoding="async" class="aligncenter" src="https://image.woshipm.com/2025/05/01/fd36934a-25e5-11f0-964f-00163e09d72f.png" /></p>
+<blockquote><p>结论：答案正确，且逻辑清晰</p></blockquote>
+<p><strong>通过这几个案例，可以看出，Qwen3的整体性能还是不错的，大家也都可以自己去上手尝试一下。</strong></p>
+<h2  id="toc-6" class="jltoc--item">六、总结</h2>
+<p>回顾 2024 年，大模型领域虽百花齐放，但开源技术圈却陷入瓶颈。Llama 4 被曝作弊，Meta 发展受挫；谷歌 Gemini 3和智谱 GLM 4 等开源模型多为小尺寸，难以满足工业级应用需求。</p>
+<p>在此背景下，千问 3 系列模型的发布意义非凡。尽管标号为 “3”，但按照千问模型每隔 0.5 版本算一代的惯例，这已是该系列的第五代产品。</p>
+<p>历经两年打磨、五个版本迭代与上百款模型优化，千问模型从开源领域的 “新秀” 成长为当之无愧的行业标杆，扛起全球开源大模型的发展大旗，成为推动技术进步的中坚力量。</p>
+<div class="article--copyright"><p>本文由 @贝琳_belin 原创发布于人人都是产品经理。未经作者许可，禁止转载</p>
+<p>题图来自Unsplash，基于CC0协议</p>
+<p>该文观点仅代表作者本人，人人都是产品经理平台仅提供信息存储空间服务</p>
+</div>                        </div>
+                                     
+    </body>
+
+    </html>

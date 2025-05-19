@@ -8,7 +8,9 @@
       "news": "News",
       "docs": "Documentation",
       "media": "Media",
-      "login": "Login / Register",
+      "about": "About Us",
+      "contact": "Contact Us",
+      "login": "Login",
       "logout": "Logout",
       "welcome": "Welcome, {{name}}",
       "chat": "Start Chat"
@@ -183,11 +185,139 @@
     "languageSelector": {
       "language": "Language"
     },
+    "loading": "Loading...",
+    "reload": "Reload",
+    "error": {
+      "Failed to load case studies": "Failed to load case studies",
+      "Failed to fetch metadata": "Failed to fetch metadata"
+    },
+    "casesPage": {
+      "title": "AI Application Cases",
+      "description": "Explore practical applications and best practices of the Qwen3 large language model",
+      "metaDescription": "Explore success cases and industry applications of Qwen3 AI Chat Platform.",
+      "metaKeywords": "success cases, case studies, industry applications, AI solutions, Qwen3, large language model",
+      "caseCards": {
+        "case1": {
+          "title": "Qwen3 Model Open Source and Initial Experience",
+          "summary": "Qwen is a large language model series developed by Alibaba Cloud, including foundation models and dialogue models. Recently, Alibaba Cloud released the Qwen3 series models and announced open source."
+        },
+        "case2": {
+          "title": "After Testing These 8 Amazing Uses of Alibaba's Qwen3, I'm Hooked!",
+          "summary": "Since Alibaba Cloud launched the Qwen3 model, I've been exploring its various uses. After a period of practical testing, I discovered some particularly useful and surprising applications."
+        },
+        "case3": {
+          "title": "After Testing These 8 Amazing Uses of Alibaba's Qwen3, I'm Hooked!",
+          "summary": "Recently, I deeply tested the Qwen3 large model launched by Alibaba Cloud and discovered some particularly practical and interesting usage methods. These 'magical uses' gave me a new understanding of the practicality of large language models."
+        },
+        "case4": {
+          "title": "AI Large Model Evaluation: In-depth Analysis of the Strongest Open Source Model Qwen3",
+          "summary": "With the rapid development of open-source large language models, various manufacturers have launched models with their own characteristics. This article will comprehensively evaluate Alibaba Cloud's Qwen3, analyzing its technical features, performance, and application value."
+        },
+        "case5": {
+          "title": "Using Alibaba's Open Source Large Model Qwen for Inference",
+          "summary": "Recently, Alibaba Cloud released the brand new Qwen3 large language model series and made it completely open source. As one of the currently leading open-source large models, Qwen3 provides multiple versions of different scales, suitable for different application scenarios."
+        }
+      }
+    },
     "case": {
-      "view": "View Case Study"
+      "view": "View Case Study",
+      "backToCases": "Back to Cases",
+      "backToTop": "Back to Top",
+      "publishDate": "Published Date",
+      "category": "Category",
+      "notFound": "No detailed information for this case is available. Please return to the case list to view other cases.",
+      "uncategorized": "Uncategorized",
+      "unknownDate": "Unknown Date",
+      "metaDescription": "Read detailed case analysis of \"{{title}}\"."
     },
     "article": {
-      "readMore": "Read More"
+      "readMore": "Read More",
+      "notFound": "Article Not Found",
+      "notFoundDesc": "The article you are looking for does not exist or has been removed.",
+      "backToNews": "Back to News",
+      "publishDate": "Published Date",
+      "category": "Category"
+    },
+    "about": {
+      "pageTitle": "About Us",
+      "metaDescription": "Learn about Qwen3 AI Chat Platform, our mission, team, and technology.",
+      "metaKeywords": "about us, company information, AI chat platform, team, mission, technology",
+      "companyIntro": {
+        "title": "Company Introduction",
+        "paragraph1": "Qwen3 AI Chat Platform is a cutting-edge artificial intelligence company dedicated to developing advanced conversational AI solutions. Founded in 2023, we have quickly established ourselves as a leader in the field of natural language processing and AI-powered communication.",
+        "paragraph2": "Our flagship product, the Qwen3 AI Chat Platform, leverages state-of-the-art large language models to provide intelligent, context-aware conversations that help businesses and individuals accomplish their goals more efficiently.",
+        "paragraph3": "With a focus on innovation, accessibility, and ethical AI development, we strive to create technology that enhances human capabilities while respecting privacy and promoting responsible use."
+      },
+      "mission": {
+        "title": "Our Mission",
+        "paragraph1": "At Qwen3 AI Chat Platform, our mission is to make advanced AI technology accessible to everyone, empowering people and organizations to achieve more through intelligent conversation.",
+        "paragraph2": "We believe that AI should be a tool that augments human capabilities, not replaces them. Our goal is to create AI solutions that are intuitive, helpful, and aligned with human values."
+      },
+      "team": {
+        "title": "Our Team",
+        "paragraph1": "Our diverse team of AI researchers, engineers, designers, and business professionals brings together expertise from various disciplines to create exceptional AI experiences.",
+        "member1": {
+          "name": "Dr. Alex Chen",
+          "position": "CEO & Co-founder",
+          "bio": "With a Ph.D. in Computer Science and over 15 years of experience in AI research, Dr. Chen leads our company's vision and strategy."
+        },
+        "member2": {
+          "name": "Dr. Sarah Wang",
+          "position": "CTO & Co-founder",
+          "bio": "A renowned expert in natural language processing with multiple published papers, Dr. Wang oversees our technical development and research initiatives."
+        }
+      },
+      "technology": {
+        "title": "Our Technology",
+        "paragraph1": "The Qwen3 AI Chat Platform is built on advanced large language models that have been trained on diverse datasets to understand and generate human-like text across multiple languages and domains.",
+        "paragraph2": "We continuously improve our models through rigorous testing, user feedback, and the latest research in the field of artificial intelligence.",
+        "feature1": {
+          "title": "Natural Language Understanding",
+          "description": "Our AI can comprehend complex queries, detect nuances, and understand context to provide relevant responses."
+        },
+        "feature2": {
+          "title": "Multilingual Support",
+          "description": "Communicate seamlessly in multiple languages with our AI, which has been trained on diverse linguistic datasets."
+        },
+        "feature3": {
+          "title": "Continuous Learning",
+          "description": "Our models are constantly improving through feedback loops and new training data, ensuring they stay up-to-date and relevant."
+        }
+      }
+    },
+    "contact": {
+      "pageTitle": "Contact Us",
+      "metaDescription": "Get in touch with the Qwen3 AI Chat Platform team. We're here to answer your questions and provide support.",
+      "metaKeywords": "contact, support, help, questions, feedback, AI chat platform",
+      "info": {
+        "title": "Contact Information",
+        "email": {
+          "label": "Email",
+          "value": "ytsgabcde21@2925.com"
+        },
+        "phone": {
+          "label": "Phone",
+          "value": "+1 (555) 123-4567"
+        },
+        "address": {
+          "label": "Address",
+          "value": "Jiangbei District, Chongqing, China"
+        },
+        "hours": {
+          "title": "Business Hours",
+          "weekdays": "Monday - Friday: 9:00 AM - 6:00 PM (PST)",
+          "weekends": "Saturday - Sunday: Closed"
+        }
+      },
+      "form": {
+        "title": "Send Us a Message",
+        "name": "Your Name",
+        "email": "Your Email",
+        "subject": "Subject",
+        "message": "Your Message",
+        "submit": "Send Message",
+        "successMessage": "Thank you for your message! We will get back to you as soon as possible."
+      }
     },
     "privacyPolicy": {
       "helmetTitle": "Privacy Policy - Qwen3 AI Chat Platform",
@@ -269,4 +399,4 @@
       }
     }
   }
-} 
+}

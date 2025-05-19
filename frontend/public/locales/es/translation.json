@@ -8,7 +8,7 @@
       "news": "Noticias",
       "docs": "Documentación",
       "media": "Media",
-      "login": "Iniciar sesión / Registrarse",
+      "login": "Iniciar sesión",
       "logout": "Cerrar sesión",
       "welcome": "Bienvenido, {{name}}",
       "chat": "Iniciar chat"
@@ -180,6 +180,17 @@
     },
     "languageSelector": {
       "language": "Idioma"
+    },
+    "case": {
+      "view": "Ver Caso de Estudio",
+      "backToCases": "Volver a Casos",
+      "backToTop": "Volver Arriba",
+      "publishDate": "Fecha de Publicación",
+      "category": "Categoría",
+      "notFound": "No hay información detallada disponible para este caso. Por favor, regrese a la lista de casos para ver otros casos.",
+      "uncategorized": "Sin categoría",
+      "unknownDate": "Fecha Desconocida",
+      "metaDescription": "Lea el análisis detallado del caso \"{{title}}\"."
     }
   }
-} 
+}

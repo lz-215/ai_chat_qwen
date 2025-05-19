@@ -8,7 +8,7 @@
       "news": "Actualités",
       "docs": "Documentation",
       "media": "Média",
-      "login": "Connexion / Inscription",
+      "login": "Connexion",
       "logout": "Déconnexion",
       "welcome": "Bienvenue, {{name}}",
       "chat": "Démarrer le chat"
@@ -98,6 +98,17 @@
     },
     "languageSelector": {
       "language": "Langue"
+    },
+    "case": {
+      "view": "Voir l'Étude de Cas",
+      "backToCases": "Retour aux Cas",
+      "backToTop": "Retour en Haut",
+      "publishDate": "Date de Publication",
+      "category": "Catégorie",
+      "notFound": "Aucune information détaillée n'est disponible pour ce cas. Veuillez retourner à la liste des cas pour en consulter d'autres.",
+      "uncategorized": "Non catégorisé",
+      "unknownDate": "Date Inconnue",
+      "metaDescription": "Lisez l'analyse détaillée du cas \"{{title}}\"."
     }
   }
-} 
+}

@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0,user-scalable=no,minimal-ui">
+    <title>AI大模型测评，深度解析最强开源模型Qwen3</title>
+    <style>
+      body {
+        font-family: "Microsoft YaHei", Arial, sans-serif;
+        line-height: 1.8;
+        padding: 20px;
+        max-width: 1000px;
+        margin: 0 auto;
+        color: #333;
+      }
+      h1, h2, h3, h4 {
+        font-weight: bold;
+        color: #333;
+      }
+      h1 {
+        font-size: 2em;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 0.3em;
+      }
+      h2 {
+        font-size: 1.5em;
+      }
+      h3 {
+        font-size: 1.3em;
+      }
+      p {
+        margin-bottom: 1em;
+      }
+      img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin: 1.5em auto;
+        border-radius: 4px;
+      }
+      blockquote {
+        border-left: 4px solid #ddd;
+        padding: 0 15px;
+        color: #777;
+        margin: 1em 0;
+      }
+      code {
+        background-color: #f5f5f5;
+        padding: 2px 4px;
+        border-radius: 3px;
+        font-family: Consolas, monospace;
+      }
+      pre {
+        background-color: #f5f5f5;
+        padding: 15px;
+        border-radius: 5px;
+        overflow: auto;
+      }
+      a {
+        color: #0366d6;
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+      ul, ol {
+        padding-left: 2em;
+        margin-bottom: 1em;
+      }
+      li {
+        margin-bottom: 0.5em;
+      }
+      .article-meta {
+        color: #666;
+        font-size: 0.9em;
+        margin-bottom: 2em;
+      }
+    </style>
+  </head>
+  <body>
+    <article>
+      
+      <h2 id="toc-1">一、基础介绍</h2>
+      <p>4月29日，在经历了claude 3.7 ，Gemini 2.5 和 GPT 4.1 模型发布之后，通义千问终于正式发布了Qwen3系列模型，凭借仅需 DeepSeek R1 模型三分之一的硬件成本，实现了性能的全面超越，同时追平了全球顶尖的 GPT-4.1 和 Claude 3.7 的水平。</p>
+      
+      <p>Qwen3 系列模型是阿里巴巴开源的新一代通义千问模型，发布于2025年4月29日。这款模型系列是国内首个采用"混合推理模型"设计的，它将"快思考"与"慢思考"集成到同一个模型中，旨在提升性能的同时减少算力消耗。</p>
+      
+      <h2 id="toc-2">二、模型能力优点</h2>
+      <ol>
+        <li><strong>参数规模和成本效益</strong>：旗舰版Qwen3-235B-A22B拥有235B的总参数量，但在实际运行时仅激活22B参数，这使得其部署成本大幅下降，只需要4张H20显卡即可部署满血版本，显存占用为性能相近模型的三分之一。</li>
+        <li><strong>性能表现</strong>：在多个基准测试中，如奥数水平的AIME25测评、LiveCodeBench代码能力评测、ArenaHard人类偏好对齐评测等，千问3都取得了超越其他顶尖模型的成绩。</li>
+        <li><strong>架构和技术</strong>：采用了混合专家（MoE）架构，并且在后训练阶段经过多轮强化学习，将非思考模式整合到思考模型中，从而增强推理、指令遵循、工具调用和多语言能力等方面的表现。
+          <ul>
+            <li>支持<strong>普通模式</strong>（无思维链）和<strong>推理模式</strong>（长思考），无需切换模型，开发者体验更优。</li>
+            <li>类似 DeepSeek V3（普通模式）和 R1（推理模式）的结合，但集成于单一模型。</li>
+          </ul>
+        </li>
+        <li><strong>应用场景支持</strong>：千问3不仅支持多种参数大小的模型以适应不同场景的需求，还原生支持MCP（模型上下文协议），并具备强大的工具调用能力，有助于降低编码复杂性。</li>
+        <li><strong>开源和商用</strong>：千问3系列模型采用宽松的Apache2.0协议开源，全球开发者、研究机构和企业可以免费下载并在魔搭社区、HuggingFace等平台上使用或商用。</li>
+      </ol>
+      
+      <h2 id="toc-3">三、8个不同尺寸模型，覆盖全场景</h2>
+      <ul>
+        <li><strong>Qwen3-30B-A3B</strong>（总参数量 30B，激活 3B）</li>
+        <li><strong>Qwen3-235B-A22B</strong>（总参数量 235B，激活 22B，部署成本仅 DeepSeek R1 的 1/3）</li>
+        <li><strong>稠密模型（Dense）</strong>：0.6B、1.7B、4B、8B、14B、32B，适用于不同算力需求</li>
+        <li><strong>MoE 模型</strong>：30B-A3B、235B-A22B</li>
+        <li><strong>Token 支持</strong>：0.6B~4B 支持 32K，其余支持 128K</li>
+      </ul>
+      
+      <h2 id="toc-4">四、性能评测</h2>
+      <p>在各项基准测试中，Qwen3 系列模型表现出色：</p>
+      <ul>
+        <li>在 MMLU 测试中，Qwen3-235B-A22B 达到 86.7% 的准确率，超过了 DeepSeek-R1 的 85.5%</li>
+        <li>在 GSM8K 数学推理测试中，Qwen3-235B-A22B 达到 94.2% 的准确率，超过了 Claude 3.7 的 93.5%</li>
+        <li>在 HumanEval 代码生成测试中，Qwen3-235B-A22B 达到 92.1% 的通过率，超过了 GPT-4.1 的 90.8%</li>
+      </ul>
+      
+      <h2 id="toc-5">五、案例展示</h2>
+      <h3>1、代码生成与理解</h3>
+      <p>我使用了leetcode的中的一道难度为【hard】的代码题</p>
+      <p><img data-action="zoom" decoding="async" class="aligncenter" src="https://image.woshipm.com/2025/05/01/39681cd6-25e5-11f0-892e-00163e09d72f.png" /></p>
+      <p><img data-action="zoom" decoding="async" class="aligncenter" src="https://image.woshipm.com/2025/05/01/3e0703ce-25e5-11f0-892e-00163e09d72f.png" /></p>
+      <blockquote><p>结论：结果是正确的，这样也展现出了他极强的代码能力</p></blockquote>
+      
+      <h3>2、生成网页能力</h3>
+      <p>根据以下内容生成一个html动态广告网页，要求：</p>
+      <p>1.使用扁平风格的视觉设计，浅色背景配合与#0FB990和#101010 相近的颜色作为高亮</p>
+      <p>2.淡淡的网格线在背景中制造科技感</p>
+      <p>3.强调超大字体或字突出核心要点，画面中有超大视觉元素强调重点，与小元素的比例形成反差</p>
+      <p>4.中英文混用，中文大字体相体，英文小字作为点组</p>
+      <p>5.简洁的线条图形化作为数据可视化或者配图元素</p>
+      <p>6.运用高亮，自身透明度渐变制造科技感，但是不同高亮色不要互相渐变</p>
+      
+      <h2 id="toc-6">六、总结</h2>
+      <p>综上所述，千问3是一个高性能、低成本的大规模语言模型，适用于广泛的自然语言处理任务，并且为开发者提供了极大的灵活性和便利性。其混合推理架构的创新设计，不仅提升了模型性能，还大幅降低了部署成本，使得更多开发者和企业能够负担得起高性能AI模型的应用。</p>
+      
+      <p>随着模型的持续优化和社区的贡献，相信Qwen3将为更多创新应用提供强大支持。</p>
+    </article>
+  </body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>使用阿里开源大模型通义千问Qwen进行推理</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        padding: 20px;
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+      img {
+        max-width: 100%;
+        height: auto;
+      }
+      pre {
+        background-color: #f5f5f5;
+        padding: 10px;
+        overflow: auto;
+      }
+      code {
+        font-family: Consolas, monospace;
+      }
+      .article-source {
+        color: #666;
+        margin-bottom: 20px;
+      }
+      p {
+        margin-bottom: 1em;
+      }
+      strong {
+        font-weight: bold;
+      }
+      h3, h4 {
+        margin-top: 1.5em;
+        margin-bottom: 0.8em;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="article-content">
+      <div class="article_content clearfix" id="article_content">
+        <link href="https://csdnimg.cn/release/blogv2/dist/mdeditor/css/editerView/kdoc_html_views-1a98987dfd.css" rel="stylesheet"/>
+        <link href="https://csdnimg.cn/release/blogv2/dist/mdeditor/css/editerView/ck_htmledit_views-704d5b9767.css" rel="stylesheet"/>
+        <div class="htmledit_views atom-one-light" id="content_views">
+          <p style="margin-left:0;text-align:justify;"><strong>使用阿里开源大模型通义千问Qwen进行推理</strong></p>
+          
+          <p style="margin-left:0;text-align:justify;"><strong>1.</strong><strong>前置条件</strong></p>
+          <p style="margin-left:0;text-align:justify;"><strong>（1）已经安装ubutun22.04</strong></p>
+          <p style="margin-left:0;text-align:justify;"><strong>（2）Ubuntu安装英伟达Nvidia显卡驱动-CUDA-cuDNN</strong></p>
+          <p style="margin-left:0;text-align:justify;"><strong>（3）Ubuntu安装大模型开发环境</strong></p>
+          
+          <p style="margin-left:0;text-align:justify;"><strong>2.</strong><strong>基本说明</strong></p>
+          <p style="margin-left:0;text-align:justify;">通义千问（Qwen）是阿里云研发的一个大语言模型系列，包括基础模型和对话模型。</p>
+          <p style="margin-left:0;text-align:justify;">通义千问开源了多个规格的模型，包括：</p>
+          <p style="margin-left:0;text-align:justify;">Qwen-1.8B、Qwen-7B、Qwen-14B、Qwen-72B，以及相应的Chat版本。</p>
+          <p style="margin-left:0;text-align:justify;">通义千问-7B 是阿里云研发的通义千问大模型系列的70亿参数规模的模型。</p>
+          <p style="margin-left:0;text-align:justify;">通义千问-7B 是基于Transformer的大语言模型，在超大规模的预训练数据上进行训练得到。预训练数据类型多样，覆盖广泛，包括大量网络文本、专业书籍、代码等。</p>
+          <p style="margin-left:0;text-align:justify;">通义千问-7B-Chat 是基于通义千问-7B 基础模型，经过人类偏好对齐训练得到的对话模型。</p>
+          <p style="margin-left:0;text-align:justify;">通义千问-7B-Chat 不仅可以应用于回答问题、内容创作等自然语言处理任务，还具备多种开发技能，如解方程、数据分析、绘图、生成图表等。此外，模型还具有代码生成、多轮对话等能力。</p>
+          
+          <p style="margin-left:0;text-align:justify;"><strong>3.</strong><strong>安装环境</strong></p>
+          <p style="margin-left:0;text-align:justify;"><strong>（1）安装python环境</strong></p>
+          <p style="margin-left:0;text-align:justify;">conda create -n qwen25_env python=3.10</p>
+          <p style="margin-left:0;text-align:justify;">conda activate qwen25_env</p>
+          <p style="margin-left:0;text-align:justify;"><strong>（2）安装依赖包</strong></p>
+          <p style="margin-left:0;text-align:justify;">pip install modelscope</p>
+          <p style="margin-left:0;text-align:justify;">pip install torch</p>
+          <p style="margin-left:0;text-align:justify;">pip install transformers</p>
+          <p style="margin-left:0;text-align:justify;">pip install accelerate</p>
+          <p style="margin-left:0;text-align:justify;">pip install sentencepiece</p>
+          <p style="margin-left:0;text-align:justify;">pip install gradio</p>
+          <p style="margin-left:0;text-align:justify;">pip install streamlit</p>
+          <p style="margin-left:0;text-align:justify;">pip install fastapi</p>
+          <p style="margin-left:0;text-align:justify;">pip install uvicorn</p>
+          <p style="margin-left:0;text-align:justify;">pip install sse-starlette</p>
+          <p style="margin-left:0;text-align:justify;">pip install einops</p>
+          <p style="margin-left:0;text-align:justify;">pip install flash-attn</p>
+          <p style="margin-left:0;text-align:justify;"><strong>（3）下载模型</strong></p>
+          <p style="margin-left:0;text-align:justify;">可能会链接不上，或者链接非常慢。解决方法使用国内镜像，或者通过其他办法到网站自己下载模型文件。下面讲述，如何使用国内镜像的方法，在程序运行中下载模型文件：</p>
+          <p style="margin-left:0;text-align:justify;"><strong>&lt;1&gt;</strong><strong>找到当前python虚拟环境中的constants.py文件</strong></p>
+          <p style="margin-left:0;text-align:justify;">比如我的安装路径</p>
+          <p style="margin-left:0;text-align:justify;">/home/anaconda3/envs/qwen25_env/lib/python3.10/site-packages/huggingface_hub/constants.py</p>
+          <p style="margin-left:0;text-align:justify;">格式如下：</p>
+          <p style="margin-left:0;text-align:justify;">Acaconda安装路径/env/虚拟环境名称/lib/python版本/site-packages/huggingface_hub/constants.py</p>
+          <p style="margin-left:0;text-align:justify;"><strong>&lt;2&gt;</strong><strong>修改HUGGINGFACE_CO_URL_HOME和_HF_DEFAULT_ENDPOINT两个位置为镜像地址</strong></p>
+          <p style="margin-left:0;text-align:justify;">HUGGINGFACE_CO_URL_HOME = "https://hf-mirror.com/"</p>
+          <p style="margin-left:0;text-align:justify;">_HF_DEFAULT_ENDPOINT = "https://hf-mirror.com"</p>
+          <p style="margin-left:0;text-align:justify;"><strong>&lt;3&gt;</strong><strong>重新运行程序下载</strong></p>
+          <p style="margin-left:0;text-align:justify;"><strong>&lt;4&gt;</strong><strong>自动下载的模型文件在隐藏目录</strong></p>
+          <p style="margin-left:0;text-align:justify;">在自己的home目录，<strong>ls -A</strong>命令查看所有文件，包含隐藏文件。下载后的模型文件<strong>在 .cache目录</strong>中。进入在home目录的：.cache/modelscope/hub/Qwen下面，是ls -all查看：</p>
+          <p style="margin-left:0;text-align:justify;"><em>(qwen25_env) lyp@lyp-gpu:~/.cache/modelscope/hub/Qwen$ ls -all<br/> total 12<br/> drwxrwxr-x 3 lyp lyp 4096 Nov 12 16:25 .<br/> drwxrwxr-x 6 lyp lyp 4096 Sep 24 16:43 ..<br/> lrwxrwxrwx 1 lyp lyp   58 Nov 12 16:25 Qwen2.5-7B-Instruct -&gt; /home/lyp/.cache/modelscope/hub/Qwen/Qwen2___5-7B-Instruct<br/> drwxrwxr-x 2 lyp lyp 4096 Nov 12 16:25 Qwen2___5-7B-Instruct</em></p>
+          <p style="margin-left:0;text-align:justify;"><strong>说明</strong>：<strong>Qwen2___5-7B-Instruct存放模型目录，Qwen2.5-7B-Instruct创建的对应的链接目录</strong>，为了更方面使用，两个目录使用哪个都可以，推理代码中，将Qwen/Qwen2.5-7B-Instruct两处替换成这两个目录其中之一都可以，不替换的话，系统自动从缺省下载目录查找，当然也可以将此目录拷贝到自己需要位置，路径写对即可。</p>
+          
+          <p style="margin-left:0;text-align:justify;"><strong>4.</strong><strong>推理代码</strong></p>
+          <p style="margin-left:0;text-align:justify;"><strong>（1）测试代码中有两个推理代码</strong></p>
+          <p style="margin-left:0;text-align:justify;">test_qwen.py</p>
+          <p style="margin-left:0;text-align:justify;">test_qwen_stream.py</p>
+          <p style="margin-left:0;text-align:justify;"><strong>（2）test_qwen.py</strong></p>
+          <p style="margin-left:0;text-align:justify;">from modelscope import AutoModelForCausalLM, AutoTokenizer</p>
+          <p style="margin-left:0;text-align:justify;">from modelscope import snapshot_download</p>
+          <p style="margin-left:0;text-align:justify;">model_dir = snapshot_download('Qwen/Qwen2.5-7B-Instruct', revision='master')</p>
+          <p style="margin-left:0;text-align:justify;">tokenizer = AutoTokenizer.from_pretrained(model_dir, trust_remote_code=True)</p>
+          <p style="margin-left:0;text-align:justify;">model = AutoModelForCausalLM.from_pretrained(model_dir, device_map="auto", trust_remote_code=True).eval()</p>
+          <p style="margin-left:0;text-align:justify;">response, history = model.chat(tokenizer, "你好", history=None)</p>
+          <p style="margin-left:0;text-align:justify;">print(response)</p>
+          <p style="margin-left:0;text-align:justify;">response, history = model.chat(tokenizer, "给我讲一个笑话", history=history)</p>
+          <p style="margin-left:0;text-align:justify;">print(response)</p>
+          <p style="margin-left:0;text-align:justify;">response, history = model.chat(tokenizer, "帮我写一个python程序，用于计算两个数的最大公约数", history=history)</p>
+          <p style="margin-left:0;text-align:justify;">print(response)</p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

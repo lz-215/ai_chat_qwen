@@ -8,7 +8,9 @@
       "news": "新闻",
       "docs": "文档",
       "media": "媒体",
-      "login": "登录 / 注册",
+      "about": "关于我们",
+      "contact": "联系我们",
+      "login": "登录",
       "logout": "退出登录",
       "welcome": "欢迎，{{name}}",
       "chat": "开始聊天"
@@ -223,9 +225,39 @@
     "languageSelector": {
       "language": "语言"
     },
+    "loading": "加载中...",
+    "reload": "重新加载",
+    "error": {
+      "Failed to load case studies": "加载案例研究失败",
+      "Failed to fetch metadata": "获取元数据失败"
+    },
     "casesPage": {
-      "title": "客户成功案例",
-      "description": "探索领先组织如何通过我们的AI平台取得卓越成果。"
+      "title": "AI 应用案例",
+      "description": "探索千问3大模型的实际应用案例和最佳实践",
+      "metaDescription": "探索千问3 AI聊天平台的成功案例和行业应用。",
+      "metaKeywords": "成功案例, 案例研究, 行业应用, AI解决方案, 千问3, 大语言模型",
+      "caseCards": {
+        "case1": {
+          "title": "千问3（Qwen3）模型开源以及初体验",
+          "summary": "通义千问（Qwen）是阿里云研发的一个大语言模型系列，包括基础模型和对话模型。近期，阿里云推出了Qwen3系列模型，并宣布开源。"
+        },
+        "case2": {
+          "title": "亲测阿里千问3这8个神仙用法后，感觉有点上头！",
+          "summary": "自从阿里云推出Qwen3模型以来，我一直在探索它的各种使用方法。经过一段时间的实际测试，我发现了一些特别实用且令人惊喜的用法。"
+        },
+        "case3": {
+          "title": "亲测阿里千问3这8个神仙用法后，感觉有点上头！",
+          "summary": "最近，我深入测试了阿里云推出的千问3（Qwen3）大模型，发现了一些特别实用且有趣的使用方式。这些\"神仙用法\"让我对大语言模型的实用性有了全新的认识。"
+        },
+        "case4": {
+          "title": "AI大模型测评，深度解析最强开源模型Qwen3",
+          "summary": "随着开源大语言模型的快速发展，各家厂商推出了各具特色的模型。本文将对近期备受关注的阿里云Qwen3（通义千问3）进行全面测评，分析其技术特点、性能表现以及应用价值。"
+        },
+        "case5": {
+          "title": "使用阿里开源大模型通义千问Qwen进行推理",
+          "summary": "近期，阿里云发布了全新的Qwen3（通义千问3）大语言模型系列，并将其完全开源。作为目前性能领先的开源大模型之一，Qwen3提供了多种规模的版本，适用于不同的应用场景。"
+        }
+      }
     },
     "newsPage": {
       "title": "新闻与更新",
@@ -234,10 +266,104 @@
       "awardsReviews": "奖项与评价"
     },
     "case": {
-      "view": "访问案例"
+      "view": "访问案例",
+      "backToCases": "返回案例列表",
+      "backToTop": "返回顶部",
+      "publishDate": "发布日期",
+      "category": "分类",
+      "notFound": "暂无此案例的详细信息，请返回案例列表查看其他案例。",
+      "uncategorized": "未分类",
+      "unknownDate": "未知日期",
+      "metaDescription": "阅读\"{{title}}\"的详细案例分析。"
     },
     "article": {
-      "readMore": "阅读全文"
+      "readMore": "阅读全文",
+      "notFound": "文章未找到",
+      "notFoundDesc": "您查找的文章不存在或已被移除。",
+      "backToNews": "返回新闻列表",
+      "publishDate": "发布日期",
+      "category": "分类"
+    },
+    "about": {
+      "pageTitle": "关于我们",
+      "metaDescription": "了解Qwen3 AI聊天平台，我们的使命、团队和技术。",
+      "metaKeywords": "关于我们, 公司信息, AI聊天平台, 团队, 使命, 技术",
+      "companyIntro": {
+        "title": "公司简介",
+        "paragraph1": "Qwen3 AI聊天平台是一家致力于开发先进对话AI解决方案的前沿人工智能公司。成立于2023年，我们迅速在自然语言处理和AI驱动通信领域确立了领导地位。",
+        "paragraph2": "我们的旗舰产品Qwen3 AI聊天平台利用最先进的大型语言模型，提供智能、上下文感知的对话，帮助企业和个人更高效地实现目标。",
+        "paragraph3": "我们专注于创新、可访问性和道德AI开发，致力于创造增强人类能力的技术，同时尊重隐私并促进负责任的使用。"
+      },
+      "mission": {
+        "title": "我们的使命",
+        "paragraph1": "在Qwen3 AI聊天平台，我们的使命是让先进的AI技术对每个人都可访问，通过智能对话赋能人们和组织实现更多目标。",
+        "paragraph2": "我们相信AI应该是增强人类能力的工具，而不是替代它们。我们的目标是创造直观、有帮助且与人类价值观一致的AI解决方案。"
+      },
+      "team": {
+        "title": "我们的团队",
+        "paragraph1": "我们多元化的AI研究人员、工程师、设计师和业务专业人士团队汇集了各个学科的专业知识，创造卓越的AI体验。",
+        "member1": {
+          "name": "陈博士",
+          "position": "首席执行官兼联合创始人",
+          "bio": "拥有计算机科学博士学位和超过15年的AI研究经验，陈博士领导着我们公司的愿景和战略。"
+        },
+        "member2": {
+          "name": "王博士",
+          "position": "首席技术官兼联合创始人",
+          "bio": "作为自然语言处理领域的著名专家，发表过多篇论文，王博士负责监督我们的技术开发和研究计划。"
+        }
+      },
+      "technology": {
+        "title": "我们的技术",
+        "paragraph1": "Qwen3 AI聊天平台建立在先进的大型语言模型上，这些模型经过多样化数据集的训练，能够理解和生成多种语言和领域的类人文本。",
+        "paragraph2": "我们通过严格测试、用户反馈和人工智能领域的最新研究不断改进我们的模型。",
+        "feature1": {
+          "title": "自然语言理解",
+          "description": "我们的AI能够理解复杂查询，检测细微差别，并理解上下文以提供相关响应。"
+        },
+        "feature2": {
+          "title": "多语言支持",
+          "description": "与我们的AI无缝沟通多种语言，它已经在多样化的语言数据集上进行了训练。"
+        },
+        "feature3": {
+          "title": "持续学习",
+          "description": "我们的模型通过反馈循环和新的训练数据不断改进，确保它们保持最新和相关性。"
+        }
+      }
+    },
+    "contact": {
+      "pageTitle": "联系我们",
+      "metaDescription": "与Qwen3 AI聊天平台团队取得联系。我们随时为您解答问题并提供支持。",
+      "metaKeywords": "联系, 支持, 帮助, 问题, 反馈, AI聊天平台",
+      "info": {
+        "title": "联系信息",
+        "email": {
+          "label": "电子邮件",
+          "value": "ytsgabcde21@2925.com"
+        },
+        "phone": {
+          "label": "电话",
+          "value": "+86 (555) 123-4567"
+        },
+        "address": {
+          "label": "地址",
+          "value": "中国重庆市江北区"
+        },
+        "hours": {
+          "title": "工作时间",
+          "weekdays": "周一至周五: 上午9:00 - 下午6:00",
+          "weekends": "周六至周日: 休息"
+        }
+      },
+      "form": {
+        "title": "给我们发送消息",
+        "name": "您的姓名",
+        "email": "您的邮箱",
+        "subject": "主题",
+        "message": "您的留言",
+        "submit": "发送消息",
+        "successMessage": "感谢您的留言！我们会尽快回复您。"
+      }
     },
     "privacyPolicy": {
       "helmetTitle": "隐私政策 - Qwen3 AI聊天平台",
@@ -319,4 +445,4 @@
       }
     }
   }
-} 
+}

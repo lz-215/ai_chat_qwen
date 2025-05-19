@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>千问3（Qwen3）模型开源以及初体验</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        padding: 20px;
+        max-width: 1000px;
+        margin: 0 auto;
+      }
+      h1, h2, h3 {
+        margin-top: 1.5em;
+        margin-bottom: 0.8em;
+        font-weight: bold;
+        color: #333;
+      }
+      h2 {
+        font-size: 1.5em;
+      }
+      h3 {
+        font-size: 1.3em;
+      }
+      p {
+        margin-bottom: 1em;
+      }
+      img {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin: 1.5em auto;
+        border-radius: 4px;
+      }
+      pre {
+        background-color: #f5f5f5;
+        padding: 15px;
+        border-radius: 5px;
+        overflow: auto;
+        font-family: Consolas, monospace;
+        margin: 1.5em 0;
+      }
+      code {
+        font-family: Consolas, monospace;
+        background-color: #f5f5f5;
+        padding: 2px 4px;
+        border-radius: 3px;
+      }
+      blockquote {
+        border-left: 4px solid #ddd;
+        padding: 0 15px;
+        color: #777;
+        margin: 1em 0;
+      }
+      .article-source {
+        color: #666;
+        margin-bottom: 20px;
+      }
+      a {
+        color: #0366d6;
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="article-source">
+      原文链接: <a href="https://blog.csdn.net/liupeng9494/article/details/147619006" target="_blank">https://blog.csdn.net/liupeng9494/article/details/147619006</a>
+    </div>
+    
+    <h3>体验地址：<a href="https://bailian.console.aliyun.com/?tab=model#/model-market" rel="nofollow" title="百炼控制台">百炼控制台</a></h3>
+    
+    <h3><img alt="" height="815" src="images/3e81f499c550476dbed51d96a77fd8ac.png" width="1470"/></h3>
+    
+    <h3>1 千问3模型：全球最强开源大模型震撼发布</h3>
+    <p>4月29日，阿里云正式发布了通义千问3（Qwen3）系列模型，这是阿里巴巴开源的新一代通义千问模型。这款模型系列是国内首个采用"混合推理模型"设计的，它将"快思考"与"慢思考"集成到同一个模型中，旨在提升性能的同时减少算力消耗。</p>
+    
+    <h3>2 模型能力优点</h3>
+    <ol>
+      <li><strong>参数规模和成本效益</strong>：旗舰版Qwen3-235B-A22B拥有235B的总参数量，但在实际运行时仅激活22B参数，这使得其部署成本大幅下降，只需要4张H20显卡即可部署满血版本，显存占用为性能相近模型的三分之一。</li>
+      <li><strong>性能表现</strong>：在多个基准测试中，如奥数水平的AIME25测评、LiveCodeBench代码能力评测、ArenaHard人类偏好对齐评测等，千问3都取得了超越其他顶尖模型的成绩。</li>
+      <li><strong>架构和技术</strong>：采用了混合专家（MoE）架构，并且在后训练阶段经过多轮强化学习，将非思考模式整合到思考模型中，从而增强推理、指令遵循、工具调用和多语言能力等方面的表现。
+        <ul>
+          <li>支持<strong>普通模式</strong>（无思维链）和<strong>推理模式</strong>（长思考），无需切换模型，开发者体验更优。</li>
+          <li>类似 DeepSeek V3（普通模式）和 R1（推理模式）的结合，但集成于单一模型。</li>
+        </ul>
+      </li>
+      <li><strong>应用场景支持</strong>：千问3不仅支持多种参数大小的模型以适应不同场景的需求，还原生支持MCP（模型上下文协议），并具备强大的工具调用能力，有助于降低编码复杂性。</li>
+      <li><strong>开源和商用</strong>：千问3系列模型采用宽松的Apache2.0协议开源，全球开发者、研究机构和企业可以免费下载并在魔搭社区、HuggingFace等平台上使用或商用。</li>
+    </ol>
+    
+    <h3>3 8个不同尺寸模型，覆盖全场景</h3>
+    <ul>
+      <li><strong>Qwen3-30B-A3B</strong>（总参数量 30B，激活 3B）</li>
+      <li><strong>Qwen3-235B-A22B</strong>（总参数量 235B，激活 22B，部署成本仅 DeepSeek R1 的 1/3）</li>
+      <li><strong>稠密模型（Dense）</strong>：0.6B、1.7B、4B、8B、14B、32B，适用于不同算力需求</li>
+      <li><strong>MoE 模型</strong>：30B-A3B、235B-A22B</li>
+      <li><strong>Token 支持</strong>：0.6B~4B 支持 32K，其余支持 128K</li>
+    </ul>
+    
+    <h3>4 性能评测</h3>
+    <p>在各项基准测试中，Qwen3 系列模型表现出色：</p>
+    <ul>
+      <li>在 MMLU 测试中，Qwen3-235B-A22B 达到 86.7% 的准确率，超过了 DeepSeek-R1 的 85.5%</li>
+      <li>在 GSM8K 数学推理测试中，Qwen3-235B-A22B 达到 94.2% 的准确率，超过了 Claude 3.7 的 93.5%</li>
+      <li>在 HumanEval 代码生成测试中，Qwen3-235B-A22B 达到 92.1% 的通过率，超过了 GPT-4.1 的 90.8%</li>
+    </ul>
+    
+    <h3>5 开源与商业化</h3>
+    <p>千问3系列模型采用Apache2.0协议开源，这意味着：</p>
+    <ul>
+      <li>全球开发者可以自由下载、使用、修改和分发模型</li>
+      <li>企业可以将模型用于商业用途，无需支付许可费</li>
+      <li>开发者可以基于千问3创建衍生模型，并决定是否开源</li>
+    </ul>
+    
+    <h3>6 生态与应用</h3>
+    <p>阿里云为千问3构建了完整的生态系统：</p>
+    <ul>
+      <li>提供了多种部署选项，从本地部署到云服务</li>
+      <li>支持多种开发框架，如PyTorch、TensorFlow等</li>
+      <li>提供了丰富的API和SDK，方便开发者集成</li>
+      <li>支持多种应用场景，如对话、内容生成、代码编写、数据分析等</li>
+    </ul>
+    
+    <p>采用Apache2.0协议的千问3全面开放商用，支持119种语言的开发者可通过魔搭社区、HuggingFace等平台自由下载。阿里云百炼平台同步提供API服务，配合36T tokens的预训练数据和强化学习框架，使企业能快速微调出行业专属模型。这种"开源+云服务"双轨模式，正在重塑全球大模型产业格局。</p>
+    
+    <h3>7 技术演进的里程碑意义</h3>
+    <p>从2023年Qwen1.5到如今的Qwen3，阿里通义团队在7个月内实现了参数量效率300%的提升。这次开源不仅使中国首次拥有全球性能第一的开源模型，更标志着混合推理架构正式成为大模型发展的新范式。正如阿里CTO所言，千问3代表着通向AGI道路上的重要里程碑，其"快慢思考"机制很可能成为未来智能体的标准配置</p>
+    
+    <h2><strong>8 使用体验</strong></h2>
+    <p><strong>千问</strong></p>
+    <p><strong>问题</strong></p>
+    <blockquote>
+      <p>股票分析页面需要实现以下功能：</p>
+      <p>股票数据展示 ：展示股票的基本信息，如股票代码、名称、当前价格等。</p>
+      <p>历史数据查询 ：允许用户查询股票的历史价格数据，并以图表的形式展示。</p>
+      <p>数据分析 ：对股票数据进行简单的分析，如计算涨幅、跌幅等。 写一个网页</p>
+    </blockquote>
+    
+    <p>通义千问3-235B-A22B 的回答</p>
+    <pre><code class="hljs">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="zh-CN"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;股票分析系统&lt;/title&gt;
+    &lt;link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet"&gt;
+    &lt;script src="https://cdn.jsdelivr.net/npm/chart.js"&gt;&lt;/script&gt;
+    &lt;style&gt;
+        .card {
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .stock-info {
+            font-size: 1.1rem;
+        }
+        .price-up {
+            color: #28a745;
+        }
+        .price-down {
+            color: #dc3545;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class="container mt-4"&gt;
+        &lt;h1 class="text-center mb-4"&gt;股票分析系统&lt;/h1&gt;
+        
+        &lt;div class="row mb-4"&gt;
+            &lt;div class="col-md-6 offset-md-3"&gt;
+                &lt;div class="input-group"&gt;
+                    &lt;input type="text" id="stockCode" class="form-control" placeholder="输入股票代码（如：600000）"&gt;
+                    &lt;button class="btn btn-primary" id="searchBtn"&gt;查询&lt;/button&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        
+        &lt;div id="stockContent" class="d-none"&gt;
+            &lt;!-- 股票基本信息卡片 --&gt;
+            &lt;div class="card"&gt;
+                &lt;div class="card-header bg-primary text-white"&gt;
+                    &lt;h5 class="mb-0"&gt;股票基本信息&lt;/h5&gt;
+                &lt;/div&gt;
+                &lt;div class="card-body"&gt;
+                    &lt;div class="row stock-info"&gt;
+                        &lt;div class="col-md-6"&gt;
+                            &lt;p&gt;&lt;strong&gt;股票名称：&lt;/strong&gt;&lt;span id="stockName"&gt;-&lt;/span&gt;&lt;/p&gt;
+                            &lt;p&gt;&lt;strong&gt;股票代码：&lt;/strong&gt;&lt;span id="stockCodeDisplay"&gt;-&lt;/span&gt;&lt;/p&gt;
+                            &lt;p&gt;&lt;strong&gt;所属行业：&lt;/strong&gt;&lt;span id="industry"&gt;-&lt;/span&gt;&lt;/p&gt;
+                        &lt;/div&gt;
+                        &lt;div class="col-md-6"&gt;
+                            &lt;p&gt;&lt;strong&gt;当前价格：&lt;/strong&gt;&lt;span id="currentPrice"&gt;-&lt;/span&gt;&lt;/p&gt;
+                            &lt;p&gt;&lt;strong&gt;涨跌幅：&lt;/strong&gt;&lt;span id="priceChange"&gt;-&lt;/span&gt;&lt;/p&gt;
+                            &lt;p&gt;&lt;strong&gt;成交量：&lt;/strong&gt;&lt;span id="volume"&gt;-&lt;/span&gt;&lt;/p&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            
+            &lt;!-- 历史数据图表卡片 --&gt;
+            &lt;div class="card"&gt;
+                &lt;div class="card-header bg-primary text-white d-flex justify-content-between align-items-center"&gt;
+                    &lt;h5 class="mb-0"&gt;历史价格走势&lt;/h5&gt;
+                    &lt;div class="btn-group"&gt;
+                        &lt;button class="btn btn-sm btn-light" data-period="7"&gt;7天&lt;/button&gt;
+                        &lt;button class="btn btn-sm btn-light" data-period="30"&gt;30天&lt;/button&gt;
+                        &lt;button class="btn btn-sm btn-light" data-period="90"&gt;90天&lt;/button&gt;
+                        &lt;button class="btn btn-sm btn-light" data-period="365"&gt;1年&lt;/button&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div class="card-body"&gt;
+                    &lt;canvas id="priceChart"&gt;&lt;/canvas&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            
+            &lt;!-- 数据分析卡片 --&gt;
+            &lt;div class="card"&gt;
+                &lt;div class="card-header bg-primary text-white"&gt;
+                    &lt;h5 class="mb-0"&gt;数据分析&lt;/h5&gt;
+                &lt;/div&gt;
+                &lt;div class="card-body"&gt;
+                    &lt;div class="row"&gt;
+                        &lt;div class="col-md-6"&gt;
+                            &lt;div class="card"&gt;
+                                &lt;div class="card-body"&gt;
+                                    &lt;h6 class="card-title"&gt;价格统计&lt;/h6&gt;
+                                    &lt;p&gt;&lt;strong&gt;最高价：&lt;/strong&gt;&lt;span id="highestPrice"&gt;-&lt;/span&gt;&lt;/p&gt;
+                                    &lt;p&gt;&lt;strong&gt;最低价：&lt;/strong&gt;&lt;span id="lowestPrice"&gt;-&lt;/span&gt;&lt;/p&gt;
+                                    &lt;p&gt;&lt;strong&gt;平均价：&lt;/strong&gt;&lt;span id="averagePrice"&gt;-&lt;/span&gt;&lt;/p&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                        &lt;div class="col-md-6"&gt;
+                            &lt;div class="card"&gt;
+                                &lt;div class="card-body"&gt;
+                                    &lt;h6 class="card-title"&gt;涨跌分析&lt;/h6&gt;
+                                    &lt;p&gt;&lt;strong&gt;30日涨跌幅：&lt;/strong&gt;&lt;span id="monthChange"&gt;-&lt;/span&gt;&lt;/p&gt;
+                                    &lt;p&gt;&lt;strong&gt;90日涨跌幅：&lt;/strong&gt;&lt;span id="quarterChange"&gt;-&lt;/span&gt;&lt;/p&gt;
+                                    &lt;p&gt;&lt;strong&gt;年度涨跌幅：&lt;/strong&gt;&lt;span id="yearChange"&gt;-&lt;/span&gt;&lt;/p&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        
+        &lt;!-- 无数据提示 --&gt;
+        &lt;div id="noDataAlert" class="alert alert-warning d-none" role="alert"&gt;
+            未找到相关股票数据，请检查股票代码是否正确。
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"&gt;&lt;/script&gt;
+    &lt;script&gt;
+        // 模拟数据 - 实际应用中应通过API获取
+        const mockStockData = {
+            '600000': {
+                name: '浦发银行',
+                industry: '银行',
+                currentPrice: 8.76,
+                priceChange: -0.23,
+                priceChangePercent: -2.56,
+                volume: '3245.6万',
+                historicalData: generateMockHistoricalData(365)
+            },
+            '601398': {
+                name: '工商银行',
+                industry: '银行',
+                currentPrice: 5.12,
+                priceChange: 0.08,
+                priceChangePercent: 1.59,
+                volume: '9876.3万',
+                historicalData: generateMockHistoricalData(365)
+            }
+        };
+        
+        // 生成模拟历史数据
+        function generateMockHistoricalData(days) {
+            const data = [];
+            const today = new Date();
+            let price = Math.random() * 10 + 5; // 初始价格在5-15之间
+            
+            for (let i = days; i >= 0; i--) {
+                const date = new Date();
+                date.setDate(today.getDate() - i);
+                
+                // 随机价格波动，模拟真实股价走势
+                const change = (Math.random() - 0.5) * 0.2; // -0.1到0.1之间的随机波动
+                price = Math.max(1, price + price * change); // 确保价格不低于1
+                
+                data.push({
+                    date: date.toISOString().split('T')[0],
+                    price: parseFloat(price.toFixed(2))
+                });
+            }
+            
+            return data;
+        }
+        
+        // 图表对象
+        let priceChart;
+        
+        // 搜索按钮点击事件
+        document.getElementById('searchBtn').addEventListener('click', function() {
+            const stockCode = document.getElementById('stockCode').value.trim();
+            searchStock(stockCode);
+        });
+        
+        // 回车键搜索
+        document.getElementById('stockCode').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                const stockCode = document.getElementById('stockCode').value.trim();
+                searchStock(stockCode);
+            }
+        });
+        
+        // 时间段选择按钮点击事件
+        document.querySelectorAll('[data-period]').forEach(button => {
+            button.addEventListener('click', function() {
+                const days = parseInt(this.getAttribute('data-period'));
+                const stockCode = document.getElementById('stockCode').value.trim();
+                if (stockCode && mockStockData[stockCode]) {
+                    updateChart(mockStockData[stockCode].historicalData, days);
+                }
+            });
+        });
+        
+        // 搜索股票
+        function searchStock(stockCode) {
+            // 隐藏之前的内容和提示
+            document.getElementById('stockContent').classList.add('d-none');
+            document.getElementById('noDataAlert').classList.add('d-none');
+            
+            if (stockCode && mockStockData[stockCode]) {
+                // 显示股票内容
+                document.getElementById('stockContent').classList.remove('d-none');
+                
+                // 更新基本信息
+                const stockData = mockStockData[stockCode];
+                document.getElementById('stockName').textContent = stockData.name;
+                document.getElementById('stockCodeDisplay').textContent = stockCode;
+                document.getElementById('industry').textContent = stockData.industry;
+                document.getElementById('currentPrice').textContent = `¥${stockData.currentPrice.toFixed(2)}`;
+                
+                // 设置涨跌幅颜色
+                const priceChangeElement = document.getElementById('priceChange');
+                if (stockData.priceChange > 0) {
+                    priceChangeElement.className = 'price-up';
+                    priceChangeElement.textContent = `+${stockData.priceChange.toFixed(2)} (${stockData.priceChangePercent.toFixed(2)}%)`;
+                } else {
+                    priceChangeElement.className = 'price-down';
+                    priceChangeElement.textContent = `${stockData.priceChange.toFixed(2)} (${stockData.priceChangePercent.toFixed(2)}%)`;
+                }
+                
+                document.getElementById('volume').textContent = stockData.volume;
+                
+                // 更新图表
+                updateChart(stockData.historicalData, 30); // 默认显示30天数据
+                
+                // 计算并更新数据分析
+                updateAnalysis(stockData.historicalData);
+            } else {
+                // 显示无数据提示
+                document.getElementById('noDataAlert').classList.remove('d-none');
+            }
+        }
+        
+        // 更新图表
+        function updateChart(historicalData, days) {
+            // 获取指定天数的数据
+            const data = historicalData.slice(-days-1);
+            
+            // 准备图表数据
+            const labels = data.map(item => item.date);
+            const prices = data.map(item => item.price);
+            
+            // 如果图表已存在，销毁它
+            if (priceChart) {
+                priceChart.destroy();
+            }
+            
+            // 创建新图表
+            const ctx = document.getElementById('priceChart').getContext('2d');
+            priceChart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: '股票价格',
+                        data: prices,
+                        borderColor: 'rgb(75, 192, 192)',
+                        tension: 0.1,
+                        fill: false
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: `过去${days}天价格走势`
+                        }
+                    },
+                    scales: {
+                        x: {
+                            display: true,
+                            title: {
+                                display: true,
+                                text: '日期'
+                            },
+                            ticks: {
+                                maxTicksLimit: 10
+                            }
+                        },
+                        y: {
+                            display: true,
+                            title: {
+                                display: true,
+                                text: '价格 (¥)'
+                            }
+                        }
+                    }
+                }
+            });
+        }
+        
+        // 更新数据分析
+        function updateAnalysis(historicalData) {
+            // 计算最高价、最低价和平均价
+            const prices = historicalData.map(item => item.price);
+            const highestPrice = Math.max(...prices);
+            const lowestPrice = Math.min(...prices);
+            const averagePrice = prices.reduce((sum, price) => sum + price, 0) / prices.length;
+            
+            document.getElementById('highestPrice').textContent = `¥${highestPrice.toFixed(2)}`;
+            document.getElementById('lowestPrice').textContent = `¥${lowestPrice.toFixed(2)}`;
+            document.getElementById('averagePrice').textContent = `¥${averagePrice.toFixed(2)}`;
+            
+            // 计算不同时间段的涨跌幅
+            const currentPrice = prices[prices.length - 1];
+            
+            // 30日涨跌幅
+            const price30DaysAgo = historicalData[historicalData.length - 31]?.price || prices[0];
+            const change30Days = ((currentPrice - price30DaysAgo) / price30DaysAgo * 100).toFixed(2);
+            
+            // 90日涨跌幅
+            const price90DaysAgo = historicalData[historicalData.length - 91]?.price || prices[0];
+            const change90Days = ((currentPrice - price90DaysAgo) / price90DaysAgo * 100).toFixed(2);
+            
+            // 年度涨跌幅
+            const priceYearAgo = historicalData[historicalData.length - 366]?.price || prices[0];
+            const changeYear = ((currentPrice - priceYearAgo) / priceYearAgo * 100).toFixed(2);
+            
+            // 设置涨跌幅颜色和文本
+            const monthChangeElement = document.getElementById('monthChange');
+            const quarterChangeElement = document.getElementById('quarterChange');
+            const yearChangeElement = document.getElementById('yearChange');
+            
+            setChangeDisplay(monthChangeElement, change30Days);
+            setChangeDisplay(quarterChangeElement, change90Days);
+            setChangeDisplay(yearChangeElement, changeYear);
+        }
+        
+        // 设置涨跌幅显示
+        function setChangeDisplay(element, changePercent) {
+            if (changePercent > 0) {
+                element.className = 'price-up';
+                element.textContent = `+${changePercent}%`;
+            } else {
+                element.className = 'price-down';
+                element.textContent = `${changePercent}%`;
+            }
+        }
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre>
+  </body>
+</html>

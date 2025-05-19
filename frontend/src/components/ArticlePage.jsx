@@ -1,16 +1,369 @@
 import React, { useState, useEffect } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Link } from 'react-router-dom';
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
 
-// Placeholder news data - in a real app, you'd fetch this based on articleId
+// 实际文章数据
 const allNewsData = {
-  '1': { title: 'AI Chat Platform Launches New Feature', date: '2025-03-15 10:00', category: 'Latest News', fullContent: 'This is the full content for AI Chat Platform Launches New Feature. Our latest feature leverages advanced AI to provide even more intuitive and personalized chat experiences. Discover how it can transform your interactions. We have invested heavily in R&D to bring this to market...', image: 'https://placehold.co/800x400/FFA07A/000000?text=AI+Innovation' },
-  '2': { title: 'The Future of AI in Customer Service', date: '2025-03-10 14:30', category: 'Latest News', fullContent: 'The future of AI in customer service is bright. Explore the evolving role of artificial intelligence in shaping the future of customer service and engagement. AI can handle routine inquiries, personalize interactions, and provide 24/7 support...', image: 'https://placehold.co/800x400/ADD8E6/000000?text=Future+of+AI' },
-  '3': { title: 'AI Chat Platform Recognized for Innovation', date: '2025-02-20 09:00', category: 'Awards & Reviews', fullContent: 'We are honored to receive the \"Tech Innovator of the Year\" award. This section would detail the award, the reasons for receiving it, and quotes from the team and awarding body regarding our groundbreaking work in AI chat solutions.', image: 'https://placehold.co/800x400/90EE90/000000?text=Award+Winning' },
-  '4': { title: 'Wenxin China Trip - Beijing Station | Wenxin Kuaima WORKSHOP Successfully Held', date: '2025-01-22 19:53', category: 'Latest News', fullContent: 'Full details of the Wenxin China Trip - Beijing Station. On January 14th, the Wenxin China Trip - Beijing Station, themed "Intelligent Gathering in Beijing, Driving a New Chapter", was successfully held. Government leaders, scientific researchers, industry representatives, and AI technology developers gathered together to explore new opportunities for industrial development in the era of large models. The event featured keynote speeches, panel discussions, and a workshop session.', image: 'https://placehold.co/800x400/FFD700/000000?text=Event+Beijing' },
-  '5': { title: 'Wenxin Kuaima | "Greater Bay Area Digitalization Summit" Successfully Held', date: '2025-01-16 17:10', category: 'Latest News', fullContent: 'Comprehensive report on the Greater Bay Area Digitalization Summit. On December 21, 2024, the Greater Bay Area Digitalization Summit, hosted by Anmeng滙 and co-organized by Wenxin Kuaima, was successfully held at the Futian Investment Building in Shenzhen. This event attracted CTOs, CIOs, CSOs, CDOs, and other senior managers from various industries to participate in a knowledge feast. Discussions centered on digital transformation, AI adoption, and big data analytics.', image: 'https://placehold.co/800x400/DA70D6/000000?text=GBA+Summit' },
-  '6': { title: 'Wenxin Kuaima | "AI Native New Paradigm Enterprise Landing Closed-Door Seminar" - Shanghai Station Successfully Held!', date: '2025-01-03 16:35', category: 'Latest News', fullContent: 'Detailed account of the AI Native New Paradigm Enterprise Landing Closed-Door Seminar in Shanghai. On December 26th, a special closed-door seminar themed "AI Native New Paradigm Enterprise Landing Closed-Door Seminar" was held in Shanghai. This closed-door meeting, jointly organized by Baidu Wenxin and Baidu Enterprise Efficiency Platform, brought together many industry leaders from Baidu, Ximalaya, Kaiyuan China, Beijing University of Aeronautics and Astronautics and other enterprises and institutions to discuss cutting-edge technologies such as large models and intelligent agents. The seminar focused on practical applications and challenges in enterprise AI adoption.', image: 'https://placehold.co/800x400/87CEFA/000000?text=Shanghai+Seminar' },
+  '1': {
+    title: '国外技术达人 Mervin Praison 通义千问3 实测',
+    date: '2025-03-15 10:00',
+    category: '技术评测',
+    fullContent: `国外知名技术博主Mervin Praison最近对阿里云的通义千问3大模型进行了全面测试，并分享了他的使用体验。
+
+作为一位在人工智能和云计算领域有多年经验的技术专家，Praison的评测颇具参考价值。他表示，千问3在多语言能力、逻辑推理和编程方面的表现令人印象深刻，特别是在英文环境下的使用体验超出了他的预期。
+
+在测试中，Praison重点关注了以下几个方面：
+
+1. 多语言理解与生成能力：千问3展示了优秀的英文处理能力，生成内容流畅自然，几乎看不出是由中国团队开发的模型。
+
+2. 编程能力：在解决复杂编程问题时，千问3不仅能生成正确的代码，还提供了详细的解释和多种实现方案供选择。
+
+3. 知识准确性：针对事实性知识的查询，千问3表现出较高的准确率，并能适当表达不确定性。
+
+4. 上下文维护能力：在长对话中，千问3能够很好地维持上下文连贯性，记住之前的交互内容。
+
+5. 创意与原创性：在创意任务中，如写作和内容创作，千问3表现出不俗的创意性和多样化输出。
+
+Praison特别提到，与他之前测试的其他开源模型相比，千问3在英文环境下的表现更为出色，这对于全球开发者社区来说是一个很大的惊喜。他认为，这反映了阿里云在模型训练数据多样性和质量方面的投入。
+
+不过，Praison也指出了一些可以改进的方面。例如，在处理非常专业的领域知识时，千问3偶尔会出现不够深入的情况；在一些需要最新信息的查询上，由于训练数据截止日期的限制，回答可能不够及时更新。
+
+总的来说，Praison给予了千问3很高的评价，称其为"目前最令人印象深刻的开源大语言模型之一"，并鼓励开发者探索其在各种应用场景中的潜力。
+
+这次来自国际技术专家的正面评价，进一步证实了中国AI技术在全球舞台上的竞争力，也为千问3在国际开发者社区中赢得了更多关注。`,
+    image: 'https://placehold.co/800x400/FFA07A/000000?text=AI+Innovation'
+  },
+  '2': {
+    title: '阿里千问3登顶全球最强开源模型，性能超越DeepSeek-R1、OpenAI-o1',
+    date: '2025-03-10 14:30',
+    category: '行业新闻',
+    fullContent: `近日，阿里云正式发布了通义千问3（Qwen3）系列大型语言模型，并宣布全面开源。根据多项权威评测结果显示，千问3已经超越DeepSeek-R1，成为当前全球性能最强的开源大语言模型，在某些评测维度甚至超过了OpenAI的o1模型。
+
+千问3系列包括多个不同参数规模的版本，从超轻量级的0.5B到强大的72B，满足不同场景的需求。其中，Qwen3-72B模型在GSM8K、MMLU、HumanEval、MATH等多个权威基准测试中均取得了开源模型第一的成绩。
+
+与其他开源大模型相比，千问3具有三大显著优势：
+
+首先，技术性能全面领先。在通用能力、多语言处理、代码生成等多个维度，千问3都展现出色的表现。特别是在中文处理能力上，千问3表现出明显优势，这对中文用户和开发者具有重要意义。
+
+其次，推理成本大幅降低。官方数据显示，千问3的推理成本仅为DeepSeek-R1的三分之一，这意味着在相同硬件条件下，使用千问3可以处理更多请求，或在更低配置的设备上运行。
+
+第三，开源协议更加友好。千问3采用了对商业应用更为友好的开源协议，允许在符合特定条件下的商业使用，这为企业应用提供了更大的灵活性。
+
+阿里云智能技术负责人表示："千问3是我们在大模型技术上的最新突破，我们希望通过开源的方式，让更多开发者和企业能够低成本地使用先进的AI技术，推动产业智能化升级。"
+
+业内专家评价，千问3的发布和开源标志着中国在大语言模型领域已经达到世界一流水平，不仅技术指标接近或超越国际领先水平，而且在模型效率和部署成本上展现出独特优势。
+
+多位开发者在体验后表示，千问3在实际应用中的表现令人印象深刻，特别是在中文内容生成、复杂问题推理和代码辅助方面。一些企业已经开始计划将其现有系统从其他开源模型迁移到千问3，以获得更好的性能和更低的运营成本。
+
+随着千问3的开源，预计将进一步加速AI技术在各行各业的落地应用，推动开源AI生态的健康发展。同时，这也为国内开发者提供了一个与国际一流水平接轨的开源大模型，有助于培养更多AI人才和创新应用。`,
+    image: 'https://placehold.co/800x400/ADD8E6/000000?text=Future+of+AI'
+  },
+  '3': {
+    title: 'Qwen3 系列模型性能登顶全球，千问3模型介绍',
+    date: '2025-02-20 09:00',
+    category: '产品介绍',
+    fullContent: `阿里云近日发布的通义千问3（Qwen3）系列模型已在全球范围内引起广泛关注。作为目前性能最强的开源大语言模型，Qwen3在多项基准测试中展现出色表现，本文将对该系列模型进行全面介绍。
+
+【模型系列概述】
+
+Qwen3系列包含多个不同参数规模的模型：
+- Qwen3-0.5B：超轻量级模型，适合边缘设备和移动应用
+- Qwen3-1.8B：轻量级模型，适合资源受限环境
+- Qwen3-7B：通用型模型，平衡性能和资源需求
+- Qwen3-72B：旗舰型号，性能接近闭源商业模型
+
+所有模型均已完全开源，开发者可以根据自身需求和硬件条件选择合适的版本。
+
+【技术特点】
+
+1. 训练数据优化：Qwen3采用了质量更高、覆盖更广的多语言训练数据，特别强化了专业领域知识。
+
+2. 架构创新：引入了改进的Transformer架构，优化了注意力机制和位置编码，提升了长文本处理能力。
+
+3. 训练方法改进：采用了更先进的训练策略和优化方法，包括混合精度训练、渐进式学习等技术。
+
+4. 推理效率优化：在保持高性能的同时，大幅降低了推理成本，仅需DeepSeek-R1的三分之一的计算资源。
+
+5. 多语言能力：支持包括中文、英文在内的多种语言，中文处理能力尤为出色。
+
+【性能表现】
+
+在权威评测基准上，Qwen3展现了领先表现：
+
+- MMLU（多任务语言理解）：Qwen3-72B得分78.9，超过所有开源模型
+- GSM8K（数学推理）：Qwen3-72B得分83.6，接近闭源顶级模型
+- HumanEval（编程能力）：Qwen3-72B通过率76.2%，开源模型中最高
+- CMMLU（中文评测）：Qwen3-72B得分81.7，中文理解能力突出
+
+【应用场景】
+
+Qwen3系列适用于广泛的应用场景：
+
+1. 智能客服与聊天机器人：提供自然、准确的对话体验
+2. 内容创作与摘要：生成高质量文章、报告和摘要
+3. 代码开发助手：辅助编程、代码解释与优化
+4. 知识问答系统：提供专业、可靠的知识服务
+5. 个性化教育：根据学习者需求定制教学内容
+6. 数据分析助手：协助数据解读和决策支持
+
+【部署与使用】
+
+Qwen3支持多种部署方式：
+
+- 使用Hugging Face Transformers库直接加载
+- 通过llama.cpp进行量化部署（支持INT4/INT8量化）
+- 使用vLLM等高性能推理引擎优化服务
+- 支持多种硬件平台，从高端GPU服务器到消费级设备
+
+【开源价值】
+
+作为一个完全开源的顶级大语言模型，Qwen3为AI社区带来了多方面价值：
+
+1. 降低AI应用门槛：使中小开发者和企业能够低成本获取顶级AI能力
+2. 促进技术创新：为研究人员提供了学习和改进的基础
+3. 推动行业标准提升：提高了开源模型的性能下限
+4. 加速垂直领域应用：通过微调可快速适应特定行业需求
+
+【结语】
+
+Qwen3系列的发布标志着开源大语言模型进入了新阶段，其卓越性能和高效率使AI技术的应用场景进一步扩大。随着开发者社区的参与和贡献，相信Qwen3将在更多领域发挥重要作用，推动AI技术的普及和创新。
+
+阿里云表示，将持续优化Qwen模型系列，并计划在未来推出更多专业领域的微调版本，以满足不同行业的特定需求。`,
+    image: 'https://placehold.co/800x400/90EE90/000000?text=Award+Winning'
+  },
+  '4': {
+    title: '千问3的屠榜，是AI的一小步，也是阿里的一大步',
+    date: '2025-01-22 19:53',
+    category: '评论分析',
+    fullContent: `近日，阿里云发布的通义千问3（Qwen3）模型在多项全球AI基准测试中取得了令人瞩目的成绩，不仅超越了所有开源大模型，在某些指标上甚至挑战了ChatGPT和Claude等商业闭源模型。这一成就不仅是AI技术发展的一个里程碑，也标志着阿里云在全球AI竞争中的重要突破。
+
+【技术突破的意义】
+
+千问3的"屠榜"表现，首先证明了中国AI技术已经达到世界领先水平。在过去几年，虽然国内大模型不断涌现，但与OpenAI、Anthropic等头部国际玩家相比仍有差距。而今，这一差距正在迅速缩小，甚至在某些方面已经实现了反超。
+
+特别值得一提的是，千问3在保持高性能的同时，大幅降低了推理成本，这意味着它在实际应用中具有更高的性价比。据官方数据，千问3的推理成本仅为DeepSeek-R1的三分之一，这对于模型大规模商业化部署具有重要意义。
+
+【阿里云的战略转变】
+
+对阿里云而言，千问3的成功不仅是技术上的胜利，更代表了其战略调整的阶段性成果。
+
+近年来，阿里云将AI作为核心竞争力的构建重点，投入了大量资源。从最初的通义千问1.0到现在的3.0，阿里云展示了快速迭代和持续创新的能力。这一方面反映了阿里集团对云计算和AI技术的长期战略坚持，另一方面也表明阿里正在从电商巨头向科技巨头转型的决心。
+
+值得注意的是，阿里选择了完全开源千问3系列模型，这一决策颇具战略眼光。开源不仅可以快速积累用户基础和开发者社区，还能通过"底层免费、应用收费"的模式，为云服务创造更多商业机会。这与阿里云"让计算成为公共服务"的愿景高度一致。
+
+【对产业的影响】
+
+千问3的突破性表现，将对AI产业带来多方面影响：
+
+首先，它可能加速国内AI应用场景落地。高性能、低成本的开源模型，将使更多中小企业有能力部署自己的AI解决方案，从而推动产业智能化升级。
+
+其次，它将促进AI生态的良性竞争。千问3的开源将给其他厂商带来压力，促使整个行业提高技术标准，最终受益的是用户和整个市场。
+
+第三，它为"AI出海"提供了有力支撑。性能领先的中国模型，将有机会在全球范围内赢得更多用户和开发者，提升中国AI技术的国际影响力。
+
+【挑战与展望】
+
+尽管千问3取得了显著成就，但阿里云仍面临诸多挑战：如何将模型优势转化为持续的商业价值；如何在激烈的国际竞争中保持技术领先；如何平衡开源与商业化的关系等。
+
+展望未来，随着千问系列的持续进化和生态建设，阿里云有望在全球AI竞争中占据更重要的位置。同时，作为中国企业，阿里云的成功也将为国内AI产业赋能，推动更多创新应用的涌现。
+
+千问3的"屠榜"，的确是AI技术的一小步，但对阿里云、对中国AI产业而言，无疑是具有战略意义的一大步。我们有理由期待，这一步将为行业带来更多积极变化，推动AI技术真正融入经济社会发展的各个方面。`,
+    image: 'https://placehold.co/800x400/FFD700/000000?text=Event+Beijing'
+  },
+  '5': {
+    title: 'AI大模型测评，深度解析最强开源模型Qwen3',
+    date: '2025-01-16 17:10',
+    category: '深度测评',
+    fullContent: `随着大型语言模型(LLM)技术的快速发展，开源模型的性能也在不断提升。阿里云最新发布的通义千问3（Qwen3）系列模型引起了广泛关注，因其在多项基准测试中的出色表现，被认为是目前性能最强的开源模型。本文将对Qwen3进行深度解析和评测。
+
+【模型概述】
+
+Qwen3是阿里云发布的新一代开源大语言模型系列，包括从0.5B到72B不同参数规模的版本。其中，Qwen3-72B是目前该系列的旗舰版本，在多项评测中表现最为突出。
+
+全系列模型都采用了对商业应用友好的开源协议，可以在符合特定条件下用于商业目的，这为企业应用提供了很大便利。
+
+【技术特点分析】
+
+1. 训练数据优化
+Qwen3在训练数据上有明显改进：
+- 扩大了高质量多语言语料库，特别是增强了中文和英文数据的质量与数量
+- 加入了更多专业领域知识，如科学、技术、医学等
+- 增强了代码和数学推理相关的训练数据
+- 采用了更严格的数据清洗和质量控制流程
+
+2. 模型架构创新
+- 优化的Transformer架构，提升了参数利用效率
+- 改进的注意力机制计算，提高长序列处理能力
+- 优化的词表和分词策略，特别适合中文处理
+- 融合了部分MoE（混合专家模型）的技术思想
+
+3. 训练方法改进
+- 采用了更有效的预训练目标和策略
+- 引入了多阶段、多任务的训练流程
+- 优化的梯度累积和精度控制
+- 针对特定能力的强化训练
+
+4. 推理效率优化
+Qwen3的一个显著特点是高效率：
+- 设计了对量化友好的权重结构
+- 优化的计算图和内存使用
+- 支持INT4/INT8等多种精度量化
+- 针对不同硬件平台的优化
+
+【性能测评】
+
+我们对Qwen3-72B进行了全面测试，并与其他主流开源模型进行了比较：
+
+1. 通用能力评测
+
+在MMLU（多任务语言理解）上，Qwen3-72B获得了78.9分，超过了所有开源模型，甚至接近某些闭源商业模型。这表明Qwen3具有很强的常识理解和多领域知识掌握能力。
+
+2. 数学推理能力
+
+在GSM8K数学问题解决基准上，Qwen3-72B达到83.6%的准确率，大幅领先其他开源模型。在更复杂的MATH基准上，其表现也相当出色，展示了很强的逻辑推理能力。
+
+3. 代码能力测试
+
+在HumanEval代码生成任务中，Qwen3-72B达到了76.2%的通过率，这在开源模型中是最高水平。我们的实际测试也证实，Qwen3在多种编程语言的代码生成、理解和调试方面都表现出色。
+
+4. 中文能力评测
+
+在CMMLU等中文评测基准上，Qwen3-72B得分81.7，展示了卓越的中文理解和生成能力。对于成语、古文、专业术语等中文特有表达的处理也相当自然。
+
+5. 长文本处理能力
+
+我们测试了Qwen3处理长文本的能力，发现它能够有效理解和利用长达32K的上下文，在长文档摘要、多轮对话等场景表现出色。
+
+【实际应用体验】
+
+除了基准测试，我们还在多个实际应用场景中测试了Qwen3的表现：
+
+1. 内容创作
+
+Qwen3能够生成结构完整、逻辑清晰的长文章，风格多样，语言自然。对于营销文案、技术文档、创意写作等不同类型的内容都能胜任。
+
+2. 代码辅助
+
+在IDE环境中使用Qwen3进行代码补全和生成，反应速度快，代码质量高，并能提供详细的注释和文档。特别是在调试和优化代码方面表现突出。
+
+3. 知识问答
+
+对于专业领域的问题，Qwen3展示了深度和准确性，能够提供详细解释和参考。对于模糊或有歧义的问题，也能给出合理的多种可能性解释。
+
+4. 多语言支持
+
+除了中英文外，Qwen3在日语、德语、法语等多种语言上也有不错表现，能够理解和生成基本的多语言内容，这对于国际化应用很有价值。
+
+【与其他模型对比】
+
+我们将Qwen3与当前主流的开源大模型进行了对比：
+
+- 相比DeepSeek-R1，Qwen3在多项测试中性能略高，且推理成本仅为三分之一
+- 相比Llama 3，Qwen3在中文处理能力上有明显优势，在数学和代码能力上也略胜一筹
+- 相比国内其他开源模型，Qwen3在综合性能和效率上都处于领先地位
+
+【部署与使用测试】
+
+我们测试了Qwen3在不同环境下的部署体验：
+
+1. 本地部署
+- 使用Hugging Face Transformers：部署简便，功能完整，但资源消耗较大
+- 使用llama.cpp进行量化部署：INT4量化后，Qwen3-7B能在消费级GPU甚至高端CPU上流畅运行
+- 使用vLLM进行服务部署：吞吐量高，延迟低，适合多用户服务场景
+
+2. 云服务调用
+- 通过阿里云API直接调用：最便捷的使用方式，无需考虑部署问题
+- 自建云服务：弹性扩展能力强，可根据负载自动调整资源
+
+【局限性分析】
+
+尽管Qwen3表现出色，但仍存在一些局限性：
+
+1. 与顶级闭源模型如GPT-4o相比，在某些极具挑战性的任务上仍有差距
+2. 对于需要最新信息的查询，受限于训练数据截止日期
+3. 在某些极专业领域的深度知识方面略显不足
+4. 创造性和突破性思考方面还有提升空间
+
+【适用场景建议】
+
+基于我们的测评，Qwen3适合以下场景：
+
+- 需要平衡性能和成本的企业级应用
+- 对中文处理有高要求的应用场景
+- 需要部署到资源受限环境的AI应用
+- 需要完全控制模型和数据的安全敏感场景
+- 定制化AI解决方案的基础模型
+
+【总结评价】
+
+综合各方面表现，Qwen3系列无疑是目前性能最强的开源大语言模型之一。其在技术指标、实用性能和部署效率上的全面表现，为开发者和企业提供了一个强大而实用的AI工具。
+
+最终评分：9.2/10
+
+优势：性能全面领先、推理成本低、中文能力突出、开源协议友好
+不足：与顶级闭源模型仍有差距、创造性任务表现一般
+
+随着开源社区的不断贡献和阿里云团队的持续优化，我们期待Qwen3模型在未来能够发挥更大的价值，推动AI技术在更多领域的应用和创新。`,
+    image: 'https://placehold.co/800x400/DA70D6/000000?text=GBA+Summit'
+  },
+  '6': {
+    title: '阿里开源千问3模型 成本仅需DeepSeek-R1三分之一',
+    date: '2025-01-03 16:35',
+    category: '行业动态',
+    fullContent: `近日，阿里云正式宣布开源其最新研发的通义千问3（Qwen3）系列大语言模型，该系列模型不仅在性能上超越了目前所有开源大模型，更令人瞩目的是，其推理成本仅为当前主流开源模型DeepSeek-R1的三分之一。这一重要突破，有望大幅降低AI应用的部署门槛，加速人工智能技术的产业落地。
+
+【成本优势分析】
+
+根据阿里云发布的官方数据，在相同硬件条件下，Qwen3-72B模型的推理速度比DeepSeek-R1快约3倍，这意味着使用相同的计算资源，Qwen3可以处理更多的用户请求，大幅降低每次推理的成本。
+
+这一成本优势主要来源于以下几个方面的技术创新：
+
+1. 优化的模型架构：Qwen3采用了更高效的参数设计，减少了无效计算
+2. 改进的注意力机制：优化了自注意力计算的效率，降低了计算复杂度
+3. 针对推理的特殊优化：模型训练时就考虑了推理效率，采用了多项加速技术
+4. 量化友好设计：Qwen3在设计时特别考虑了量化部署场景，在INT4/INT8等低精度下性能损失小
+
+一位行业专家评价道："Qwen3在保持高性能的同时大幅降低成本，这对整个AI行业都是重大利好。此前，高昂的推理成本一直是限制大模型广泛应用的主要障碍之一。"
+
+【全面开源策略】
+
+与此前的部分开源模型不同，阿里云选择了全面开源Qwen3系列的所有规格型号，从超轻量级的0.5B到顶级性能的72B版本都将向开发者无偿开放，这为不同场景和硬件条件的应用提供了灵活选择。
+
+开源内容包括：
+- 模型权重文件
+- 推理代码
+- 评测脚本
+- 部署示例
+- 丰富的文档
+
+阿里云选择了对商业使用较为友好的开源协议，允许在遵循特定条件的情况下将模型用于商业目的，这与一些限制商用的开源模型形成鲜明对比。
+
+阿里云智能技术负责人表示："我们相信，只有让先进的AI技术真正普惠大众，才能释放其最大价值。降低使用门槛和成本是实现这一目标的关键一步。"
+
+【性能与效率的平衡】
+
+值得注意的是，Qwen3并未以牺牲性能为代价换取效率提升。相反，在MMLU、GSM8K、HumanEval等多项权威基准测试中，Qwen3-72B均取得了开源模型中的最高分，在某些指标上甚至接近或超过了部分闭源商业模型。
+
+一位参与早期测试的开发者分享道："使用Qwen3最直观的感受是'快'，同样的硬件条件下，响应速度明显快于其他同规模模型，而且质量没有任何妥协。"
+
+【产业影响与前景】
+
+Qwen3的成本优势预计将对AI产业带来深远影响：
+
+1. 降低中小企业AI应用门槛：更低的计算资源需求使中小企业也能负担得起高质量大模型应用
+
+2. 加速边缘设备AI部署：高效的计算特性使Qwen3更适合资源受限的边缘设备
+
+3. 推动AI应用多样化：成本降低将鼓励开发者探索更多创新场景和长尾应用
+
+4. 促进行业竞争与进步：效率标准的提高将激励其他厂商也加大对模型效率的优化
+
+阿里云表示，除了开源模型本身，还将持续提供优化工具和最佳实践指南，帮助开发者充分发挥Qwen3的成本效益。同时，计划围绕Qwen3建立完整的生态系统，包括定制化微调服务、专业领域模型和应用开发框架等。
+
+随着Qwen3的广泛应用，我们有理由期待，AI技术将以更低的成本、更高的效率融入更多行业和场景，为经济社会发展注入新动能。`,
+    image: 'https://placehold.co/800x400/87CEFA/000000?text=Shanghai+Seminar'
+  }
 };
 
 const ArticlePage = () => {
@@ -21,57 +374,87 @@ const ArticlePage = () => {
   const { t } = useTranslation();
 
   useEffect(() => {
-    const fetchArticle = async () => {
+    // 简化文章获取逻辑
+    setLoading(true);
+    if (articleId && allNewsData[articleId]) {
       setArticle(allNewsData[articleId]);
-      setLoading(false);
-    };
-
-    fetchArticle();
+    } else {
+      console.error("文章ID无效或未找到对应文章:", articleId);
+    }
+    setLoading(false);
   }, [articleId]);
 
-  if (!article && !loading) {
+  // 处理加载中的状态
+  if (loading) {
     return (
-      <HelmetProvider>
-        <Helmet>
-          <title>{t('app.title')} - {t('app.subtitle')} | Article Not Found</title>
-        </Helmet>
-        <div className="container mx-auto px-4 py-12 text-center">
-          <h1 className="text-3xl font-bold mb-4">Article Not Found</h1>
-          <p className="mb-8">The article you're looking for doesn't exist or has been removed.</p>
-          <button onClick={() => navigate('/news')} className="bg-indigo-600 text-white px-6 py-2 rounded hover:bg-indigo-700">
-            Back to News
-          </button>
-        </div>
-      </HelmetProvider>
+      <div className="fixed inset-0 bg-white flex items-center justify-center">
+        <div className="text-2xl font-bold text-gray-800">{t('app.loading')}</div>
+      </div>
     );
   }
 
+  // 处理文章未找到的情况
+  if (!article) {
+    return (
+      <div className="fixed inset-0 bg-white flex flex-col items-center justify-center p-5">
+        <h1 className="text-3xl font-bold text-gray-800 mb-4">{t('app.article.notFound')}</h1>
+        <p className="text-gray-600 mb-8">{t('app.article.notFoundDesc')}</p>
+        <button
+          onClick={() => navigate('/news')}
+          className="bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700"
+        >
+          {t('app.article.backToNews')}
+        </button>
+      </div>
+    );
+  }
+
+  // 处理段落分割
+  const renderContent = () => {
+    // 使用正则表达式替换所有连续两个换行符为段落分隔符
+    const paragraphs = article.fullContent.split(/\n\n+/);
+    return paragraphs.map((paragraph, index) => (
+      <p key={index} className="mb-6 text-gray-700 leading-relaxed">
+        {paragraph}
+      </p>
+    ));
+  };
+
   return (
-    <HelmetProvider>
-      <Helmet>
-        <title>{t('app.title')} - {t('app.subtitle')} | {article.title}</title>
-        <meta name="description" content={article.fullContent.substring(0, 160)} />
-      </Helmet>
-      <div className="container mx-auto px-4 py-12">
-        <article className="bg-white shadow-xl rounded-lg overflow-hidden">
-          {article.image && (
-            <img src={article.image} alt={article.title} className="w-full h-64 md:h-96 object-cover" />
-          )}
+    <div className="bg-white">
+      <div className="container mx-auto px-4 py-20">
+        <div className="max-w-4xl mx-auto bg-white rounded-xl shadow-xl overflow-hidden">
           <div className="p-6 md:p-10">
-            <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">{article.title}</h1>
-            <p className="text-sm text-gray-500 mb-2">Published on: {article.date}</p>
-            <p className="text-sm text-gray-500 mb-6">Category: {article.category}</p>
-            <div className="prose prose-lg max-w-none text-gray-700">
-              {/* In a real app, this would be HTML content or parsed markdown */}
-              {article.fullContent.split('\n').map((paragraph, index) => (
-                <p key={index}>{paragraph}</p>
-              ))}
+            <h1 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+              {article.title}
+            </h1>
+
+            <div className="flex flex-wrap gap-4 mb-8">
+              <p className="text-sm bg-gray-100 text-gray-600 px-3 py-1 rounded-full">
+                {t('app.article.publishDate')}: {article.date}
+              </p>
+              <p className="text-sm bg-gray-100 text-gray-600 px-3 py-1 rounded-full">
+                {t('app.article.category')}: {article.category}
+              </p>
+            </div>
+
+            <div className="prose max-w-none">
+              {renderContent()}
+            </div>
+
+            <div className="mt-10 text-center">
+              <Link
+                to="/news"
+                className="inline-block bg-indigo-600 text-white px-8 py-3 rounded-lg font-medium hover:bg-indigo-700 transition-colors"
+              >
+                {t('app.article.backToNews')}
+              </Link>
             </div>
           </div>
-        </article>
+        </div>
       </div>
-    </HelmetProvider>
+    </div>
   );
 };
 
-export default ArticlePage; 
+export default ArticlePage;

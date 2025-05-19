@@ -1,0 +1,633 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>千问3（Qwen3）模型开源以及初体验</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; padding: 20px; max-width: 1000px; margin: 0 auto; }
+        img { max-width: 100%; height: auto; }
+        pre { background-color: #f5f5f5; padding: 10px; overflow: auto; }
+        code { font-family: Consolas, monospace; }
+        .article-source { color: #666; margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+    <h1>千问3（Qwen3）模型开源以及初体验</h1>
+    <div class="article-source">
+        原文链接: <a href="https://blog.csdn.net/liupeng9494/article/details/147619006" target="_blank">https://blog.csdn.net/liupeng9494/article/details/147619006</a>
+    </div>
+    <div class="article-content">
+        <div class="article_content clearfix" id="article_content">
+<link href="https://csdnimg.cn/release/blogv2/dist/mdeditor/css/editerView/kdoc_html_views-1a98987dfd.css" rel="stylesheet"/>
+<link href="https://csdnimg.cn/release/blogv2/dist/mdeditor/css/editerView/ck_htmledit_views-704d5b9767.css" rel="stylesheet"/>
+<div class="htmledit_views atom-one-light" id="content_views">
+<h3>体验地址：<a href="https://bailian.console.aliyun.com/?tab=model#/model-market" rel="nofollow" title="百炼控制台">百炼控制台</a></h3>
+<h3><img alt="" height="815" src="images/3e81f499c550476dbed51d96a77fd8ac.png" width="1470"/></h3>
+<h3>1 千问3模型：全球最强开源大模型震撼发布</h3>
+<p>2025年4月29日，阿里巴巴正式开源了新一代通义千问模型Qwen3（简称千问3），这一里程碑式的事件标志着中国开源大模型首次登顶全球性能榜首。千问3系列包含8款不同尺寸的模型，全部采用创新的混合推理架构，在性能全面超越DeepSeek-R1、OpenAI-o1等全球顶尖模型的同时，部署成本仅需同类产品的三分之一。</p>
+<h3>2 革命性的混合推理架构</h3>
+<p>千问3最引人注目的技术突破在于其首创的"混合推理"机制，通过将"快思考"与"慢思考"集成进同一模型，实现了对计算资源的智能分配。面对简单查询时，模型可仅激活22B参数快速响应；处理复杂问题时则能自动启动多步骤深度思考模式。这种动态调整能力使Qwen3-235B-A22B旗舰模型在保持235B总参数规模的同时，日常推理仅需4张H20显卡即可满血运行，显存占用较同类产品减少67%。</p>
+<h3>3 全面超越的性能表现</h3>
+<p>在权威测评中，千问3创下多项纪录：AIME25奥数测评81.5分刷新开源模型上限；LiveCodeBench代码评测突破70分大关超越Grok3；ArenaHard人类偏好对齐测评95.6分力压OpenAI-o1。特别值得一提的是其BFCL智能体评测70.8分的表现，这意味着千问3在工具调用、任务分解等Agent能力上已超越Gemini2.5-Pro，为下一代AI应用的爆发铺平道路。</p>
+<h3>4 原生支持MCP协议</h3>
+<p>作为面向未来的基础设施，千问3原生集成MCP（模型上下文协议）支持，配合强大的function calling能力，开发者可通过Qwen-Agent框架轻松实现跨设备智能体操作。用户在新版通义网页版(tongyi.com) 的交互界面中，已能看到类似时间轴拖拽的"思考预算"调节功能，可手动控制模型对复杂问题的推理深度，这种设计在大模型产品中尚属首创。</p>
+<h3>5 全场景覆盖的模型矩阵</h3>
+<p>阿里此次开源的模型矩阵极具战略眼光：0.6B-4B系列专为移动端优化，8B模型适配汽车与PC端侧部署，32B稠密模型成为企业级应用首选。特别值得注意的是Qwen3-4B小模型，其性能竟可媲美上一代72B模型，这种"小模型大能量"的特性彻底改写了边缘计算的可能性边界。<a href="https://app.myzaker.com/news/article.php?m=1745900726&amp;pk=68104584b15ec04860186e08" rel="nofollow" title="6">6</a><a href="https://ai.zol.com.cn/978/9789924.html" rel="nofollow" title="12">12</a><a href="https://stock.10jqka.com.cn/usstock/20250429/c667847970.shtml" rel="nofollow" title="21">21</a></p>
+<h3>6 开发者生态与商业化路径</h3>
+<p>采用Apache2.0协议的千问3全面开放商用，支持119种语言的开发者可通过魔搭社区、HuggingFace等平台自由下载。阿里云百炼平台同步提供API服务，配合36T tokens的预训练数据和强化学习框架，使企业能快速微调出行业专属模型。这种"开源+云服务"双轨模式，正在重塑全球大模型产业格局。</p>
+<h3>7 技术演进的里程碑意义</h3>
+<p>从2023年Qwen1.5到如今的Qwen3，阿里通义团队在7个月内实现了参数量效率300%的提升。这次开源不仅使中国首次拥有全球性能第一的开源模型，更标志着混合推理架构正式成为大模型发展的新范式。正如阿里CTO所言，千问3代表着通向AGI道路上的重要里程碑，其"快慢思考"机制很可能成为未来智能体的标准配置</p>
+<p></p>
+<h2><strong>8 使用体验</strong></h2>
+<p><strong>千问</strong></p>
+<p><strong>问题</strong></p>
+<blockquote>
+<p></p>
+<p>股票分析页面需要实现以下功能：</p>
+<p>股票数据展示 ：展示股票的基本信息，如股票代码、名称、当前价格等。</p>
+<p>历史数据查询 ：允许用户查询股票的历史价格数据，并以图表的形式展示。</p>
+<p>数据分析 ：对股票数据进行简单的分析，如计算涨幅、跌幅等。 写一个网页</p>
+</blockquote>
+<p>通义千问3-235B-A22B  的回答</p>
+<pre><code class="hljs">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="zh-CN"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;股票分析系统&lt;/title&gt;
+    &lt;link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"&gt;
+    &lt;script src="https://cdn.jsdelivr.net/npm/chart.js"&gt;&lt;/script&gt;
+    &lt;style&gt;
+        .stock-card {
+            transition: all 0.3s ease;
+        }
+        .stock-card:hover {
+            transform: translateY(-5px);
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;nav class="navbar navbar-expand-lg navbar-dark bg-primary mb-4"&gt;
+        &lt;div class="container"&gt;
+            &lt;a class="navbar-brand" href="#"&gt;股票分析系统&lt;/a&gt;
+        &lt;/div&gt;
+    &lt;/nav&gt;
+
+    &lt;div class="container"&gt;
+        &lt;!-- 股票基本信息 --&gt;
+        &lt;div class="row mb-4"&gt;
+            &lt;div class="col-md-6"&gt;
+                &lt;div class="card stock-card"&gt;
+                    &lt;div class="card-body"&gt;
+                        &lt;h5 class="card-title"&gt;股票信息&lt;/h5&gt;
+                        &lt;p class="card-text"&gt;代码：&lt;span id="stock-code"&gt;SH600000&lt;/span&gt;&lt;/p&gt;
+                        &lt;p class="card-text"&gt;名称：&lt;span id="stock-name"&gt;浦发银行&lt;/span&gt;&lt;/p&gt;
+                        &lt;p class="card-text fs-4 text-success"&gt;当前价格：&lt;span id="stock-price"&gt;7.85&lt;/span&gt; &lt;small class="text-muted"&gt;+0.45%&lt;/small&gt;&lt;/p&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;!-- 历史数据查询 --&gt;
+        &lt;div class="card mb-4"&gt;
+            &lt;div class="card-body"&gt;
+                &lt;h5 class="card-title"&gt;历史数据查询&lt;/h5&gt;
+                &lt;form id="history-form" class="row g-3"&gt;
+                    &lt;div class="col-md-4"&gt;
+                        &lt;label for="start-date" class="form-label"&gt;开始日期&lt;/label&gt;
+                        &lt;input type="date" class="form-control" id="start-date" required&gt;
+                    &lt;/div&gt;
+                    &lt;div class="col-md-4"&gt;
+                        &lt;label for="end-date" class="form-label"&gt;结束日期&lt;/label&gt;
+                        &lt;input type="date" class="form-control" id="end-date" required&gt;
+                    &lt;/div&gt;
+                    &lt;div class="col-md-4 align-self-end"&gt;
+                        &lt;button type="submit" class="btn btn-primary"&gt;查询&lt;/button&gt;
+                    &lt;/div&gt;
+                &lt;/form&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;!-- 数据图表 --&gt;
+        &lt;div class="card mb-4"&gt;
+            &lt;div class="card-body"&gt;
+                &lt;canvas id="stockChart" height="100"&gt;&lt;/canvas&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;!-- 数据分析 --&gt;
+        &lt;div class="row" id="analysis-result"&gt;
+            &lt;div class="col-md-4"&gt;
+                &lt;div class="card text-white bg-info mb-3"&gt;
+                    &lt;div class="card-header"&gt;涨幅分析&lt;/div&gt;
+                    &lt;div class="card-body"&gt;
+                        &lt;h5 class="card-title"&gt;周涨幅&lt;/h5&gt;
+                        &lt;p class="card-text fs-3" id="week-change"&gt;+3.25%&lt;/p&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="col-md-4"&gt;
+                &lt;div class="card text-white bg-warning mb-3"&gt;
+                    &lt;div class="card-header"&gt;波动分析&lt;/div&gt;
+                    &lt;div class="card-body"&gt;
+                        &lt;h5 class="card-title"&gt;月振幅&lt;/h5&gt;
+                        &lt;p class="card-text fs-3" id="month-range"&gt;±5.8%&lt;/p&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class="col-md-4"&gt;
+                &lt;div class="card text-white bg-success mb-3"&gt;
+                    &lt;div class="card-header"&gt;趋势分析&lt;/div&gt;
+                    &lt;div class="card-body"&gt;
+                        &lt;h5 class="card-title"&gt;季均线&lt;/h5&gt;
+                        &lt;p class="card-text fs-3" id="quarter-trend"&gt;↑ 强势&lt;/p&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;script&gt;
+        // 模拟股票数据（实际应用中应通过API获取）
+        const mockData = {
+            dates: ['2023-09-01', '2023-09-05', '2023-09-06', '2023-09-07', '2023-09-08',
+                   '2023-09-11', '2023-09-12', '2023-09-13', '2023-09-14', '2023-09-15'],
+            prices: [7.65, 7.72, 7.68, 7.85, 7.89, 7.92, 7.88, 7.95, 8.02, 8.10]
+        };
+
+        // 图表初始化
+        const ctx = document.getElementById('stockChart').getContext('2d');
+        let stockChart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: [],
+                datasets: [{
+                    label: '收盘价',
+                    data: [],
+                    borderColor: 'rgb(75, 192, 192)',
+                    tension: 0.1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    y: {
+                        beginAtZero: false
+                    }
+                }
+            }
+        });
+
+        // 表单提交处理
+        document.getElementById('history-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const startDate = document.getElementById('start-date').value;
+            const endDate = document.getElementById('end-date').value;
+
+            // 简单的数据过滤（实际应调用API）
+            const filteredDates = mockData.dates.filter(date =&gt; 
+                date &gt;= startDate &amp;&amp; date &lt;= endDate
+            );
+            
+            const filteredPrices = mockData.prices.slice(
+                mockData.dates.indexOf(filteredDates[0]),
+                mockData.dates.indexOf(filteredDates[filteredDates.length - 1]) + 1
+            );
+
+            // 更新图表
+            stockChart.data.labels = filteredDates;
+            stockChart.data.datasets[0].data = filteredPrices;
+            stockChart.update();
+
+            // 简单数据分析
+            calculateAnalysis(filteredPrices);
+        });
+
+        // 数据分析函数
+        function calculateAnalysis(prices) {
+            if (prices.length &lt; 2) return;
+
+            // 计算周涨幅（最近5个交易日）
+            const weekChange = ((prices[prices.length-1] - prices[prices.length-6]) / prices[prices.length-6] * 100).toFixed(2);
+            document.getElementById('week-change').textContent = `${weekChange}%`;
+
+            // 计算月波动范围（假设数据跨度为1个月）
+            const maxPrice = Math.max(...prices);
+            const minPrice = Math.min(...prices);
+            const range = ((maxPrice - minPrice) / minPrice * 100).toFixed(2);
+            document.getElementById('month-range').textContent = `±${range}%`;
+
+            // 趋势分析（简单判断均线方向）
+            const avg20 = prices.slice(-5).reduce((a,b) =&gt; a + b, 0) / 5;
+            const avg60 = prices.slice(-10).reduce((a,b) =&gt; a + b, 0) / 10;
+            document.getElementById('quarter-trend').textContent = 
+                avg20 &gt; avg60 ? '↑ 强势' : avg20 &lt; avg60 ? '↓ 弱势' : '→ 盘整';
+        }
+    &lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<p></p>
+<p></p>
+<p>效果</p>
+<p><img alt="" height="717" src="images/e7178e8d81354868b7cc1aa51e509ecc.png" width="1251"/></p>
+<p></p>
+<p></p>
+<p>千问3低参数版本</p>
+<p>通义千问-Turbo-Latest</p>
+<p></p>
+<pre><code class="hljs">&lt;!DOCTYPE html&gt;
+&lt;html lang="zh-CN"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;股票分析页面&lt;/title&gt;
+    &lt;style&gt;
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+            background: #f5f5f5;
+        }
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h2 {
+            color: #333;
+        }
+        .input-group {
+            margin-bottom: 20px;
+        }
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .input-group input {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        #chartContainer {
+            height: 400px;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+&lt;div class="container"&gt;
+    &lt;h2&gt;股票分析系统&lt;/h2&gt;
+    
+    &lt;div class="input-group"&gt;
+        &lt;label for="stockCode"&gt;股票代码:&lt;/label&gt;
+        &lt;input type="text" id="stockCode" placeholder="例如: SH600000"&gt;
+    &lt;/div&gt;
+
+    &lt;div id="stockInfo"&gt;
+        &lt;!-- 股票信息将在这里显示 --&gt;
+    &lt;/div&gt;
+
+    &lt;div id="chartContainer"&gt;
+        &lt;canvas id="priceChart"&gt;&lt;/canvas&gt;
+    &lt;/div&gt;
+
+    &lt;div id="analysisResult"&gt;
+        &lt;!-- 分析结果将在这里显示 --&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+&lt;!-- 引入Chart.js库 --&gt;
+&lt;script src="https://cdn.jsdelivr.net/npm/chart.js"&gt;&lt;/script&gt;
+&lt;script&gt;
+    // 模拟股票数据
+    const mockStockData = {
+        "SH600000": {
+            code: "SH600000",
+            name: "浦发银行",
+            price: 15.25,
+            change: +1.2,
+            history: [
+                { date: "2023-09-01", close: 15.00 },
+                { date: "2023-09-02", close: 15.10 },
+                { date: "2023-09-03", close: 15.20 },
+                { date: "2023-09-04", close: 15.15 },
+                { date: "2023-09-05", close: 15.25 }
+            ]
+        },
+        "SZ000001": {
+            code: "SZ000001",
+            name: "平安银行",
+            price: 18.75,
+            change: -0.5,
+            history: [
+                { date: "2023-09-01", close: 18.80 },
+                { date: "2023-09-02", close: 18.60 },
+                { date: "2023-09-03", close: 18.70 },
+                { date: "2023-09-04", close: 18.50 },
+                { date: "2023-09-05", close: 18.75 }
+            ]
+        }
+    };
+
+    let currentStock = null;
+
+    document.getElementById('stockCode').addEventListener('input', function() {
+        const code = this.value.toUpperCase();
+        if (mockStockData[code]) {
+            currentStock = mockStockData[code];
+            renderStockInfo();
+            renderChart();
+            analyzeStock();
+        } else {
+            document.getElementById('stockInfo').innerHTML = '&lt;p&gt;未找到该股票信息&lt;/p&gt;';
+            document.getElementById('chartContainer').style.display = 'none';
+            document.getElementById('analysisResult').innerHTML = '';
+        }
+    });
+
+    function renderStockInfo() {
+        const infoDiv = document.getElementById('stockInfo');
+        infoDiv.innerHTML = `
+            &lt;h3&gt;${currentStock.name} (${currentStock.code})&lt;/h3&gt;
+            &lt;table&gt;
+                &lt;tr&gt;&lt;td&gt;当前价格&lt;/td&gt;&lt;td&gt;${currentStock.price}&lt;/td&gt;&lt;/tr&gt;
+                &lt;tr&gt;&lt;td&gt;涨跌幅&lt;/td&gt;&lt;td style="color:${currentStock.change &gt;= 0 ? 'green' : 'red'}"&gt;${currentStock.change}%&lt;/td&gt;&lt;/tr&gt;
+            &lt;/table&gt;
+        `;
+        document.getElementById('chartContainer').style.display = 'block';
+    }
+
+    function renderChart() {
+        const ctx = document.getElementById('priceChart').getContext('2d');
+        const dates = currentStock.history.map(h =&gt; h.date);
+        const prices = currentStock.history.map(h =&gt; h.close);
+
+        new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: dates,
+                datasets: [{
+                    label: '收盘价',
+                    data: prices,
+                    borderColor: '#4caf50',
+                    fill: false,
+                    tension: 0.1
+                }]
+            },
+            options: {
+                responsive: true,
+                scales: {
+                    x: {
+                        title: { display: true, text: '日期' }
+                    },
+                    y: {
+                        title: { display: true, text: '价格 (元)' }
+                    }
+                }
+            }
+        });
+    }
+
+    function analyzeStock() {
+        const history = currentStock.history;
+        const latest = history[history.length - 1].close;
+        const previous = history[history.length - 2].close;
+        const changePercent = ((latest - previous) / previous * 100).toFixed(2);
+
+        const analysisDiv = document.getElementById('analysisResult');
+        analysisDiv.innerHTML = `
+            &lt;h3&gt;数据分析&lt;/h3&gt;
+            &lt;p&gt;最近一日涨幅: ${changePercent}%&lt;/p&gt;
+            &lt;p&gt;最近5日最高价: ${Math.max(...history.map(h =&gt; h.close))}&lt;/p&gt;
+            &lt;p&gt;最近5日最低价: ${Math.min(...history.map(h =&gt; h.close))}&lt;/p&gt;
+            &lt;p&gt;平均收盘价: ${(history.reduce((sum, h) =&gt; sum + h.close, 0) / history.length).toFixed(2)}&lt;/p&gt;
+        `;
+    }
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;</code></pre>
+<p>效果</p>
+<p><img alt="" height="994" src="images/3c0dbed7d3d746cc89345542ead3c4dc.png" width="1138"/></p>
+<p>老版本千问</p>
+<p></p>
+<p> </p>
+<p class="img-center"><img alt="" height="40" src="images/1c8201d38fc096e5bbc4414c7fd1e3d9.png" width="40"/></p>
+<p>通义千问-Plus-2025-01-25</p>
+<pre><code class="hljs">1. HTML部分
+&lt;!DOCTYPE html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;meta name="viewport" content="width=device-width, initial-scale=1.0"&gt;
+    &lt;title&gt;股票分析页面&lt;/title&gt;
+    &lt;link rel="stylesheet" href="styles.css"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class="container"&gt;
+        &lt;h1&gt;股票分析工具&lt;/h1&gt;
+
+        &lt;!-- 股票代码输入 --&gt;
+        &lt;div class="input-section"&gt;
+            &lt;label for="stock-symbol"&gt;请输入股票代码：&lt;/label&gt;
+            &lt;input type="text" id="stock-symbol" placeholder="例如 AAPL"&gt;
+            &lt;button onclick="fetchStockData()"&gt;查询&lt;/button&gt;
+        &lt;/div&gt;
+
+        &lt;!-- 股票基本信息展示 --&gt;
+        &lt;div id="stock-info" class="stock-info"&gt;&lt;/div&gt;
+
+        &lt;!-- 历史数据查询 --&gt;
+        &lt;div class="history-section"&gt;
+            &lt;h2&gt;历史数据查询&lt;/h2&gt;
+            &lt;label for="start-date"&gt;起始日期：&lt;/label&gt;
+            &lt;input type="date" id="start-date"&gt;
+            &lt;label for="end-date"&gt;结束日期：&lt;/label&gt;
+            &lt;input type="date" id="end-date"&gt;
+            &lt;button onclick="fetchHistoricalData()"&gt;查询历史数据&lt;/button&gt;
+        &lt;/div&gt;
+
+        &lt;!-- 图表展示 --&gt;
+        &lt;div id="chart-container" style="width: 100%; height: 400px;"&gt;&lt;/div&gt;
+
+        &lt;!-- 数据分析 --&gt;
+        &lt;div id="data-analysis" class="data-analysis"&gt;&lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;script src="https://cdn.jsdelivr.net/npm/chart.js"&gt;&lt;/script&gt;
+    &lt;script src="script.js"&gt;&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+2. CSS部分 (styles.css)
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.input-section, .history-section {
+    margin-bottom: 20px;
+}
+
+.stock-info, .data-analysis {
+    margin-top: 20px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+#chart-container {
+    margin-top: 20px;
+}
+3. JavaScript部分 (script.js)
+// 模拟的API端点（请替换为实际的API）
+const API_URL = "https://api.example.com/stock"; // 替换为实际API
+
+// 获取股票基本信息
+function fetchStockData() {
+    const symbol = document.getElementById("stock-symbol").value;
+    if (!symbol) {
+        alert("请输入股票代码！");
+        return;
+    }
+
+    // 模拟API请求
+    fetch(`${API_URL}/info?symbol=${symbol}`)
+        .then(response =&gt; response.json())
+        .then(data =&gt; {
+            if (data.error) {
+                alert(data.error);
+                return;
+            }
+            displayStockInfo(data);
+        })
+        .catch(error =&gt; {
+            console.error("Error fetching stock data:", error);
+            alert("无法获取股票数据，请稍后再试！");
+        });
+}
+
+// 展示股票基本信息
+function displayStockInfo(data) {
+    const stockInfoDiv = document.getElementById("stock-info");
+    stockInfoDiv.innerHTML = `
+        &lt;p&gt;&lt;strong&gt;股票代码：&lt;/strong&gt;${data.symbol}&lt;/p&gt;
+        &lt;p&gt;&lt;strong&gt;股票名称：&lt;/strong&gt;${data.name}&lt;/p&gt;
+        &lt;p&gt;&lt;strong&gt;当前价格：&lt;/strong&gt;$${data.price.toFixed(2)}&lt;/p&gt;
+    `;
+}
+
+// 获取历史数据并绘制图表
+function fetchHistoricalData() {
+    const symbol = document.getElementById("stock-symbol").value;
+    const startDate = document.getElementById("start-date").value;
+    const endDate = document.getElementById("end-date").value;
+
+    if (!symbol || !startDate || !endDate) {
+        alert("请输入完整的查询条件！");
+        return;
+    }
+
+    // 模拟API请求
+    fetch(`${API_URL}/history?symbol=${symbol}&amp;start=${startDate}&amp;end=${endDate}`)
+        .then(response =&gt; response.json())
+        .then(data =&gt; {
+            if (data.error) {
+                alert(data.error);
+                return;
+            }
+            drawChart(data);
+            analyzeData(data);
+        })
+        .catch(error =&gt; {
+            console.error("Error fetching historical data:", error);
+            alert("无法获取历史数据，请稍后再试！");
+        });
+}
+
+// 绘制历史数据图表
+function drawChart(data) {
+    const dates = data.map(item =&gt; item.date);
+    const prices = data.map(item =&gt; item.close);
+
+    const ctx = document.getElementById("chart-container").getContext("2d");
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: dates,
+            datasets: [{
+                label: '收盘价',
+                data: prices,
+                borderColor: 'blue',
+                fill: false
+            }]
+        },
+        options: {
+            responsive: true,
+            scales: {
+                x: {
+                    type: 'time',
+                    time: {
+                        unit: 'day'
+                    }
+                },
+                y: {
+                    beginAtZero: false
+                }
+            }
+        }
+    });
+}
+
+// 数据分析
+function analyzeData(data) {
+    const prices = data.map(item =&gt; item.close);
+    const maxPrice = Math.max(...prices);
+    const minPrice = Math.min(...prices);
+    const firstPrice = prices[0];
+    const lastPrice = prices[prices.length - 1];
+
+    const change = lastPrice - firstPrice;
+    const changePercentage = (change / firstPrice) * 100;
+
+    const analysisDiv = document.getElementById("data-analysis");
+    analysisDiv.innerHTML = `
+        &lt;p&gt;&lt;strong&gt;最高价格：&lt;/strong&gt;$${maxPrice.toFixed(2)}&lt;/p&gt;
+        &lt;p&gt;&lt;strong&gt;最低价格：&lt;/strong&gt;$${minPrice.toFixed(2)}&lt;/p&gt;
+        &lt;p&gt;&lt;strong&gt;涨幅/跌幅：&lt;/strong&gt;${change.toFixed(2)} (${changePercentage.toFixed(2)}%)&lt;/p&gt;
+    `;
+}</code></pre>
+<p></p>
+<p>体验了下 还是 通义千问3-235B-A22B 搞出网页版本好像做出的网页炫酷点  你们说呢 可以自己实验看看</p>
+<p></p>
+<p></p>
+</div>
+</div>
+    </div>
+</body>
+</html>

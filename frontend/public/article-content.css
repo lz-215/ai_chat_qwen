@@ -1,0 +1,188 @@
+/* 文章内容样式 */
+.article-wrapper {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  color: #333;
+  line-height: 1.8;
+  font-size: 16px;
+}
+
+.article-wrapper h1,
+.article-wrapper h2,
+.article-wrapper h3,
+.article-wrapper h4,
+.article-wrapper h5,
+.article-wrapper h6 {
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+  font-weight: 600;
+  color: #1e40af;
+}
+
+.article-wrapper h1 {
+  font-size: 1.8em;
+}
+
+.article-wrapper h2 {
+  font-size: 1.5em;
+}
+
+.article-wrapper h3 {
+  font-size: 1.3em;
+}
+
+.article-wrapper p {
+  margin-bottom: 1em;
+}
+
+.article-wrapper a {
+  color: #4f46e5;
+  text-decoration: none;
+  border-bottom: 1px solid #e0e7ff;
+  transition: border-color 0.2s ease;
+}
+
+.article-wrapper a:hover {
+  border-color: #4f46e5;
+}
+
+.article-wrapper img {
+  max-width: 100%;
+  height: auto;
+  margin: 1.5em auto;
+  border-radius: 0.375em;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  display: block;
+}
+
+/* 修复图片显示问题 */
+.article-wrapper img[src=""] {
+  display: none;
+}
+
+/* 为空图片添加占位符 */
+.article-wrapper img:not([src]),
+.article-wrapper img[src=""],
+.article-wrapper img[src*="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///"],
+.article-wrapper img[src$=".jpg"]:not([src^="http"]):not([src^="/"]):not([src^="data:"]),
+.article-wrapper img[src$=".png"]:not([src^="http"]):not([src^="/"]):not([src^="data:"]),
+.article-wrapper img[src$=".gif"]:not([src^="http"]):not([src^="/"]):not([src^="data:"]),
+.article-wrapper img[src$=".jpeg"]:not([src^="http"]):not([src^="/"]):not([src^="data:"]),
+.article-wrapper img[src$=".webp"]:not([src^="http"]):not([src^="/"]):not([src^="data:"]) {
+  min-height: 200px;
+  background-color: #f3f4f6;
+  position: relative;
+}
+
+.article-wrapper img:not([src])::after,
+.article-wrapper img[src=""]::after,
+.article-wrapper img[src*="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///"]::after,
+.article-wrapper img[src$=".jpg"]:not([src^="http"]):not([src^="/"]):not([src^="data:"])::after,
+.article-wrapper img[src$=".png"]:not([src^="http"]):not([src^="/"]):not([src^="data:"])::after,
+.article-wrapper img[src$=".gif"]:not([src^="http"]):not([src^="/"]):not([src^="data:"])::after,
+.article-wrapper img[src$=".jpeg"]:not([src^="http"]):not([src^="/"]):not([src^="data:"])::after,
+.article-wrapper img[src$=".webp"]:not([src^="http"]):not([src^="/"]):not([src^="data:"])::after {
+  content: "图片加载失败";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #6b7280;
+  font-size: 14px;
+}
+
+/* 为空图片添加占位符 */
+.article-wrapper img:not([src]),
+.article-wrapper img[src=""],
+.article-wrapper img[src*="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///"] {
+  min-height: 200px;
+  background-color: #f3f4f6;
+  position: relative;
+}
+
+.article-wrapper img:not([src])::after,
+.article-wrapper img[src=""]::after,
+.article-wrapper img[src*="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///"]::after {
+  content: "图片加载失败";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.article-wrapper ul,
+.article-wrapper ol {
+  margin-bottom: 1em;
+  padding-left: 1.5em;
+}
+
+.article-wrapper li {
+  margin-bottom: 0.5em;
+}
+
+.article-wrapper blockquote {
+  border-left: 4px solid #e0e7ff;
+  padding-left: 1em;
+  margin-left: 0;
+  margin-right: 0;
+  font-style: italic;
+  color: #4b5563;
+}
+
+.article-wrapper pre {
+  background-color: #f3f4f6;
+  padding: 1em;
+  border-radius: 0.375em;
+  overflow-x: auto;
+  margin-bottom: 1em;
+}
+
+.article-wrapper code {
+  font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
+  font-size: 0.875em;
+  background-color: #f3f4f6;
+  padding: 0.125em 0.25em;
+  border-radius: 0.25em;
+}
+
+.article-wrapper table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 1em;
+}
+
+.article-wrapper th,
+.article-wrapper td {
+  border: 1px solid #e5e7eb;
+  padding: 0.5em;
+  text-align: left;
+}
+
+.article-wrapper th {
+  background-color: #f9fafb;
+  font-weight: 600;
+}
+
+/* 隐藏不需要的元素 */
+.article-wrapper .article-info,
+.article-wrapper .article-source,
+.article-wrapper .detail-title,
+.article-wrapper .detail-data,
+.article-wrapper .recommend,
+.article-wrapper .recommend-tit,
+.article-wrapper .name,
+.article-wrapper .avatar,
+.article-wrapper .name-info,
+.article-wrapper .article-bar-top,
+.article-wrapper .article-header,
+.article-wrapper .article-header-box,
+.article-wrapper .article-info-box,
+.article-wrapper .article-bar-bottom,
+.article-wrapper .comment-box,
+.article-wrapper .recommend-box,
+.article-wrapper .blog-footer-bottom,
+.article-wrapper .blog-sidebar,
+.article-wrapper .aside-box {
+  display: none !important;
+}

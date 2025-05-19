@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qwen3 系列模型性能登顶全球，千问3模型介绍</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; padding: 20px; max-width: 1000px; margin: 0 auto; }
+        img { max-width: 100%; height: auto; }
+        pre { background-color: #f5f5f5; padding: 10px; overflow: auto; }
+        code { font-family: Consolas, monospace; }
+        .article-source { color: #666; margin-bottom: 20px; }
+    </style>
+</head>
+<body>
+    <h1>Qwen3 系列模型性能登顶全球，千问3模型介绍</h1>
+    <div class="article-source">
+        原文链接: <a href="https://blog.csdn.net/weixin_42033384/article/details/147626201" target="_blank">https://blog.csdn.net/weixin_42033384/article/details/147626201</a>
+    </div>
+    <div class="article-content">
+        <div class="article_content clearfix" id="article_content">
+<link href="https://csdnimg.cn/release/blogv2/dist/mdeditor/css/editerView/kdoc_html_views-1a98987dfd.css" rel="stylesheet"/>
+<link href="https://csdnimg.cn/release/blogv2/dist/mdeditor/css/editerView/ck_htmledit_views-704d5b9767.css" rel="stylesheet"/>
+<div class="htmledit_views atom-one-dark" id="content_views">
+<h3>简介</h3>
+<p>千问3（Qwen3）是阿里巴巴开源的新一代通义千问模型，发布于2025年4月29日。这款模型系列是国内首个采用“混合推理模型”设计的，它将“快思考”与“慢思考”集成到同一个模型中，旨在提升性能的同时减少算力消耗。</p>
+<h3><strong>模型能力优点</strong></h3>
+<ol><li><strong>参数规模和成本效益</strong>：旗舰版Qwen3-235B-A22B拥有235B的总参数量，但在实际运行时仅激活22B参数，这使得其部署成本大幅下降，只需要4张H20显卡即可部署满血版本，显存占用为性能相近模型的三分之一。</li><li><strong>性能表现</strong>：在多个基准测试中，如奥数水平的AIME25测评、LiveCodeBench代码能力评测、ArenaHard人类偏好对齐评测等，千问3都取得了超越其他顶尖模型的成绩。</li><li><strong>架构和技术</strong>：采用了混合专家（MoE）架构，并且在后训练阶段经过多轮强化学习，将非思考模式整合到思考模型中，从而增强推理、指令遵循、工具调用和多语言能力等方面的表现。 
+  <ul><li>
+<ul><li>
+<ul><li>支持 <strong>普通模式</strong>（无思维链）和 <strong>推理模式</strong>（长思考），无需切换模型，开发者体验更优。</li><li>类似 DeepSeek V3（普通模式）和 R1（推理模式）的结合，但集成于单一模型。</li></ul> </li></ul> </li></ul> </li><li><strong>应用场景支持</strong>：千问3不仅支持多种参数大小的模型以适应不同场景的需求，还原生支持MCP（模型上下文协议），并具备强大的工具调用能力，有助于降低编码复杂性。</li><li><strong>开源和商用</strong>：千问3系列模型采用宽松的Apache2.0协议开源，全球开发者、研究机构和企业可以免费下载并在魔搭社区、HuggingFace等平台上使用或商用。</li></ol>
+<p></p>
+<h3><strong>8 个不同尺寸模型，覆盖全场景</strong></h3>
+<ul><li><strong>Qwen3-30B-A3B</strong>（总参数量 30B，激活 3B）</li><li><strong>Qwen3-235B-A22B</strong>（总参数量 235B，激活 22B，部署成本仅 DeepSeek R1 的 1/3）。</li><li><strong>稠密模型（Dense）</strong>：0.6B、1.7B、4B、8B、14B、32B，适用于不同算力需求。</li><li><strong>MoE 模型</strong>：</li><li><strong>Token 支持</strong>：0.6B~4B 支持 32K，其余支持 128K。</li></ul>
+<h3>总结</h3>
+<p>综上所述，千问3是一个高性能、低成本的大规模语言模型，适用于广泛的自然语言处理任务，并且为开发者提供了极大的灵活性和便利性。</p>
+</div>
+</div>
+    </div>
+</body>
+</html>

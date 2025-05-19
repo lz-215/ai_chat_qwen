@@ -230,9 +230,7 @@ const Home = () => {
           <p className="text-sm sm:text-base md:text-base lg:text-lg mb-2 sm:mb-3 max-w-2xl mx-auto text-gray-600">
             {t('app.home.modelDescription')}
           </p>
-          <p className="text-xs sm:text-sm text-gray-500 mb-3 sm:mb-4 max-w-xl mx-auto">
-            ✨ {t('app.home.getStarted')} ✨
-          </p>
+
           <div className="flex flex-wrap justify-center items-center gap-3 sm:gap-4">
             <span className="bg-indigo-600 bg-opacity-80 hover:bg-opacity-90 text-white font-medium px-2 py-0.5 sm:px-3 sm:py-1 rounded-md text-xs shadow-sm transition-colors">
               {t('app.home.freeTier')}
