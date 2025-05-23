@@ -19,6 +19,7 @@ import DownloadedArticlePage from './components/DownloadedArticlePage.jsx'
 import Docs from './components/Docs.jsx'
 import Media from './components/Media.jsx'
 import PrivacyPolicy from './components/PrivacyPolicy.jsx'
+import TermsOfService from './components/TermsOfService.jsx'
 import { AuthProvider } from './context/AuthContext.jsx'
 import './index.css'
 
@@ -56,6 +57,7 @@ ReactDOM.createRoot(document.getElementById('root')).render(
               <Route path="docs" element={<Docs />} />
               <Route path="media" element={<Media />} />
               <Route path="privacy-policy" element={<PrivacyPolicy />} />
+              <Route path="terms-of-service" element={<TermsOfService />} />
             </Route>
           </Routes>
         </Router>

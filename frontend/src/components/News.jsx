@@ -4,36 +4,42 @@ import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 
 const News = () => {
-  const { t } = useTranslation();
+  const { t, i18n } = useTranslation();
 
   // 默认的颜色和标签配置，用于文章卡片展示
   const defaultBannerStyles = [
     {
+      bannerKey: 'aiInnovation',
       bannerText: 'AI Innovation',
       bannerBgColor: 'bg-orange-400',
       bannerTextColor: 'text-black',
     },
     {
+      bannerKey: 'futureOfAi',
       bannerText: 'Future of AI',
       bannerBgColor: 'bg-sky-300',
       bannerTextColor: 'text-black',
     },
     {
+      bannerKey: 'awardWinning',
       bannerText: 'Award Winning',
       bannerBgColor: 'bg-green-400',
       bannerTextColor: 'text-black',
     },
     {
+      bannerKey: 'eventBeijing',
       bannerText: 'Event Beijing',
       bannerBgColor: 'bg-yellow-400',
       bannerTextColor: 'text-black',
     },
     {
+      bannerKey: 'gbaSummit',
       bannerText: 'GBA Summit',
       bannerBgColor: 'bg-pink-500',
       bannerTextColor: 'text-white',
     },
     {
+      bannerKey: 'shanghaiSeminar',
       bannerText: 'Shanghai Seminar',
       bannerBgColor: 'bg-sky-400',
       bannerTextColor: 'text-black',

@@ -16,7 +16,8 @@
     "footer": {
       "rights": "Tous droits réservés.",
       "contact": "Contactez-nous",
-      "privacy": "Politique de confidentialité"
+      "privacy": "Politique de confidentialité",
+      "terms": "Conditions d'utilisation"
     },
     "home": {
       "welcome": "Bienvenue sur la plateforme de chat Qwen3 IA",
@@ -96,6 +97,28 @@
       "forgotPassword": "Mot de passe oublié ?",
       "loggingIn": "Connexion en cours..."
     },
+    "auth": {
+      "accountLogin": "Connexion par compte",
+      "smsLogin": "Connexion par SMS",
+      "login": "Se connecter",
+      "register": "S'inscrire maintenant",
+      "registerButton": "S'inscrire",
+      "registering": "Inscription en cours...",
+      "enterPhoneNumber": "Entrez votre numéro de téléphone",
+      "verificationCode": "Code de vérification",
+      "sendCode": "Envoyer le code",
+      "readAndAgree": "J'ai lu et j'accepte les",
+      "and": "et",
+      "agreeTermsRequired": "Veuillez lire et accepter les Conditions d'utilisation et la Politique de confidentialité",
+      "phoneRequired": "Veuillez entrer votre numéro de téléphone",
+      "codeRequired": "Veuillez entrer le code de vérification",
+      "loginFailed": "Échec de la connexion. Veuillez vérifier vos identifiants",
+      "registrationFailed": "Échec de l'inscription. Veuillez réessayer plus tard",
+      "alreadyHaveAccount": "Vous avez déjà un compte ?",
+      "unexpectedError": "Une erreur inattendue s'est produite. Veuillez réessayer",
+      "switchToSms": "Se connecter avec un code de vérification SMS",
+      "switchToAccount": "Se connecter avec un nom d'utilisateur et un mot de passe"
+    },
     "languageSelector": {
       "language": "Langue"
     },
@@ -109,6 +132,83 @@
       "uncategorized": "Non catégorisé",
       "unknownDate": "Date Inconnue",
       "metaDescription": "Lisez l'analyse détaillée du cas \"{{title}}\"."
+    },
+    "termsOfService": {
+      "helmetTitle": "Conditions d'utilisation - Plateforme de Chat IA Qwen3",
+      "helmetDescription": "Lisez les Conditions d'utilisation de la Plateforme de Chat IA Qwen3.",
+      "helmetKeywords": "conditions d'utilisation, conditions générales, chat IA, conditions, Qwen3",
+      "pageTitle": "Conditions d'utilisation",
+      "lastUpdated": "Dernière mise à jour : {{date}}",
+      "introduction": {
+        "title": "1. Introduction",
+        "paragraph1": "Bienvenue sur la Plateforme de Chat IA Qwen3. Ces Conditions d'utilisation régissent votre accès et utilisation de notre site web, services, applications et outils (collectivement, les 'Services').",
+        "paragraph2": "En accédant ou en utilisant nos Services, vous acceptez d'être lié par ces Conditions d'utilisation et toutes les lois et réglementations applicables. Si vous n'êtes pas d'accord avec une partie de ces conditions, vous ne pouvez pas utiliser nos Services."
+      },
+      "definitions": {
+        "title": "2. Définitions",
+        "paragraph1": "Dans ces Conditions d'utilisation, les termes suivants auront les significations définies ci-dessous :",
+        "item1": "'Plateforme' fait référence à la Plateforme de Chat IA Qwen3, y compris toutes ses fonctionnalités et services.",
+        "item2": "'Utilisateur', 'vous' et 'votre' font référence à l'individu ou l'entité accédant ou utilisant nos Services.",
+        "item3": "'Contenu' fait référence à toute information, donnée, texte, logiciel, graphique, message ou autre matériel accessible via nos Services.",
+        "item4": "'Contenu Utilisateur' fait référence à tout contenu que les utilisateurs soumettent, téléchargent ou transmettent via nos Services.",
+        "item5": "'Nous', 'notre' et 'nos' font référence à la Plateforme de Chat IA Qwen3 et ses opérateurs."
+      },
+      "accountResponsibilities": {
+        "title": "3. Responsabilités du Compte",
+        "paragraph1": "Lorsque vous créez un compte chez nous, vous devez fournir des informations précises et complètes. Vous êtes responsable de :",
+        "item1": "Maintenir la confidentialité de vos identifiants de compte",
+        "item2": "Toutes les activités qui se produisent sous votre compte",
+        "item3": "Nous notifier immédiatement de toute utilisation non autorisée de votre compte",
+        "item4": "Vous assurer que les informations de votre compte sont tenues à jour"
+      },
+      "acceptableUse": {
+        "title": "4. Utilisation Acceptable",
+        "paragraph1": "Vous acceptez de ne pas utiliser nos Services pour :",
+        "item1": "Violer toute loi ou réglementation applicable",
+        "item2": "Enfreindre les droits d'autrui, y compris les droits de propriété intellectuelle",
+        "item3": "Distribuer des logiciels malveillants, virus ou autres codes nuisibles",
+        "item4": "Vous engager dans des activités qui pourraient désactiver, surcharger ou altérer nos Services",
+        "item5": "Harceler, abuser ou nuire à une autre personne ou entité",
+        "item6": "Générer ou distribuer du contenu illégal, nuisible, menaçant, abusif, diffamatoire, obscène ou autrement répréhensible"
+      },
+      "intellectualProperty": {
+        "title": "5. Propriété Intellectuelle",
+        "paragraph1": "Tout le contenu, les fonctionnalités et les fonctions de nos Services, y compris mais sans s'y limiter, les textes, graphiques, logos, icônes, images, clips audio, téléchargements numériques, compilations de données et logiciels, sont la propriété exclusive de la Plateforme de Chat IA Qwen3 ou de ses concédants et sont protégés par les lois sur le droit d'auteur, les marques et autres lois sur la propriété intellectuelle.",
+        "paragraph2": "Vous ne pouvez pas reproduire, distribuer, modifier, créer des œuvres dérivées, afficher publiquement, exécuter publiquement, republier, télécharger, stocker ou transmettre tout matériel de nos Services sans notre consentement écrit préalable exprès."
+      },
+      "userContent": {
+        "title": "6. Contenu Utilisateur",
+        "paragraph1": "Vous conservez la propriété de tous les droits de propriété intellectuelle que vous détenez sur le contenu que vous soumettez à nos Services. En soumettant, publiant ou affichant du contenu sur ou via nos Services, vous nous accordez une licence mondiale, non exclusive et libre de redevances pour utiliser, reproduire, modifier, adapter, publier, traduire et distribuer ce contenu dans tous les formats de médias et via tous les canaux de médias.",
+        "paragraph2": "Vous êtes seul responsable de votre Contenu Utilisateur et des conséquences de sa publication. Nous n'approuvons aucun Contenu Utilisateur ni aucune opinion, recommandation ou conseil qui y est exprimé, et nous déclinons expressément toute responsabilité en relation avec le Contenu Utilisateur."
+      },
+      "disclaimers": {
+        "title": "7. Avis de Non-Responsabilité",
+        "paragraph1": "Nos Services sont fournis 'tels quels' et 'selon disponibilité' sans garanties d'aucune sorte, expresses ou implicites, y compris, mais sans s'y limiter, les garanties implicites de qualité marchande, d'adéquation à un usage particulier ou de non-violation.",
+        "paragraph2": "Nous ne garantissons pas que nos Services seront ininterrompus, opportuns, sécurisés ou exempts d'erreurs, ou que les défauts seront corrigés. Nous ne donnons aucune garantie quant à l'exactitude, la fiabilité, l'exhaustivité ou l'actualité du contenu, des services, des logiciels, des textes, des graphiques, des liens ou des communications fournis sur ou via nos Services."
+      },
+      "limitation": {
+        "title": "8. Limitation de Responsabilité",
+        "paragraph1": "Dans toute la mesure permise par la loi applicable, en aucun cas la Plateforme de Chat IA Qwen3, ses affiliés, directeurs, employés, agents ou concédants ne seront responsables de dommages indirects, punitifs, accessoires, spéciaux, consécutifs ou exemplaires, y compris, sans limitation, les dommages pour perte de profits, de clientèle, d'utilisation, de données ou autres pertes intangibles, résultant de l'utilisation ou de l'impossibilité d'utiliser nos Services."
+      },
+      "termination": {
+        "title": "9. Résiliation",
+        "paragraph1": "Nous pouvons résilier ou suspendre votre compte et l'accès à nos Services immédiatement, sans préavis ni responsabilité, pour quelque raison que ce soit, y compris, sans limitation, si vous violez ces Conditions d'utilisation.",
+        "paragraph2": "À la résiliation, votre droit d'utiliser nos Services cessera immédiatement. Si vous souhaitez résilier votre compte, vous pouvez simplement cesser d'utiliser nos Services ou nous contacter pour demander la suppression du compte."
+      },
+      "changes": {
+        "title": "10. Modifications des Conditions",
+        "paragraph1": "Nous nous réservons le droit de modifier ou de remplacer ces Conditions d'utilisation à tout moment. Nous fournirons un avis de tout changement important via nos Services ou d'autres canaux de communication. Votre utilisation continue de nos Services après de tels changements constitue votre acceptation des nouvelles Conditions d'utilisation."
+      },
+      "governingLaw": {
+        "title": "11. Loi Applicable",
+        "paragraph1": "Ces Conditions d'utilisation seront régies et interprétées conformément aux lois de la Chine, sans égard à ses dispositions en matière de conflits de lois. Vous acceptez de vous soumettre à la juridiction personnelle et exclusive des tribunaux situés en Chine pour la résolution de tout litige."
+      },
+      "contactUs": {
+        "title": "12. Contactez-nous",
+        "paragraph1": "Si vous avez des questions concernant ces Conditions d'utilisation, veuillez nous contacter à :",
+        "email": "Email : ytsgabcde21@2925.com",
+        "registration": "Enregistrement : 渝ICP备2023003198号-91"
+      }
     }
   }
 }

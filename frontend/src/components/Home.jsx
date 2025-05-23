@@ -1,15 +1,26 @@
 import React, {useState, useEffect} from 'react'
 import { Helmet, HelmetProvider } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/AuthContext';
 
 const Home = () => {
-      const { t } = useTranslation();
+      const { t, i18n } = useTranslation();
+      const { isAuthenticated, googleLogin } = useAuth();
+      const navigate = useNavigate();
+
+      // 调试信息 - 显示当前语言
+      useEffect(() => {
+        console.log('Current language in Home component:', i18n.language);
+        console.log('Translated welcome text:', t('app.home.welcome'));
+      }, [i18n.language, t]);
 
       // State for AI persona, user input, and chat messages
       const [activeSystemPrompt, setActiveSystemPrompt] = useState('');
       const [userInput, setUserInput] = useState('');
       const [messages, setMessages] = useState([]);
       const [isLoading, setIsLoading] = useState(false);
+      const [messageCount, setMessageCount] = useState(0);
 
       // Define available AI personas
       const personas = [
@@ -110,6 +121,16 @@ const Home = () => {
       // Handle sending a message
       const handleSendMessage = async () => {
         if (!userInput.trim()) return;
+
+        // 检查消息数量限制
+        if (!isAuthenticated && messageCount >= 9) {
+          // 显示登录提醒
+          const shouldLogin = window.confirm('您已达到免费对话次数限制（10次）。是否立即登录以继续对话？');
+          if (shouldLogin) {
+            googleLogin();
+          }
+          return;
+        }
 
         setIsLoading(true);
         const newUserMessage = { sender: 'user', text: userInput };

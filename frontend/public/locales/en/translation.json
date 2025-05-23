@@ -18,7 +18,8 @@
     "footer": {
       "rights": "All rights reserved.",
       "contact": "Contact Us",
-      "privacy": "Privacy Policy"
+      "privacy": "Privacy Policy",
+      "terms": "Terms of Service"
     },
     "home": {
       "welcome": "Welcome to Qwen3 AI Chat Platform",
@@ -182,6 +183,28 @@
       "forgotPassword": "Forgot Password?",
       "loggingIn": "Logging in..."
     },
+    "auth": {
+      "accountLogin": "Account Login",
+      "smsLogin": "SMS Login",
+      "login": "Login",
+      "register": "Register Now",
+      "registerButton": "Register",
+      "registering": "Registering...",
+      "enterPhoneNumber": "Enter phone number",
+      "verificationCode": "Verification Code",
+      "sendCode": "Send Code",
+      "readAndAgree": "I have read and agree to the",
+      "and": "and",
+      "agreeTermsRequired": "Please read and agree to the Terms of Service and Privacy Policy",
+      "phoneRequired": "Please enter your phone number",
+      "codeRequired": "Please enter the verification code",
+      "loginFailed": "Login failed. Please check your credentials",
+      "registrationFailed": "Registration failed. Please try again later",
+      "unexpectedError": "An unexpected error occurred. Please try again",
+      "switchToSms": "Login with SMS verification code",
+      "alreadyHaveAccount": "Already have an account?",
+      "switchToAccount": "Login with username and password"
+    },
     "languageSelector": {
       "language": "Language"
     },
@@ -317,6 +340,83 @@
         "message": "Your Message",
         "submit": "Send Message",
         "successMessage": "Thank you for your message! We will get back to you as soon as possible."
+      }
+    },
+    "termsOfService": {
+      "helmetTitle": "Terms of Service - Qwen3 AI Chat Platform",
+      "helmetDescription": "Read the Terms of Service for Qwen3 AI Chat Platform.",
+      "helmetKeywords": "terms of service, terms of use, AI chat, conditions, Qwen3",
+      "pageTitle": "Terms of Service",
+      "lastUpdated": "Last Updated: {{date}}",
+      "introduction": {
+        "title": "1. Introduction",
+        "paragraph1": "Welcome to the Qwen3 AI Chat Platform. These Terms of Service govern your access to and use of our website, services, applications, and tools (collectively, the 'Services').",
+        "paragraph2": "By accessing or using our Services, you agree to be bound by these Terms of Service and all applicable laws and regulations. If you do not agree with any part of these terms, you may not use our Services."
+      },
+      "definitions": {
+        "title": "2. Definitions",
+        "paragraph1": "Throughout these Terms of Service, the following terms shall have the meanings defined below:",
+        "item1": "'Platform' refers to the Qwen3 AI Chat Platform, including all its features and services.",
+        "item2": "'User', 'you', and 'your' refer to the individual or entity accessing or using our Services.",
+        "item3": "'Content' refers to any information, data, text, software, graphics, messages, or other materials that can be accessed through our Services.",
+        "item4": "'User Content' refers to any content that users submit, upload, or transmit through our Services.",
+        "item5": "'We', 'us', and 'our' refer to the Qwen3 AI Chat Platform and its operators."
+      },
+      "accountResponsibilities": {
+        "title": "3. Account Responsibilities",
+        "paragraph1": "When you create an account with us, you must provide accurate and complete information. You are responsible for:",
+        "item1": "Maintaining the confidentiality of your account credentials",
+        "item2": "All activities that occur under your account",
+        "item3": "Notifying us immediately of any unauthorized use of your account",
+        "item4": "Ensuring that your account information is kept up-to-date"
+      },
+      "acceptableUse": {
+        "title": "4. Acceptable Use",
+        "paragraph1": "You agree not to use our Services to:",
+        "item1": "Violate any applicable laws or regulations",
+        "item2": "Infringe upon the rights of others, including intellectual property rights",
+        "item3": "Distribute malware, viruses, or other harmful code",
+        "item4": "Engage in activities that could disable, overburden, or impair our Services",
+        "item5": "Harass, abuse, or harm another person or entity",
+        "item6": "Generate or distribute content that is illegal, harmful, threatening, abusive, defamatory, obscene, or otherwise objectionable"
+      },
+      "intellectualProperty": {
+        "title": "5. Intellectual Property",
+        "paragraph1": "All content, features, and functionality of our Services, including but not limited to text, graphics, logos, icons, images, audio clips, digital downloads, data compilations, and software, are the exclusive property of Qwen3 AI Chat Platform or its licensors and are protected by copyright, trademark, and other intellectual property laws.",
+        "paragraph2": "You may not reproduce, distribute, modify, create derivative works of, publicly display, publicly perform, republish, download, store, or transmit any of the material on our Services without our express prior written consent."
+      },
+      "userContent": {
+        "title": "6. User Content",
+        "paragraph1": "You retain ownership of any intellectual property rights that you hold in the content you submit to our Services. By submitting, posting, or displaying content on or through our Services, you grant us a worldwide, non-exclusive, royalty-free license to use, reproduce, modify, adapt, publish, translate, and distribute such content in any media formats and through any media channels.",
+        "paragraph2": "You are solely responsible for your User Content and the consequences of posting or publishing it. We do not endorse any User Content or any opinion, recommendation, or advice expressed therein, and we expressly disclaim any and all liability in connection with User Content."
+      },
+      "disclaimers": {
+        "title": "7. Disclaimers",
+        "paragraph1": "Our Services are provided 'as is' and 'as available' without any warranties of any kind, either express or implied, including but not limited to the implied warranties of merchantability, fitness for a particular purpose, or non-infringement.",
+        "paragraph2": "We do not warrant that our Services will be uninterrupted, timely, secure, or error-free, or that any defects will be corrected. We make no warranties about the accuracy, reliability, completeness, or timeliness of the content, services, software, text, graphics, links, or communications provided on or through our Services."
+      },
+      "limitation": {
+        "title": "8. Limitation of Liability",
+        "paragraph1": "To the maximum extent permitted by applicable law, in no event shall Qwen3 AI Chat Platform, its affiliates, directors, employees, agents, or licensors be liable for any indirect, punitive, incidental, special, consequential, or exemplary damages, including without limitation damages for loss of profits, goodwill, use, data, or other intangible losses, that result from the use of, or inability to use, our Services."
+      },
+      "termination": {
+        "title": "9. Termination",
+        "paragraph1": "We may terminate or suspend your account and access to our Services immediately, without prior notice or liability, for any reason whatsoever, including without limitation if you breach these Terms of Service.",
+        "paragraph2": "Upon termination, your right to use our Services will immediately cease. If you wish to terminate your account, you may simply discontinue using our Services or contact us to request account deletion."
+      },
+      "changes": {
+        "title": "10. Changes to Terms",
+        "paragraph1": "We reserve the right to modify or replace these Terms of Service at any time. We will provide notice of any material changes through our Services or other communication channels. Your continued use of our Services after any such changes constitutes your acceptance of the new Terms of Service."
+      },
+      "governingLaw": {
+        "title": "11. Governing Law",
+        "paragraph1": "These Terms of Service shall be governed by and construed in accordance with the laws of China, without regard to its conflict of law provisions. You agree to submit to the personal and exclusive jurisdiction of the courts located within China for the resolution of any disputes."
+      },
+      "contactUs": {
+        "title": "12. Contact Us",
+        "paragraph1": "If you have any questions about these Terms of Service, please contact us at:",
+        "email": "Email: ytsgabcde21@2925.com",
+        "registration": "Registration: 渝ICP备2023003198号-91"
       }
     },
     "privacyPolicy": {

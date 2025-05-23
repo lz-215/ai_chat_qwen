@@ -3,8 +3,8 @@ import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
 import Backend from 'i18next-http-backend';
 
-// 支持的语言
-const supportedLngs = ['en', 'zh', 'es', 'fr', 'de'];
+// 支持的语言 - 移除中文
+const supportedLngs = ['en', 'es', 'fr', 'de'];
 
 // 默认语言
 const defaultLanguage = 'en';
@@ -22,8 +22,8 @@ i18n
     supportedLngs,
     debug: true,
     detection: {
-      // 语言检测顺序
-      order: ['querystring', 'navigator', 'localStorage', 'sessionStorage', 'htmlTag', 'path', 'cookie'],
+      // 语言检测顺序 - 优先使用本地存储的语言设置
+      order: ['localStorage', 'querystring', 'navigator', 'sessionStorage', 'htmlTag', 'path', 'cookie'],
       // 检测参数名称 (例如: ?lng=en)
       lookupQuerystring: 'lng',
       // 本地存储里的键名
@@ -46,6 +46,12 @@ i18n
     }
   });
 
+// 尝试从本地存储获取用户的语言首选项
+const savedLanguage = localStorage.getItem('userLanguage');
+if (savedLanguage && supportedLngs.includes(savedLanguage)) {
+  i18n.changeLanguage(savedLanguage);
+}
+
 // 将当前语言添加到HTML元素上
 document.documentElement.lang = i18n.language;
 document.documentElement.dir = ['ar', 'he'].includes(i18n.language) ? 'rtl' : 'ltr';
@@ -54,6 +60,7 @@ document.documentElement.dir = ['ar', 'he'].includes(i18n.language) ? 'rtl' : 'l
 i18n.on('languageChanged', (lng) => {
   document.documentElement.lang = lng;
   document.documentElement.dir = ['ar', 'he'].includes(lng) ? 'rtl' : 'ltr';
+  console.log('Language changed to:', lng);
 });
 
-export default i18n; 
+export default i18n;

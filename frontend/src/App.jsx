@@ -8,7 +8,7 @@ import Header from './components/Header.jsx';
 
 function App() {
   const { t } = useTranslation();
-  
+
   return (
     <HelmetProvider>
       <div className="flex flex-col min-h-screen bg-white">
@@ -24,6 +24,10 @@ function App() {
             <span className="text-gray-400">|</span>
             <Link to="/privacy-policy" className="text-indigo-600 hover:text-indigo-800 transition-colors duration-300">
               {t('app.footer.privacy')}
+            </Link>
+            <span className="text-gray-400">|</span>
+            <Link to="/terms-of-service" className="text-indigo-600 hover:text-indigo-800 transition-colors duration-300">
+              {t('app.footer.terms')}
             </Link>
           </div>
         </footer>

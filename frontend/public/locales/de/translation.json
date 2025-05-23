@@ -16,7 +16,8 @@
     "footer": {
       "rights": "Alle Rechte vorbehalten.",
       "contact": "Kontaktieren Sie uns",
-      "privacy": "Datenschutzrichtlinie"
+      "privacy": "Datenschutzrichtlinie",
+      "terms": "Nutzungsbedingungen"
     },
     "home": {
       "welcome": "Willkommen bei der Qwen3 KI-Chat-Plattform",
@@ -96,6 +97,28 @@
       "forgotPassword": "Passwort vergessen?",
       "loggingIn": "Anmeldung läuft..."
     },
+    "auth": {
+      "accountLogin": "Konto-Anmeldung",
+      "smsLogin": "SMS-Anmeldung",
+      "login": "Anmelden",
+      "register": "Jetzt registrieren",
+      "registerButton": "Registrieren",
+      "registering": "Registrierung läuft...",
+      "enterPhoneNumber": "Telefonnummer eingeben",
+      "verificationCode": "Bestätigungscode",
+      "sendCode": "Code senden",
+      "readAndAgree": "Ich habe die",
+      "and": "und",
+      "agreeTermsRequired": "Bitte lesen und akzeptieren Sie die Nutzungsbedingungen und Datenschutzrichtlinie",
+      "phoneRequired": "Bitte geben Sie Ihre Telefonnummer ein",
+      "codeRequired": "Bitte geben Sie den Bestätigungscode ein",
+      "loginFailed": "Anmeldung fehlgeschlagen. Bitte überprüfen Sie Ihre Anmeldedaten",
+      "registrationFailed": "Registrierung fehlgeschlagen. Bitte versuchen Sie es später erneut",
+      "alreadyHaveAccount": "Haben Sie bereits ein Konto?",
+      "unexpectedError": "Ein unerwarteter Fehler ist aufgetreten. Bitte versuchen Sie es erneut",
+      "switchToSms": "Mit SMS-Bestätigungscode anmelden",
+      "switchToAccount": "Mit Benutzername und Passwort anmelden"
+    },
     "languageSelector": {
       "language": "Sprache"
     },
@@ -109,6 +132,83 @@
       "uncategorized": "Nicht kategorisiert",
       "unknownDate": "Unbekanntes Datum",
       "metaDescription": "Lesen Sie die detaillierte Fallanalyse von \"{{title}}\"."
+    },
+    "termsOfService": {
+      "helmetTitle": "Nutzungsbedingungen - Qwen3 KI-Chat-Plattform",
+      "helmetDescription": "Lesen Sie die Nutzungsbedingungen für die Qwen3 KI-Chat-Plattform.",
+      "helmetKeywords": "nutzungsbedingungen, geschäftsbedingungen, KI-chat, bedingungen, Qwen3",
+      "pageTitle": "Nutzungsbedingungen",
+      "lastUpdated": "Zuletzt aktualisiert: {{date}}",
+      "introduction": {
+        "title": "1. Einführung",
+        "paragraph1": "Willkommen bei der Qwen3 KI-Chat-Plattform. Diese Nutzungsbedingungen regeln Ihren Zugang zu und die Nutzung unserer Website, Dienste, Anwendungen und Tools (zusammen die 'Dienste').",
+        "paragraph2": "Durch den Zugriff auf oder die Nutzung unserer Dienste erklären Sie sich damit einverstanden, an diese Nutzungsbedingungen und alle geltenden Gesetze und Vorschriften gebunden zu sein. Wenn Sie mit einem Teil dieser Bedingungen nicht einverstanden sind, dürfen Sie unsere Dienste nicht nutzen."
+      },
+      "definitions": {
+        "title": "2. Definitionen",
+        "paragraph1": "In diesen Nutzungsbedingungen haben die folgenden Begriffe die unten definierten Bedeutungen:",
+        "item1": "'Plattform' bezieht sich auf die Qwen3 KI-Chat-Plattform, einschließlich aller ihrer Funktionen und Dienste.",
+        "item2": "'Nutzer', 'Sie' und 'Ihr' beziehen sich auf die Person oder Einrichtung, die auf unsere Dienste zugreift oder diese nutzt.",
+        "item3": "'Inhalt' bezieht sich auf alle Informationen, Daten, Texte, Software, Grafiken, Nachrichten oder andere Materialien, auf die über unsere Dienste zugegriffen werden kann.",
+        "item4": "'Nutzerinhalt' bezieht sich auf alle Inhalte, die Nutzer über unsere Dienste einreichen, hochladen oder übertragen.",
+        "item5": "'Wir', 'uns' und 'unser' beziehen sich auf die Qwen3 KI-Chat-Plattform und ihre Betreiber."
+      },
+      "accountResponsibilities": {
+        "title": "3. Kontoverbindlichkeiten",
+        "paragraph1": "Wenn Sie ein Konto bei uns erstellen, müssen Sie genaue und vollständige Informationen angeben. Sie sind verantwortlich für:",
+        "item1": "Die Wahrung der Vertraulichkeit Ihrer Kontoanmeldedaten",
+        "item2": "Alle Aktivitäten, die unter Ihrem Konto stattfinden",
+        "item3": "Die sofortige Benachrichtigung über jede unbefugte Nutzung Ihres Kontos",
+        "item4": "Die Sicherstellung, dass Ihre Kontoinformationen auf dem neuesten Stand gehalten werden"
+      },
+      "acceptableUse": {
+        "title": "4. Zulässige Nutzung",
+        "paragraph1": "Sie stimmen zu, unsere Dienste nicht zu nutzen, um:",
+        "item1": "Gegen geltende Gesetze oder Vorschriften zu verstoßen",
+        "item2": "Die Rechte anderer zu verletzen, einschließlich geistiger Eigentumsrechte",
+        "item3": "Malware, Viren oder anderen schädlichen Code zu verbreiten",
+        "item4": "Aktivitäten durchzuführen, die unsere Dienste deaktivieren, überlasten oder beeinträchtigen könnten",
+        "item5": "Eine andere Person oder Einrichtung zu belästigen, zu missbrauchen oder zu schädigen",
+        "item6": "Inhalte zu generieren oder zu verbreiten, die illegal, schädlich, bedrohlich, beleidigend, verleumderisch, obszön oder anderweitig anstößig sind"
+      },
+      "intellectualProperty": {
+        "title": "5. Geistiges Eigentum",
+        "paragraph1": "Alle Inhalte, Funktionen und Funktionalitäten unserer Dienste, einschließlich, aber nicht beschränkt auf Text, Grafiken, Logos, Symbole, Bilder, Audioclips, digitale Downloads, Datenkompilierungen und Software, sind das ausschließliche Eigentum der Qwen3 KI-Chat-Plattform oder ihrer Lizenzgeber und sind durch Urheberrechts-, Marken- und andere Gesetze zum geistigen Eigentum geschützt.",
+        "paragraph2": "Sie dürfen keines der Materialien auf unseren Diensten ohne unsere ausdrückliche vorherige schriftliche Zustimmung reproduzieren, verteilen, modifizieren, abgeleitete Werke erstellen, öffentlich anzeigen, öffentlich aufführen, erneut veröffentlichen, herunterladen, speichern oder übertragen."
+      },
+      "userContent": {
+        "title": "6. Nutzerinhalt",
+        "paragraph1": "Sie behalten das Eigentum an allen geistigen Eigentumsrechten, die Sie an den Inhalten halten, die Sie an unsere Dienste übermitteln. Durch das Einreichen, Posten oder Anzeigen von Inhalten auf oder über unsere Dienste gewähren Sie uns eine weltweite, nicht-exklusive, gebührenfreie Lizenz zur Nutzung, Reproduktion, Modifikation, Anpassung, Veröffentlichung, Übersetzung und Verteilung solcher Inhalte in allen Medienformaten und durch alle Medienkanäle.",
+        "paragraph2": "Sie sind allein verantwortlich für Ihren Nutzerinhalt und die Folgen seiner Veröffentlichung. Wir unterstützen keinen Nutzerinhalt oder darin geäußerte Meinungen, Empfehlungen oder Ratschläge und lehnen ausdrücklich jede Haftung im Zusammenhang mit Nutzerinhalt ab."
+      },
+      "disclaimers": {
+        "title": "7. Haftungsausschlüsse",
+        "paragraph1": "Unsere Dienste werden 'wie sie sind' und 'wie verfügbar' ohne jegliche Garantien jeglicher Art, weder ausdrücklich noch implizit, einschließlich, aber nicht beschränkt auf die impliziten Garantien der Marktgängigkeit, Eignung für einen bestimmten Zweck oder Nichtverletzung, bereitgestellt.",
+        "paragraph2": "Wir garantieren nicht, dass unsere Dienste ununterbrochen, zeitgerecht, sicher oder fehlerfrei sein werden oder dass Mängel behoben werden. Wir geben keine Garantien hinsichtlich der Genauigkeit, Zuverlässigkeit, Vollständigkeit oder Aktualität der Inhalte, Dienste, Software, Texte, Grafiken, Links oder Kommunikationen, die auf oder über unsere Dienste bereitgestellt werden."
+      },
+      "limitation": {
+        "title": "8. Haftungsbeschränkung",
+        "paragraph1": "Im größtmöglichen gesetzlich zulässigen Umfang haften die Qwen3 KI-Chat-Plattform, ihre verbundenen Unternehmen, Direktoren, Mitarbeiter, Agenten oder Lizenzgeber in keinem Fall für indirekte, strafende, zufällige, besondere, Folge- oder exemplarische Schäden, einschließlich, ohne Einschränkung, Schäden für entgangenen Gewinn, Goodwill, Nutzung, Daten oder andere immaterielle Verluste, die aus der Nutzung oder der Unmöglichkeit der Nutzung unserer Dienste resultieren."
+      },
+      "termination": {
+        "title": "9. Kündigung",
+        "paragraph1": "Wir können Ihr Konto und den Zugang zu unseren Diensten sofort, ohne vorherige Ankündigung oder Haftung, aus irgendeinem Grund kündigen oder aussetzen, einschließlich, ohne Einschränkung, wenn Sie gegen diese Nutzungsbedingungen verstoßen.",
+        "paragraph2": "Nach der Kündigung erlischt Ihr Recht zur Nutzung unserer Dienste sofort. Wenn Sie Ihr Konto kündigen möchten, können Sie einfach die Nutzung unserer Dienste einstellen oder uns kontaktieren, um die Löschung des Kontos zu beantragen."
+      },
+      "changes": {
+        "title": "10. Änderungen der Bedingungen",
+        "paragraph1": "Wir behalten uns das Recht vor, diese Nutzungsbedingungen jederzeit zu ändern oder zu ersetzen. Wir werden über wesentliche Änderungen über unsere Dienste oder andere Kommunikationskanäle informieren. Ihre fortgesetzte Nutzung unserer Dienste nach solchen Änderungen stellt Ihre Annahme der neuen Nutzungsbedingungen dar."
+      },
+      "governingLaw": {
+        "title": "11. Geltendes Recht",
+        "paragraph1": "Diese Nutzungsbedingungen unterliegen den Gesetzen Chinas und werden in Übereinstimmung mit diesen ausgelegt, ohne Berücksichtigung ihrer Kollisionsnormen. Sie stimmen zu, sich der persönlichen und ausschließlichen Gerichtsbarkeit der Gerichte in China für die Beilegung von Streitigkeiten zu unterwerfen."
+      },
+      "contactUs": {
+        "title": "12. Kontaktieren Sie uns",
+        "paragraph1": "Wenn Sie Fragen zu diesen Nutzungsbedingungen haben, kontaktieren Sie uns bitte unter:",
+        "email": "E-Mail: ytsgabcde21@2925.com",
+        "registration": "Registrierung: 渝ICP备2023003198号-91"
+      }
     }
   }
 }

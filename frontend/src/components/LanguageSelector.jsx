@@ -5,10 +5,9 @@ const LanguageSelector = () => {
   const { i18n, t } = useTranslation();
   const [showDropdown, setShowDropdown] = useState(false);
 
-  // 支持的语言
+  // 支持的语言 - 移除中文
   const languages = [
     { code: 'en', name: 'English', flag: '🇺🇸' },
-    { code: 'zh', name: '中文', flag: '🇨🇳' },
     { code: 'es', name: 'Español', flag: '🇪🇸' },
     { code: 'fr', name: 'Français', flag: '🇫🇷' },
     { code: 'de', name: 'Deutsch', flag: '🇩🇪' }
@@ -22,10 +21,20 @@ const LanguageSelector = () => {
 
   // 切换语言
   const changeLanguage = (langCode) => {
-    i18n.changeLanguage(langCode);
-    setShowDropdown(false);
     // 保存用户的语言选择到本地存储
     localStorage.setItem('userLanguage', langCode);
+
+    // 切换语言
+    i18n.changeLanguage(langCode);
+    setShowDropdown(false);
+
+    // 强制刷新页面以确保所有组件都使用新的语言
+    // 这是一个临时解决方案，理想情况下应该不需要刷新
+    if (i18n.language !== langCode) {
+      setTimeout(() => {
+        window.location.reload();
+      }, 100);
+    }
   };
 
   // 组件挂载时，尝试从本地存储获取用户的语言首选项
@@ -69,4 +78,4 @@ const LanguageSelector = () => {
   );
 };
 
-export default LanguageSelector; 
+export default LanguageSelector;
